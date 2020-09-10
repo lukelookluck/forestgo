@@ -8,6 +8,7 @@ const Start = () => {
       <div>
         <h1>포레스트고</h1>
       </div>
+      <div>로그인!!</div>
     </Wrapper>
   );
 };
