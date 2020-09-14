@@ -35,4 +35,4 @@ for i in range(len(pageNO)):
 
         df.loc[k] = [item.fslistno.text, item.fskname.text, item.fsinhabit.text, item.fsguide.text, item.fslifetime.text, imageName[0], imageName[1]]
         k=k+1
-df.to_csv('./plantList.csv',encoding='utf-8-sig')
+df.to_csv('./datasets/plantList.csv',encoding='utf-8-sig')
