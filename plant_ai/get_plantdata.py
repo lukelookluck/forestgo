@@ -31,7 +31,7 @@ for i in range(len(pageNO)):
             print(item.fslistno.text, ' ', image.imgno.text , ' ', idx, ' ', imageName[idx])
             idx = idx + 1
             idx = idx % 2
-            sleep(0.01)
+            sleep(0.05)
 
         df.loc[k] = [item.fslistno.text, item.fskname.text, item.fsinhabit.text, item.fsguide.text, item.fslifetime.text, imageName[0], imageName[1]]
         k=k+1
