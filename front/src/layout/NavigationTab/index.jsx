@@ -10,10 +10,8 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import Community from "../../pages/Community/";
+import Discovery from "../../pages/Discovery/";
 import MyForest from "../../pages/MyForest/";
-
-import CreateArticleButton from "../../components/Community/ArticleForm/CreateArticleButton/";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -96,13 +94,13 @@ export default function NavigationTab() {
           class="asdas"
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
-            <Community></Community>
+            <Discovery></Discovery>
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
-            <MyBar></MyBar>
+            <MyForest></MyForest>
           </TabPanel>
         </SwipeableViews>
-        {value == 0 && <CreateArticleButton />}
+        {value == 0}
       </Grid>
     </Wrapper>
   );
