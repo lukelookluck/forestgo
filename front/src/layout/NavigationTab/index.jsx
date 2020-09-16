@@ -15,15 +15,6 @@ import MyForest from "../../pages/MyForest/";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
-  const styles = (theme) => ({
-    label: {
-      color: "#FFF000",
-    },
-    indicator: {
-      backgroundColor: "#FFF",
-    },
-  });
-
   return (
     <div
       role="tabpanel"
@@ -59,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
   },
   label: {
-    color: "#62c273",
+    color: "#509c82",
   },
 }));
 
@@ -78,12 +69,10 @@ export default function NavigationTab() {
 
   return (
     <Wrapper className={classes.root}>
-      {/* <Grid container justify="center" alignItems="center"> */}
       <AppBar className="myAppbar" position="static" color="default">
         <Tabs
           value={value}
           onChange={handleChange}
-          // textColor="primary"
           TabIndicatorProps={{
             style: {
               backgroundColor: "#62c273",
@@ -110,7 +99,6 @@ export default function NavigationTab() {
         </TabPanel>
       </SwipeableViews>
       {value == 0}
-      {/* </Grid> */}
     </Wrapper>
   );
 }

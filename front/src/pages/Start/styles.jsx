@@ -5,7 +5,7 @@ const Wrapper = styled.div`
 
   & .logoGrid {
     height: 360px;
-    background-color: #62c273;
+    background-color: #509c82;
     color: white;
   }
 
@@ -39,7 +39,7 @@ const Wrapper = styled.div`
     margin-top: 30px;
     width: 100%;
     height: 50px;
-    background-color: #62c273;
+    background-color: #509c82;
     text-decoration: none;
     border: none;
     color: white;
@@ -49,11 +49,11 @@ const Wrapper = styled.div`
   }
 
   & .login_btn:hover {
-    background-color: #45b458;
+    background-color: #509c82;
   }
 
   & .bottom {
-    color: #3e9f4f;
+    color: #509c82;
     font-family: "IBMPlexSansKR-Text";
   }
 

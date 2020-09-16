@@ -12,7 +12,6 @@ const Wrapper = styled.div`
 
   & .signin div {
     margin-top: 65px;
-    // font-size: 40px;
   }
 
   & form div {
@@ -23,8 +22,8 @@ const Wrapper = styled.div`
   & .submitBtn {
     margin-top: 30px;
     height: 50px;
-    width: 120px;
-    background-color: #62c273;
+    width: 150px;
+    background-color: #509c82;
     text-decoration: none;
     border: none;
     color: white;
@@ -33,13 +32,13 @@ const Wrapper = styled.div`
   }
 
   & .submitBtn:hover {
-    background-color: #62c273;
+    background-color: #509c82;
   }
 
   & .resetBtn {
     margin-top: 30px;
     height: 50px;
-    width: 120px;
+    width: 150px;
     background-color: rgb(242, 242, 242);
     text-decoration: none;
     border: none;
