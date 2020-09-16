@@ -1,7 +1,6 @@
 import React from "react";
 import Wrapper from "./styles";
 import { Grid } from "@material-ui/core";
-
 import PropTypes from "prop-types";
 import SwipeableViews from "react-swipeable-views";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -15,6 +14,15 @@ import MyForest from "../../pages/MyForest/";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
+
+  const styles = theme => ({
+    label: {
+    color: '#FFF000'
+    },
+    indicator: {
+    backgroundColor: '#FFF'
+    }
+    });
 
   return (
     <div
@@ -73,7 +81,6 @@ export default function NavigationTab() {
             value={value}
             onChange={handleChange}
             indicatorColor="primary"
-            textColor="primary"
             variant="fullWidth"
             className="navTabs"
           >

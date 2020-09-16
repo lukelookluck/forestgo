@@ -9,6 +9,7 @@ const Wrapper = styled.div`
 
   & .navTabs {
     background-color: rgb(255, 255, 255);
+    color: #1b5e20;
   }
 
   & .myTab {
