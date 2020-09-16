@@ -15,14 +15,14 @@ import MyForest from "../../pages/MyForest/";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
-  const styles = theme => ({
+  const styles = (theme) => ({
     label: {
-    color: '#FFF000'
+      color: "#FFF000",
     },
     indicator: {
-    backgroundColor: '#FFF'
-    }
-    });
+      backgroundColor: "#FFF",
+    },
+  });
 
   return (
     <div
@@ -78,7 +78,7 @@ export default function NavigationTab() {
 
   return (
     <Wrapper className={classes.root}>
-      <Grid container justify="center" alignItems="center" class="asd">
+      <Grid container justify="center" alignItems="center">
         <AppBar className="myAppbar" position="static" color="default">
           <Tabs
             value={value}

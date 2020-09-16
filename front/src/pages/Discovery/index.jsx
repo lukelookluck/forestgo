@@ -2,14 +2,12 @@ import React from "react";
 import Wrapper from "./styles";
 import { Grid } from "@material-ui/core";
 
+import ArticleList from "../../components/Community/Recipe/RecipeList/";
 
 const Discovery = () => {
-
   return (
     <Wrapper>
-      <Grid>
-        <h1>Discovery</h1>
-      </Grid>
+      <ArticleList />
     </Wrapper>
   );
 };
