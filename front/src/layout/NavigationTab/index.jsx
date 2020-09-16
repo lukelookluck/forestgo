@@ -58,6 +58,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.paper,
   },
+  label: {
+    color: "#62c273",
+  },
 }));
 
 export default function NavigationTab() {
@@ -80,25 +83,28 @@ export default function NavigationTab() {
           <Tabs
             value={value}
             onChange={handleChange}
-            indicatorColor="primary"
+            // textColor="primary"
+            TabIndicatorProps={{
+              style: {
+                backgroundColor: "#62c273",
+                height: "3px",
+              },
+            }}
             variant="fullWidth"
             className="navTabs"
           >
             <Tab
+              className={classes.label}
               label="Discovery"
               {...a11yProps(0)}
             />
-            <Tab
-              label="MyForest"
-              {...a11yProps(1)}
-            />
+            <Tab className={classes.label} label="MyForest" {...a11yProps(1)} />
           </Tabs>
         </AppBar>
         <SwipeableViews
           axis={theme.direction === "rtl" ? "x-reverse" : "x"}
           index={value}
           onChangeIndex={handleChangeIndex}
-          class="asdas"
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
             <Discovery></Discovery>

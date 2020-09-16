@@ -8,10 +8,10 @@ const Wrapper = styled.div`
         color: white;
     }
 
-    & #logo {
-        margin-top: 30px;
-        font-size: 30px;
-    }
+  & #logo {
+    margin-top: 30px;
+    font-size: 30px;
+  }
 `;
 
 export default Wrapper;
