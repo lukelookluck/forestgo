@@ -5,7 +5,7 @@ import axios from "axios";
 
 import Wrapper from "./style";
 
-import RecipieListDisplay from "../RecipieListDisplay/";
+import RecipieListDisplay from "../ArticleListDisplay";
 import { CommonContext } from "../../../../context/CommonContext";
 
 export default function () {

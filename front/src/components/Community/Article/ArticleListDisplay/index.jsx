@@ -12,8 +12,8 @@ import BookmarkIcon from "@material-ui/icons/Bookmark";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 import CommentList from "../../Comment/ArticleUnderCommentList";
-import MenuModal from "../MenuModal/";
-import Alert from "../../../../components/Community/Alert/";
+import MenuModal from "../MenuModal";
+import Alert from "../../Alert";
 
 import { CommonContext } from "../../../../context/CommonContext";
 

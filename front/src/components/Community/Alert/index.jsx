@@ -20,7 +20,7 @@ export default function TransitionAlerts(props) {
 
   return (
     <div className={classes.root}>
-      <Collapse in={props.open}>
+      <Collapse value={props.open}>
         <Alert
           severity="info"
           icon={<LocalBarOutlinedIcon fontSize="small" />}

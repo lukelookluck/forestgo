@@ -34,7 +34,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p={2}>
-          <Typography>{children}</Typography>
+          <Typography component={"div"}>{children}</Typography>
         </Box>
       )}
     </div>
@@ -78,43 +78,39 @@ export default function NavigationTab() {
 
   return (
     <Wrapper className={classes.root}>
-      <Grid container justify="center" alignItems="center">
-        <AppBar className="myAppbar" position="static" color="default">
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            // textColor="primary"
-            TabIndicatorProps={{
-              style: {
-                backgroundColor: "#62c273",
-                height: "3px",
-              },
-            }}
-            variant="fullWidth"
-            className="navTabs"
-          >
-            <Tab
-              className={classes.label}
-              label="Discovery"
-              {...a11yProps(0)}
-            />
-            <Tab className={classes.label} label="MyForest" {...a11yProps(1)} />
-          </Tabs>
-        </AppBar>
-        <SwipeableViews
-          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-          index={value}
-          onChangeIndex={handleChangeIndex}
+      {/* <Grid container justify="center" alignItems="center"> */}
+      <AppBar className="myAppbar" position="static" color="default">
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          // textColor="primary"
+          TabIndicatorProps={{
+            style: {
+              backgroundColor: "#62c273",
+              height: "3px",
+            },
+          }}
+          variant="fullWidth"
+          className="navTabs"
         >
-          <TabPanel value={value} index={0} dir={theme.direction}>
-            <Discovery></Discovery>
-          </TabPanel>
-          <TabPanel value={value} index={1} dir={theme.direction}>
-            <MyForest></MyForest>
-          </TabPanel>
-        </SwipeableViews>
-        {value == 0}
-      </Grid>
+          <Tab className={classes.label} label="Discovery" {...a11yProps(0)} />
+          <Tab className={classes.label} label="MyForest" {...a11yProps(1)} />
+        </Tabs>
+      </AppBar>
+      <SwipeableViews
+        axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+        index={value}
+        onChangeIndex={handleChangeIndex}
+      >
+        <TabPanel value={value} index={0} dir={theme.direction}>
+          <Discovery></Discovery>
+        </TabPanel>
+        <TabPanel value={value} index={1} dir={theme.direction}>
+          <MyForest></MyForest>
+        </TabPanel>
+      </SwipeableViews>
+      {value == 0}
+      {/* </Grid> */}
     </Wrapper>
   );
 }
