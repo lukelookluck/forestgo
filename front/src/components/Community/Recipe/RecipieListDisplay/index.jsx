@@ -23,7 +23,7 @@ export default function (props) {
     token: "",
     user: {
       id: 1,
-      username: "임시1",
+      username: "임시아이디",
       email: "",
     },
   };
