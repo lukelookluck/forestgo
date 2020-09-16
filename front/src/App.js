@@ -14,8 +14,8 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Start}></Route>
-        <Route exact path="/signup" component={SignUp}></Route>
-        <Route exact path="/findpW" component={FindPW}></Route>
+        <Route exact path="/Signup" component={SignUp}></Route>
+        <Route exact path="/FindpW" component={FindPW}></Route>
         <Route exact path="/Main" component={Main}></Route>
         <Route exact path="/MyForest" component={MyForest}></Route>
         <Route exact path="/Discovery" component={Discovery}></Route>
