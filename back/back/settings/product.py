@@ -1,11 +1,13 @@
+import os
+
 from .base import *
 
 
-SECRET_KEY = 'ws=8q$6ggyrrc8%zn9b-aftem5qx(&b*yew*r3yd!2f$68h$y!'
+SECRET_KEY = os.environ['SECRET_KEY']
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 DATABASES = {
     'default': {
