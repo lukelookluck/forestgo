@@ -6,7 +6,6 @@ import Header from "../../layout/Header/";
 const Upload = () => {
   return (
     <Wrapper>
-      <Header></Header>
       <Grid container className="root" justify="center" alignItems="center">
         <Grid item xs={12}>
           <h1>촬영한 이미지 띄울 Gid</h1>
@@ -18,9 +17,9 @@ const Upload = () => {
           <p>식물 정보 : OOO</p>
         </Grid>
         <Grid item xs={12}>
-        <Button type="submit" variant="contained">
-          등록
-        </Button>
+          <Button type="submit" variant="contained">
+            등록
+          </Button>
         </Grid>
       </Grid>
     </Wrapper>

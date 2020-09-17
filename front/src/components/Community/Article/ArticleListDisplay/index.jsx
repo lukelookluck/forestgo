@@ -221,9 +221,5 @@ export default function (props) {
     );
   });
 
-  return (
-    <Wrapper>
-      <Grid className="list-box">{article}</Grid>
-    </Wrapper>
-  );
+  return <Wrapper>{article}</Wrapper>;
 }

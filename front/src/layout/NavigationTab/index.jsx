@@ -11,7 +11,8 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Discovery from "../../pages/Discovery/";
 import MyForest from "../../pages/MyForest/";
-import ArticleList from "../../components/Community/Article/ArticleList/";
+import CameraAltOutlinedIcon from "@material-ui/icons/CameraAltOutlined";
+import Upload from "../../pages/Upload/";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -26,7 +27,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p={2}>
-          <Typography>{children}</Typography>
+          <Typography component={"div"}>{children}</Typography>
         </Box>
       )}
     </div>
@@ -48,9 +49,10 @@ function a11yProps(index) {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // backgroundColor: 'white'
     backgroundColor: theme.palette.background.paper,
-    // width: 500,
+  },
+  label: {
+    color: "#509c82",
   },
 }));
 
@@ -59,8 +61,8 @@ export default function NavigationTab() {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
-  const handleChange = (event, value) => {
-    setValue(value);
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
   };
 
   const handleChangeIndex = (index) => {
@@ -69,40 +71,44 @@ export default function NavigationTab() {
 
   return (
     <Wrapper className={classes.root}>
-      <Grid container justify="center" alignItems="center" class="asd">
-        <AppBar className="myAppbar" position="static" color="default">
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            indicatorColor="primary"
-            textColor="primary"
-            variant="fullWidth"
-            className="navTabs"
-          >
-            <Tab
-              /* component={Link} to="/Community" */ label="Community"
-              {...a11yProps(0)}
-            />
-            <Tab
-              /* component={Link} to="/MyBar" */ label="MyBar"
-              {...a11yProps(1)}
-            />
-          </Tabs>
-        </AppBar>
-        <SwipeableViews
-          axis={theme.direction === "ltr" ? "x" : "x"}
-          index={value}
-          onChangeIndex={handleChangeIndex}
+      <AppBar className="myAppbar" position="static" color="default">
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          TabIndicatorProps={{
+            style: {
+              backgroundColor: "#62c273",
+              height: "3px",
+            },
+          }}
+          variant="fullWidth"
+          className="navTabs"
         >
-          {/* <TabPanel value={value} index={0} dir={theme.direction}> */}
-          {/* </TabPanel> */}
-          {/* <TabPanel value={value} index={1} dir={theme.direction}> */}
+          <Tab className={classes.label} label="Discovery" {...a11yProps(0)} />
+          <Tab
+            className={classes.label}
+            label={<CameraAltOutlinedIcon fontSize="large" />}
+            {...a11yProps(1)}
+          />
+          <Tab className={classes.label} label="MyForest" {...a11yProps(2)} />
+        </Tabs>
+      </AppBar>
+      <SwipeableViews
+        axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+        index={value}
+        onChangeIndex={handleChangeIndex}
+      >
+        <TabPanel value={value} index={0} dir={theme.direction}>
+          <Discovery></Discovery>
+        </TabPanel>
+        <TabPanel value={value} index={1} dir={theme.direction}>
+          <Upload></Upload>
+        </TabPanel>
+        <TabPanel value={value} index={2} dir={theme.direction}>
           <MyForest></MyForest>
-          <ArticleList></ArticleList>
-          {/* </TabPanel> */}
-        </SwipeableViews>
-        {/* {value == 0 && <CreateArticleButton />} */}
-      </Grid>
+        </TabPanel>
+      </SwipeableViews>
+      {value == 0}
     </Wrapper>
   );
 }
