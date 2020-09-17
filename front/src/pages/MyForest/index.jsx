@@ -2,6 +2,7 @@ import React from "react";
 import Wrapper from "./styles";
 import { Grid } from "@material-ui/core";
 import Paper from '@material-ui/core/Paper';
+import SeasonChart from "./seasonchart";
 
 const MyForest = () => {
   return (
@@ -33,14 +34,11 @@ const MyForest = () => {
           </Paper>
         </Grid>
 
-        <Grid item xs={12} className="papergrid">
+        <Grid item xs={12} className="papergrid" id="lastgrid">
           <Paper variant="outlined">
             <Grid className="title">계절</Grid>
-            <Grid item xs={12}>
-              <div>봄 : N 개</div>
-              <div>여름 : N 개</div>
-              <div>가을 : N 개</div>
-              <div>겨울 : N 개</div>
+            <Grid item xs={12} className="chart">
+              <SeasonChart className="chart"></SeasonChart>
             </Grid>
           </Paper>
         </Grid>

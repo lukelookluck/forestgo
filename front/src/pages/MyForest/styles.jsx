@@ -33,6 +33,13 @@ const Wrapper = styled.div`
         margin-bottom: 10px;
     }
 
+    #lastgrid {
+        margin-bottom: 50px;
+    }
+
+    .chart {
+        margin-bottom: 10px;
+    }
 `;
 
 export default Wrapper;
