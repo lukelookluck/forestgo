@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Header/";
 import NavigationTab from "./NavigationTab/";
+import NavigationMenu from "../components/Community/NavigationMenu/";
 import { Grid } from "@material-ui/core";
 
 const Layout = (props) => {
@@ -12,6 +13,7 @@ const Layout = (props) => {
         <Header></Header>
         <div>
           <NavigationTab></NavigationTab>
+          {/* <NavigationMenu></NavigationMenu> */}
           {children}
         </div>
       </Grid>

@@ -1,21 +1,14 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  & .list-box {
-    padding-left: 0%;
-    padding-right: 0%;
-    padding-top: 20px;
-    min-height: 6000px;
-  }
-
   & .list-card {
-    margin-right: 0;
+    /* margin-right: 0;
     margin-bottom: 20%;
-    padding: 1%;
+    padding: 1%; */
     /* border: solid 1px #9b9b9b;
     border-radius: 15px; */
-    width: 92.3vw;
-    text-align: left;
+    /* width: 92.3vw;
+    text-align: left; */
   }
 
   & .list-user {

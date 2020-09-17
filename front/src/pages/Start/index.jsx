@@ -6,9 +6,6 @@ import { Login } from "./auth";
 import { makeStyles } from "@material-ui/core/styles";
 import "../../index.css";
 
-import Axios from "axios";
-import { CommonContext } from "../../context/CommonContext";
-
 const useStyles = makeStyles({
   logotext: {
     fontFamily: "Cafe24Ohsquare",

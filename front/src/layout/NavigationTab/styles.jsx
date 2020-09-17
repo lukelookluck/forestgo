@@ -3,8 +3,8 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   text-align: center;
   & .myAppbar {
-    position: sticky;
-    top: 0px;
+    position: fixed;
+    bottom: 0px;
   }
 
   & .navTabs {

@@ -2,7 +2,10 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   & .nav-box {
-    height: 2em;
+    position: fixed;
+    bottom: 0;
+    height: 50px;
+    width: 100vw;
     display: flex;
   }
 

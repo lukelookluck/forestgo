@@ -15,8 +15,6 @@ import CommentList from "../../Comment/ArticleUnderCommentList";
 import MenuModal from "../MenuModal";
 import Alert from "../../Alert";
 
-import { CommonContext } from "../../../../context/CommonContext";
-
 export default function (props) {
   // const { user } = useContext(CommonContext);
   const user = {

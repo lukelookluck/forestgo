@@ -20,13 +20,13 @@ export default function () {
       <Grid className="nav-box">
         <button
           className="nav-item"
-          onClick={onClickRedirectPathHandler("/Community")}
+          onClick={onClickRedirectPathHandler("/Discovery")}
         >
           <ChatIcon className="community-icon" />
         </button>
         <button
           className="nav-item"
-          onClick={onClickRedirectPathHandler("/MyBar")}
+          onClick={onClickRedirectPathHandler("/MyForest")}
         >
           <PersonOutlineIcon className="my-bar-icon" />
         </button>

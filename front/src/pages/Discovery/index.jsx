@@ -7,7 +7,9 @@ import ArticleList from "../../components/Community/Article/ArticleList";
 const Discovery = () => {
   return (
     <Wrapper>
-      <ArticleList />
+      <Grid container className="root" justify="center" alignItems="center">
+        <ArticleList />
+      </Grid>
     </Wrapper>
   );
 };
