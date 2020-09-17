@@ -44,24 +44,6 @@ const SignUp = () => {
                 type="password"
               ></TextField>
             </div>
-            <div>
-              <TextField
-                required
-                fullWidth
-                id="name"
-                label="닉네임"
-                variant="outlined"
-              ></TextField>
-            </div>
-            <div>
-              <TextField
-                required
-                fullWidth
-                id="deviceNum"
-                label="기기번호"
-                variant="outlined"
-              ></TextField>
-            </div>
             <Grid container justify="center" alignItems="center">
               <Grid item xs={6}>
                 <Button type="submit" variant="contained" className="submitBtn">

@@ -22,7 +22,7 @@ const Wrapper = styled.div`
         margin-top: 30px;
         height: 50px;
         width: 180px;
-        background-color: rgb(76, 127, 188);
+        background-color: #509c82;
         text-decoration: none;
         border: none;
         color: white;
@@ -30,7 +30,7 @@ const Wrapper = styled.div`
     }
 
     & .submitBtn:hover {
-        background-color: rgb(76, 127, 188);
+        background-color: #509c82;
     }
 
     @media(min-width: 700px) {

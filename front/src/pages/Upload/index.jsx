@@ -11,7 +11,6 @@ const Upload = () => {
     <Wrapper>
       <Grid container className="root" justify="center" alignItems="center">
         <Grid item xs={12}>
-          <h1>촬영한 이미지 띄울 Gid</h1>
           <ImageUploadBtn />
         </Grid>
         <Grid item xs={12}>
@@ -21,7 +20,7 @@ const Upload = () => {
           <p>식물 정보 : OOO</p>
         </Grid>
         <Grid item xs={12}>
-          <Button type="submit" variant="contained">
+          <Button type="submit" variant="contained" className="submitBtn">
             등록
           </Button>
         </Grid>

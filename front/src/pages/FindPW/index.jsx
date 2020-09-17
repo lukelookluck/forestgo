@@ -18,9 +18,6 @@ const FindPW = () => {
                         <div>
                             <TextField required fullWidth id="id" label="아이디" variant="outlined" autoFocus></TextField>
                         </div>
-                        <div>
-                            <TextField required fullWidth id="deviceNum" label="기기번호" variant="outlined" ></TextField>
-                        </div>
                         <Button type="submit" variant="contained" className="submitBtn">비밀번호 찾기</Button>
                     </form>
                 </Grid>
