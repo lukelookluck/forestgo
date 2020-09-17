@@ -7,14 +7,14 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
 from .models import Userinfo
-# from .serializers import UserinfoSerializer
+from .serializers import UserinfoSerializer
 
 # # rest framework R
-# @api_view(['GET'])
-# def userinfo_list(request):
-#     userinfos = Userinfo.objects.all()
-#     serializer = UserinfoSerializer(userinfos, many=True)
-#     return Response(serializer.data)
+@api_view(['GET'])
+def userinfo_list(request):
+    userinfos = Userinfo.objects.all()
+    serializer = UserinfoSerializer(userinfos, many=True)
+    return Response(serializer.data)
 
 # @api_view(['GET'])
 # def userinfo_detail(request, userinfo_pk):

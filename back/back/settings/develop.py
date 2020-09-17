@@ -2,6 +2,7 @@ import os
 
 from .base import *
 
+
 SECRET_KEY = 'ws=8q$6ggyrrc8%zn9b-aftem5qx(&b*yew*r3yd!2f$68h$y!'
 
 DEBUG = True
