@@ -2,6 +2,9 @@ import React from "react";
 import Wrapper from "./styles";
 import { Grid, Button } from "@material-ui/core";
 import Header from "../../layout/Header/";
+import ImageUploadBtn from "../../components/Community/ArticleForm/ImageUploadButton/";
+
+import Temp1 from "../../components/Community/ArticleForm/Temp1";
 
 const Upload = () => {
   return (
@@ -9,6 +12,7 @@ const Upload = () => {
       <Grid container className="root" justify="center" alignItems="center">
         <Grid item xs={12}>
           <h1>촬영한 이미지 띄울 Gid</h1>
+          <ImageUploadBtn />
         </Grid>
         <Grid item xs={12}>
           <p>식물 이름 : OOO</p>

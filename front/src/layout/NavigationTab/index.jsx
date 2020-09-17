@@ -13,6 +13,7 @@ import Discovery from "../../pages/Discovery/";
 import MyForest from "../../pages/MyForest/";
 import CameraAltOutlinedIcon from "@material-ui/icons/CameraAltOutlined";
 import Upload from "../../pages/Upload/";
+import Form from "../../pages/ArticleForm/";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;

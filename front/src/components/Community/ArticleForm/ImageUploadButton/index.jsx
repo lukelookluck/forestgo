@@ -46,10 +46,10 @@ export default function ImageUploadButton(props) {
       ]); // 파일 base64 상태 업데이트
 
       console.log("imgBase64", imgBase64);
-      props.setArticleFormData({
-        ...props.articleFormData,
-        image: base64,
-      });
+      // props.setArticleFormData({
+      //   ...props.articleFormData,
+      //   image: base64,
+      // });
     };
     // }
   };
@@ -69,6 +69,7 @@ export default function ImageUploadButton(props) {
       <div className="input-footer">
         <input
           accept="image/*"
+          capture="camera"
           className={classes.input}
           id="icon-button-file"
           type="file"
