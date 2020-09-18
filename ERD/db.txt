@@ -1,46 +1,54 @@
 TABLE Field
 
-È¸¿øÁ¤º¸
-[userinfo]
+íšŒì›ì •ë³´
+[userinfo] (djangoì—ì„œ ìƒì„±)
 id (pk)
+password
+last_login
+is_superuser
+username (unique)
+firest_name
+last_name
 email (unique)
-name (unique)
-password (hash)
-profileimg (ÇÁ·ÎÇÊ ÀÌ¹ÌÁö ÁÖ¼Ò)
+is_staff (boolean)
+is_active (boolean)
+date_joined
+groups
+user_permissions
 
 
 [forestbook]
 id (pk)
 name
 fullname
-species (Á¾)
+species (ì¢…)
 description
 type 
-habitat (¼­½ÄÁö)
-season (º½/¿©¸§/°¡À»/°Ü¿ï)
-img (½Ä¹° ´ëÇ¥ »çÁø ÀÌ¹ÌÁö ÁÖ¼Ò)
+habitat (ì„œì‹ì§€)
+season (ë´„/ì—¬ë¦„/ê°€ì„/ê²¨ìš¸)
+img (ì‹ë¬¼ ëŒ€í‘œ ì‚¬ì§„ ì´ë¯¸ì§€ ì£¼ì†Œ)
 
 
-[userbook] (»ç¿ëÀÚ°¡ ¹ß°ßÇÑ ½Ä¹°µé)
+[userbook] (ì‚¬ìš©ìê°€ ë°œê²¬í•œ ì‹ë¬¼ë“¤)
 id (pk)
 userinfo_id (fk)
 forestbook_id (fk)
-date (¹ß°ßÇÑ ³¯Â¥, ½Ã°£)
-img (³»°¡ ÂïÀº ½Ä¹° »çÁø ÀÌ¹ÌÁö ÁÖ¼Ò)
+date (ë°œê²¬í•œ ë‚ ì§œ, ì‹œê°„)
+img (ë‚´ê°€ ì°ì€ ì‹ë¬¼ ì‚¬ì§„ ì´ë¯¸ì§€ ì£¼ì†Œ)
 
 
-[challenge] (µµÀü°úÁ¦ ¸ñ·Ï)
+[challenge] (ë„ì „ê³¼ì œ ëª©ë¡)
 id (pk)
 title
 description
 type
-iconimg (µµÀü°úÁ¦ ¾ÆÀÌÄÜ ÁÖ¼Ò)
+iconimg (ë„ì „ê³¼ì œ ì•„ì´ì½˜ ì£¼ì†Œ)
 
 
-[userchallenge] (»ç¿ëÀÚ°¡ ´Ş¼ºÇÑ µµÀü°úÁ¦)
+[userchallenge] (ì‚¬ìš©ìê°€ ë‹¬ì„±í•œ ë„ì „ê³¼ì œ)
 id (pk)
 userinfo_id (fk)
 challenge_id (fk)
-date (´Ş¼ºÇÑ ³¯Â¥, ½Ã°£)
+date (ë‹¬ì„±í•œ ë‚ ì§œ, ì‹œê°„)
 
 

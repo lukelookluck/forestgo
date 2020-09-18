@@ -6,14 +6,22 @@ SET foreign_key_checks = 0;
 drop table if exists userinfo;
 create table `userinfo` (
    `id` int NOT NULL AUTO_INCREMENT,
-    `email` varchar(100) NOT NULL,
-	`name` varchar(20) NOT NULL,
-    `password` varchar(30) NOT NULL,
-    `profileimg` varchar(100),
-
+    `password` varchar(100) NOT NULL,
+    `last_login` timestamp default current_timestamp,
+    `is_superuser` boolean,
+    `username` varchar(20),
+    `first_name` varchar(10),
+    `last_name` varchar(10),
+    `email` varchar(100),
+    `is_staff` boolean,
+    `is_active` boolean,
+    `date_joined` timestamp default current_timestamp,
+    `groups` varchar(100),
+    `user_permissions` varchar(100),
+    
     PRIMARY KEY (`id`),
     UNIQUE KEY (`email`),
-    UNIQUE KEY (`name`)
+    UNIQUE KEY (`username`)
 );
 
 drop table if exists forestbook;
@@ -52,7 +60,7 @@ create table `challenge` (
     `title` varchar(100) NOT NULL,
     `description` varchar(1000),
     `type` int,
-    `iconimg` varchar(100),
+    `icon_img` varchar(100),
 
     PRIMARY KEY (`id`),
     UNIQUE KEY (`title`)
@@ -63,6 +71,7 @@ create table `userchallenge` (
    `id` int NOT NULL AUTO_INCREMENT,
     `userinfo_id` int NOT NULL,
     `challenge_id` int NOT NULL,
+    `date` timestamp default current_timestamp,
 
     PRIMARY KEY (`id`),
     FOREIGN KEY (`userinfo_id`) REFERENCES `userinfo` (`id`)  ON DELETE CASCADE,
