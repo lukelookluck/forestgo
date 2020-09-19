@@ -11,4 +11,4 @@ class Challenge(models.Model):
 class Userchallenge(models.Model):
     userinfo_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, verbose_name='', blank=True, null=True)
     challenge_id = models.ForeignKey(Challenge, on_delete=models.CASCADE)
-    date = models.DateTimeField('DATE', auto_now_add=True)
+    date = models.DateTimeField('date', auto_now_add=True)
