@@ -8,6 +8,7 @@ import MyForest from "./pages/MyForest/";
 import Main from "./pages/Main/";
 import Discovery from "./pages/Discovery/";
 import Upload from "./pages/Upload/";
+import ArticleDisplay from "./pages/ArticleDisplay/"
 
 function App() {
   return (
@@ -21,6 +22,11 @@ function App() {
         <Route exact path="/MyForest" component={MyForest}></Route>
         <Route exact path="/Discovery" component={Discovery}></Route>
         <Route exact path="/Upload" component={Upload}></Route>
+        <Route
+          exact
+          path="/Article/:articleId"
+          component={ArticleDisplay}
+        ></Route>
       </Switch>
     </BrowserRouter>
   );
