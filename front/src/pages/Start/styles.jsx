@@ -10,13 +10,13 @@ const Wrapper = styled.div`
   }
 
   & #logo_en {
-    margin-top: 100px;
+    margin-top: 0;
     margin-bottom: 0;
-
-    font-size: 70px;
+    font-size: 80px;
   }
   & #logo_ko {
-    font-size: 30px;
+    margin-top: 0;
+    font-size: 40px;
   }
 
   & .login {
@@ -57,37 +57,14 @@ const Wrapper = styled.div`
     font-family: "IBMPlexSansKR-Text";
   }
 
-  @media (min-width: 700px) {
-    & #logo_en {
-      margin-top: 50px;
-      margin-bottom: 0px;
-      font-size: 110px;
-    }
-    & #logo_ko {
-      margin-top: 0px;
-      font-size: 60px;
-    }
-
-    & #id {
-      width: 50%;
-    }
-
-    & #pw {
-      width: 50%;
-    }
-
-    & .login_btn {
-      width: 50%;
-    }
-
-    & #signup {
-      padding-left: 300px;
-    }
-
-    & #findpw {
-      padding-right: 300px;
-    }
+  & .forestimg {
+    width: 150px;
+    height: 150px;
+    margin-top: 40px;
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
+
 `;
 
 export default Wrapper;
