@@ -7,7 +7,6 @@ ex) 회원가입시 http://127.0.0.1:8000/api/rest-auth/registration/
 
 1. 로그인
 /rest-auth/login/ (POST)
-- username
 - email
 - password
 리턴값: Token key
