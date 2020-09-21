@@ -2,11 +2,8 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   & .list-card {
-    margin-right: 0;
-    margin-bottom: 20%;
-    padding: 1%;
-    /* border: solid 1px #9b9b9b;
-    border-radius: 15px; */
+    margin-top: 2.5vw;
+    margin-bottom: 10vw;
     width: 92.3vw;
     text-align: left;
   }
@@ -18,57 +15,72 @@ const Wrapper = styled.div`
     margin: 0;
     padding-bottom: 5px;
     /* width: 100%; */
-    /* border-bottom: solid 1px #9b9b9b; */
   }
 
   & .list-avata {
     display: flex;
   }
 
+  & .list-avata-1 {
+    display: flex;
+    flex-direction: column;
+  }
+
   & .list-useravata {
-    font-size: 30px;
+    font-size: 40px;
+    color: #62c273;
   }
 
   & .list-username {
     margin-left: 5px;
-    font-size: 20px;
+    font-size: 15px;
+  }
+
+  & .list-username-time {
+    margin-left: 5px;
+    font-size: 12px;
   }
 
   & .list-item {
-    /* display: flex; */
-    margin-bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 15px;
   }
 
   & .list-item-imageBox {
-    width: 90.5vw;
-    height: 86vw;
-    padding: 5% 0%;
+    width: 35.5vw;
+    height: 27vw;
+    padding: 5vw 0;
     overflow: hidden;
-    /* padding-bottom: 10%; */
-    /* border-bottom: solid 1px #9b9b9b; */
   }
 
   & .list-item-image {
     width: 100%;
     height: 100%;
     padding: 0;
-    /* border-bottom: 0; */
   }
 
   & .list-item-detail {
-    /* flex-direction: column;
-    display: flex; */
     justify-content: center;
     align-items: center;
-    text-align: center;
-    padding: 0;
+    text-align: left;
+    padding: 5vw 0;
+    width: 48vw;
   }
 
-  & .like-button {
+  & .buttons {
     padding: 10px 8px;
     margin: 0;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+  }
+
+  & .like-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 
   & .detail-content {
@@ -76,7 +88,6 @@ const Wrapper = styled.div`
     padding: 2vw 0;
     margin: 0;
     width: 100%;
-    /* border-bottom: solid 1px #9b9b9b; */
   }
 
   & .more-tag {
@@ -85,13 +96,10 @@ const Wrapper = styled.div`
     color: #727272;
   }
 
-  & .cname {
-    font-weight: 600;
-    font-size: 1.3em;
-  }
-
   & .more-comment {
     color: black;
+    margin-left: 10px;
+    height: 25px;
   }
 
   & .countLikeIt1 {
@@ -118,7 +126,7 @@ const Wrapper = styled.div`
   }
 
   & .btn-icon {
-    font-size: 30px;
+    font-size: 25px;
   }
 `;
 
