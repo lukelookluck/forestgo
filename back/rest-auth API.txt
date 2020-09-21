@@ -1,0 +1,50 @@
+회원 정보 관련 API들...
+(모든 주소 앞에 http://127.0.0.1:8000/api/ 붙일 것)
+ex) 회원가입시 http://127.0.0.1:8000/api/rest-auth/registration/
+* 반드시 /로 끝낼 것
+
+테스트가 필요할 경우: POSTMAN으로 테스트 가능
+
+1. 로그인
+/rest-auth/login/ (POST)
+- username
+- email
+- password
+리턴값: Token key
+
+2. 로그아웃
+/rest-auth/logout/ (POST)
+
+3. 비밀번호 리셋
+/rest-auth/password/reset/ (POST)
+- email
+(이메일을 POST로 보내면 비밀번호 변경 양식으로 이동)
+
+/rest-auth/password/reset/confirm/ (POST)
+- uid
+- token
+- new_password1
+- new_password2
+(이 네 가지를 POST로 보내면 비밀번호 변경 처리됨)
+
+/rest-auth/password/change/ (POST)
+- new_password1
+- new_password2
+- old_password
+
+4. 유저 정보 받아오기, 수정
+/rest-auth/user/ (GET, PUT, PATCH)
+- username
+- first_name
+- last_name
+리턴값: pk, username, email, first_name, last_name
+
+5. 회원가입
+/rest-auth/registration/ (POST)
+- username
+- password1
+- password2
+- email
+
+/rest-auth/registration/verify-email/ (POST)
+- key
