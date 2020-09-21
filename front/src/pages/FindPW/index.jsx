@@ -16,7 +16,7 @@ const FindPW = () => {
                 <Grid item xs={10} className="info">
                     <form>
                         <div>
-                            <TextField required fullWidth id="id" label="아이디" variant="outlined" autoFocus></TextField>
+                            <TextField required fullWidth id="id" label="이메일" variant="outlined" autoFocus></TextField>
                         </div>
                         <Button type="submit" variant="contained" className="submitBtn">비밀번호 찾기</Button>
                     </form>

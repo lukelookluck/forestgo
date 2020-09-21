@@ -71,7 +71,7 @@ const Start = () => {
               id="id"
               type="text"
               name="id"
-              placeholder="아이디"
+              placeholder="이메일"
               value={id}
               onChange={({ target: { value } }) => setId(value)}
             ></input>
