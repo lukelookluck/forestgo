@@ -19,7 +19,7 @@ export default function (props) {
       email: "",
     },
   };
-  console.log(props.comments);
+  console.log("ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴ", props.comments);
   let comments = props.comments.map((comment, idx) => {
     let likeButton = null;
     let countLikeIt1 = null;

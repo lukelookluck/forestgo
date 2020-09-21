@@ -36,7 +36,29 @@ export default function () {
       LIKE: [1],
       SAVE: [],
       detail: "아무말아무말",
-      comments: { id: 1 },
+      comments: [
+        {
+          id: 1,
+          username: "아무개",
+          content: "아무댓글",
+          LIKE: [1, 2],
+          replys: [],
+        },
+        {
+          id: 2,
+          username: "아무개2",
+          content: "아무댓글2",
+          LIKE: [1, 2],
+          replys: [],
+        },
+        {
+          id: 3,
+          username: "아무개3",
+          content: "아무댓글3",
+          LIKE: [1, 2],
+          replys: [],
+        },
+      ],
     },
     {
       id: 2,
@@ -45,7 +67,29 @@ export default function () {
       LIKE: [2],
       SAVE: [],
       detail: "아무말아무말",
-      comments: { id: 2 },
+      comments: [
+        {
+          id: 1,
+          username: "아무개",
+          content: "아무댓글",
+          LIKE: [1, 2],
+          replys: [],
+        },
+        {
+          id: 2,
+          username: "아무개2",
+          content: "아무댓글2",
+          LIKE: [1, 2],
+          replys: [],
+        },
+        {
+          id: 3,
+          username: "아무개3",
+          content: "아무댓글3",
+          LIKE: [1, 2],
+          replys: [],
+        },
+      ],
     },
     {
       id: 3,
@@ -55,7 +99,29 @@ export default function () {
       SAVE: [],
       detail:
         "아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말",
-      comments: { id: 2 },
+      comments: [
+        {
+          id: 1,
+          username: "아무개",
+          content: "아무댓글",
+          LIKE: [1, 2],
+          replys: [],
+        },
+        {
+          id: 2,
+          username: "아무개2",
+          content: "아무댓글2",
+          LIKE: [1, 2],
+          replys: [],
+        },
+        {
+          id: 3,
+          username: "아무개3",
+          content: "아무댓글3",
+          LIKE: [1, 2],
+          replys: [],
+        },
+      ],
     },
   ]);
 
@@ -229,6 +295,7 @@ export default function () {
     }
 
     function goArticleDetailPage(id) {
+      window.scrollTo(0, 0);
       history.push({
         pathname: `/article/${id}`,
         state: {

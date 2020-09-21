@@ -4,8 +4,9 @@ const Wrapper = styled.div`
   font-family: "IBMPlexSansKR-Text";
 
   & .list-card {
-    margin-top: 80px;
-    margin-bottom: 10vw;
+    padding-top: 18px;
+    margin-top: 60px;
+    padding-bottom: 5px;
     /* width: 92.3vw; */
     text-align: left;
   }
@@ -71,7 +72,7 @@ const Wrapper = styled.div`
   }
 
   & .buttons {
-    padding: 10px 8px;
+    padding: 10px 15px;
     margin: 0;
     display: flex;
     justify-content: space-between;
@@ -105,28 +106,19 @@ const Wrapper = styled.div`
 
   & .countLikeIt1 {
     font-weight: 600;
-    margin-left: 8px;
+    margin-left: 15px;
   }
 
   & .to-update-button {
     padding: 50px;
   }
 
-  & .ingredient-title {
-    font-size: 15px;
-    font-weight: 700;
-    text-align: left;
-    margin: 2vw 0;
-  }
-
-  & .ingredient-box {
-    display: flex;
-    justify-content: space-between;
-    margin: 2vw 2vw;
-    border-bottom: 1px dotted #9b9b9b;
-  }
-
   & .btn-icon {
+    font-size: 25px;
+    margin-right: 10px;
+  }
+
+  & .btn-icon-save {
     font-size: 25px;
   }
 
@@ -135,9 +127,10 @@ const Wrapper = styled.div`
     top: 0;
     width: 100%;
     border-bottom: solid 0.5px #dddddd;
-    padding: 10px 5px;
+    padding: 10px 0px;
     display: flex;
-    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     background-color: #fcfcfc;
   }
 
@@ -150,20 +143,21 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: #4477b5;
+    background-color: #488c75;
   }
 
   & .comment-list-header-clicked-1 {
-    height: 45px;
+    height: 35px;
     display: flex;
   }
 
   & .comment-list-header-arrow {
-    font-size: 45px;
+    font-size: 35px;
+    margin-left: 5px;
   }
 
   & .comment-list-header-arrow-click {
-    font-size: 45px;
+    font-size: 35px;
     color: #ffffff;
   }
 
@@ -180,12 +174,12 @@ const Wrapper = styled.div`
   & .comment-list-header-title-click {
     color: #ffffff;
     margin-left: 15px;
-    font-size: 30px;
+    font-size: 25px;
   }
 
   & .comment-list-box {
     /* margin: 10px 5px; */
-    margin-top: 65px;
+    /* margin-top: 65px; */
     margin-bottom: 70px;
   }
 
@@ -240,6 +234,10 @@ const Wrapper = styled.div`
 
   & .comment-likeIt-count {
     font-size: 1vh;
+  }
+
+  & .header-modal {
+    margin-right: 5px;
   }
 `;
 
