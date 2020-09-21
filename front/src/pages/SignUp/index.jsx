@@ -29,7 +29,17 @@ const SignUp = () => {
                 required
                 fullWidth
                 id="id"
-                label="아이디"
+                label="이메일"
+                variant="outlined"
+                autoFocus
+              ></TextField>
+            </div>
+            <div>
+              <TextField
+                required
+                fullWidth
+                id="nick"
+                label="닉네임"
                 variant="outlined"
                 autoFocus
               ></TextField>
