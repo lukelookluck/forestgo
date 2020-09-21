@@ -43,7 +43,7 @@ const Wrapper = styled.div`
     text-decoration: none;
     border: none;
     color: white;
-    font-family: "IBMPlexSansKR-Text";
+    font-family: "NanumSquareRound";
     font-size: 20px;
     margin-bottom: 30px;
   }
@@ -54,7 +54,7 @@ const Wrapper = styled.div`
 
   & .bottom {
     color: #509c82;
-    font-family: "IBMPlexSansKR-Text";
+    font-family: "NanumSquareRound";
   }
 
   & .forestimg {

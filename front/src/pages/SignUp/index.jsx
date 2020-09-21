@@ -8,7 +8,7 @@ import "../../index.css";
 
 const useStyles = makeStyles({
   signupText: {
-    fontFamily: "IBMPlexSansKR-Text",
+    fontFamily: "NanumSquareRound",
     fontSize: "30px",
   },
 });

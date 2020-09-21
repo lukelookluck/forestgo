@@ -16,7 +16,7 @@ const Wrapper = styled.div`
     border: none;
     color: white;
     font-size: 20px;
-    font-family: "IBMPlexSansKR-Text";
+    font-family: "NanumSquareRound";
   }
 
   & .submitBtn:hover {
