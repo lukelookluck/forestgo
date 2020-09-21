@@ -7,7 +7,7 @@ const Wrapper = styled.div`
     margin-top: 35px;
     font-size: 30px;
     height: 60px;
-    font-family: 'IBMPlexSansKR-Text';
+    font-family: 'NanumSquareRound';
   }
 
   & #details {
@@ -35,7 +35,7 @@ const Wrapper = styled.div`
     border: none;
     color: white;
     font-size: 20px;
-    font-family: 'IBMPlexSansKR-Text';
+    font-family: 'NanumSquareRound';
 
     // border: none;
     // border-radius: 25px;
@@ -60,7 +60,7 @@ const Wrapper = styled.div`
     border: none;
     color: black;
     font-size: 20px;
-    font-family: 'IBMPlexSansKR-Text';
+    font-family: 'NanumSquareRound';
   }
 
 `;

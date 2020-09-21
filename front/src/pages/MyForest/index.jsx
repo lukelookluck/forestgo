@@ -12,7 +12,7 @@ const MyForest = () => {
         <Grid item xs={12} className="papergrid">
           <Paper variant="outlined">
             <Grid className="title">등급</Grid>
-            <img src="/images/bronze.png" classNmae="medal" width="100px"></img>
+            <img src="/images/bronze.png" className="medal" width="100px"></img>
             <Grid className="medal">브론즈</Grid>
           </Paper>
         </Grid>

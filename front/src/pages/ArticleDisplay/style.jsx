@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  font-family: "IBMPlexSansKR-Text";
+  font-family: "NanumSquareRound";
 
   & .list-card {
     padding-top: 18px;
