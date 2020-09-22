@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
+  font-family: "NanumSquareRound";
+
   & .list-card {
     margin-top: 2.5vw;
     margin-bottom: 10vw;

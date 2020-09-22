@@ -33,7 +33,7 @@ export default function () {
       id: 1,
       user: 1,
       username: "임시1",
-      LIKE: [1],
+      LIKE: [1, 2],
       SAVE: [],
       detail: "아무말아무말",
       comments: [
@@ -62,7 +62,7 @@ export default function () {
     },
     {
       id: 2,
-      user: 1,
+      user: 2,
       username: "임시2",
       LIKE: [2],
       SAVE: [],
@@ -213,7 +213,7 @@ export default function () {
       likeButton = (
         <FavoriteIcon
           className="btn-icon"
-          // onClick={likeIt}
+          onClick={() => likeIt(item)}
           color="error"
           key={index}
         />
@@ -225,7 +225,7 @@ export default function () {
       likeButton = (
         <FavoriteBorderIcon
           className="btn-icon"
-          // onClick={likeIt}
+          onClick={() => likeIt(item)}
           key={index}
         />
       );
@@ -235,10 +235,18 @@ export default function () {
         );
       }
     }
+    const [myLike, setMyLike] = useState(item.LIKE.includes(user.user.id));
 
-    // function likeIt() {
-    //   props.likeSubmit(item);
-    // }
+    function likeIt(item) {
+      console.log(item.LIKE);
+      if (myLike) {
+        item.LIKE.pop();
+        setMyLike(false);
+      } else {
+        item.LIKE.push(user.user.id);
+        setMyLike(true);
+      }
+    }
 
     const [mySave, setMySave] = useState(item.SAVE.includes(user.user.id));
 
@@ -276,23 +284,24 @@ export default function () {
       );
     }
 
-    let moreButton = (
-      <a className="more-tag" href="#" onClick={moreContent}>
-        더보기
-      </a>
-    );
+    // let moreButton = (
+    //   <a className="more-tag" href="#" onClick={moreContent}>
+    //     더보기
+    //   </a>
+    // );
 
-    const [myHide, setmyHide] = useState(moreButton);
-
-    const [cardContent, setCardContent] = useState(
-      item.detail.substring(0, 50) + "..."
-    );
-
-    function moreContent(e) {
-      setCardContent("누르면 상세글페이지로");
-      setmyHide(null);
-      e.preventDefault();
+    let myHide = "";
+    if (item.detail.length > 50) {
+      myHide = "...";
     }
+    const [cardContent, setCardContent] = useState(
+      item.detail.substring(0, 50) + myHide
+    );
+
+    // function moreContent(e) {
+    //   setCardContent("누르면 상세글페이지로");
+    //   e.preventDefault();
+    // }
 
     function goArticleDetailPage(id) {
       window.scrollTo(0, 0);
@@ -329,11 +338,12 @@ export default function () {
         <div className="list-item" onClick={() => goArticleDetailPage(item.id)}>
           <div className="list-item-detail">
             {cardContent}
-            {myHide}
+
+            {/* {myHide} */}
           </div>
           <div className="list-item-imageBox">
-            {/* <img className="list-item-image" src="images/sample.jpg" alt="" /> */}
-            <img className="list-item-image" src={item.image} alt="" />
+            <img className="list-item-image" src="/images/sample.jpg" alt="" />
+            {/* <img className="list-item-image" src={item.image} alt="게시글 이미지" /> */}
           </div>
         </div>
         <div className="buttons">
