@@ -2,6 +2,9 @@ from rest_framework import serializers
 from .models import Challenge, Userchallenge
 
 class ChallengeSerializer(serializers.ModelSerializer):
+
+    icon_img = serializers.ImageField(use_url = True)
+    
     class Meta:
         model = Challenge
         fields = '__all__'

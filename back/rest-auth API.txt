@@ -1,44 +1,44 @@
-È¸¿ø Á¤º¸ °ü·Ã APIµé...
-(¸ğµç ÁÖ¼Ò ¾Õ¿¡ http://127.0.0.1:8000/api/ ºÙÀÏ °Í)
-ex) È¸¿ø°¡ÀÔ½Ã http://127.0.0.1:8000/api/rest-auth/registration/
-* ¹İµå½Ã /·Î ³¡³¾ °Í
+ï»¿íšŒì› ì •ë³´ ê´€ë ¨ APIë“¤...
+(ëª¨ë“  ì£¼ì†Œ ì•ì— http://127.0.0.1:8000/api/ ë¶™ì¼ ê²ƒ)
+ex) íšŒì›ê°€ì…ì‹œ http://127.0.0.1:8000/api/rest-auth/registration/
+* ë°˜ë“œì‹œ /ë¡œ ëë‚¼ ê²ƒ
 
-Å×½ºÆ®°¡ ÇÊ¿äÇÒ °æ¿ì: POSTMANÀ¸·Î Å×½ºÆ® °¡´É
+í…ŒìŠ¤íŠ¸ê°€ í•„ìš”í•  ê²½ìš°: POSTMANìœ¼ë¡œ í…ŒìŠ¤íŠ¸ ê°€ëŠ¥
 
-1. ·Î±×ÀÎ
+1. ë¡œê·¸ì¸
 /rest-auth/login/ (POST)
 - email
 - password
-¸®ÅÏ°ª: Token key
+ë¦¬í„´ê°’: Token key
 
-2. ·Î±×¾Æ¿ô
+2. ë¡œê·¸ì•„ì›ƒ
 /rest-auth/logout/ (POST)
 
-3. ºñ¹Ğ¹øÈ£ ¸®¼Â
+3. ë¹„ë°€ë²ˆí˜¸ ë¦¬ì…‹
 /rest-auth/password/reset/ (POST)
 - email
-(ÀÌ¸ŞÀÏÀ» POST·Î º¸³»¸é ºñ¹Ğ¹øÈ£ º¯°æ ¾ç½ÄÀ¸·Î ÀÌµ¿)
+(ì´ë©”ì¼ì„ POSTë¡œ ë³´ë‚´ë©´ ë¹„ë°€ë²ˆí˜¸ ë³€ê²½ ì–‘ì‹ìœ¼ë¡œ ì´ë™)
 
 /rest-auth/password/reset/confirm/ (POST)
 - uid
 - token
 - new_password1
 - new_password2
-(ÀÌ ³× °¡Áö¸¦ POST·Î º¸³»¸é ºñ¹Ğ¹øÈ£ º¯°æ Ã³¸®µÊ)
+(ì´ ë„¤ ê°€ì§€ë¥¼ POSTë¡œ ë³´ë‚´ë©´ ë¹„ë°€ë²ˆí˜¸ ë³€ê²½ ì²˜ë¦¬ë¨)
 
 /rest-auth/password/change/ (POST)
 - new_password1
 - new_password2
 - old_password
 
-4. À¯Àú Á¤º¸ ¹Ş¾Æ¿À±â, ¼öÁ¤
+4. ìœ ì € ì •ë³´ ë°›ì•„ì˜¤ê¸°, ìˆ˜ì •
 /rest-auth/user/ (GET, PUT, PATCH)
 - username
 - first_name
 - last_name
-¸®ÅÏ°ª: pk, username, email, first_name, last_name
+ë¦¬í„´ê°’: pk, username, email, first_name, last_name
 
-5. È¸¿ø°¡ÀÔ
+5. íšŒì›ê°€ì…
 /rest-auth/registration/ (POST)
 - username
 - password1
