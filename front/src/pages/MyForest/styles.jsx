@@ -40,6 +40,16 @@ const Wrapper = styled.div`
     .chart {
         margin-bottom: 10px;
     }
+
+    .nick {
+        text-align: right;
+    }
+
+    .logout {
+        color: #509c82;
+    }
+
+    
 `;
 
 export default Wrapper;
