@@ -215,6 +215,19 @@ export default function (props) {
     );
   }
 
+  const [myLike, setMyLike] = useState(item.LIKE.includes(user.user.id));
+
+  function likeIt(item) {
+    console.log(item.LIKE);
+    if (myLike) {
+      item.LIKE.pop();
+      setMyLike(false);
+    } else {
+      item.LIKE.push(user.user.id);
+      setMyLike(true);
+    }
+  }
+
   let likeButton = null;
   let countLikeIt1 = null;
   if (item.LIKE.includes(user.user.id)) {
@@ -222,7 +235,7 @@ export default function (props) {
     likeButton = (
       <FavoriteIcon
         className="btn-icon"
-        // onClick={likeIt}
+        onClick={() => likeIt(item)}
         color="error"
       />
     );
@@ -231,10 +244,7 @@ export default function (props) {
     );
   } else {
     likeButton = (
-      <FavoriteBorderIcon
-        className="btn-icon"
-        // onClick={likeIt}
-      />
+      <FavoriteBorderIcon className="btn-icon" onClick={() => likeIt(item)} />
     );
     if (item.LIKE.length) {
       countLikeIt1 = (

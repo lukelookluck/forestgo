@@ -204,7 +204,7 @@ export default function () {
   //       history.push("/Main");
   //     });
   // }
-
+  console.log("articleList", articleList);
   let article = articleList.map((item, index) => {
     let likeButton = null;
     let countLikeIt1 = null;
@@ -238,14 +238,24 @@ export default function () {
     const [myLike, setMyLike] = useState(item.LIKE.includes(user.user.id));
 
     function likeIt(item) {
-      console.log(item.LIKE);
+      console.log(item.LIKE, articleList[index]);
+      let array = item.LIKE;
+      // setArticleList(...item, (LIKE: array));
       if (myLike) {
-        item.LIKE.pop();
+        array.splice(array, user.user.id);
         setMyLike(false);
       } else {
-        item.LIKE.push(user.user.id);
+        array.concat(user.user.id);
+        console.log("asdasdnasdn", array);
+        setArticleList({
+          ...articleList,
+          ...articleList[index],
+          array,
+        });
+
         setMyLike(true);
       }
+      console.log(item.LIKE, articleList[index]);
     }
 
     const [mySave, setMySave] = useState(item.SAVE.includes(user.user.id));
