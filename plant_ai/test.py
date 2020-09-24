@@ -24,14 +24,14 @@ TRAIN_FRACTION = 0.8
 RANDOM_SEED = 2018
 
 
-# def download_images():
-#     """If the images aren't already downloaded, save them to FLOWERS_DIR."""
-#     if not os.path.exists(FLOWERS_DIR):
-#         DOWNLOAD_URL = 'http://download.tensorflow.org/example_images/flower_photos.tgz'
-#         print('Downloading flower images from %s...' % DOWNLOAD_URL)
-#         urllib.request.urlretrieve(DOWNLOAD_URL, 'flower_photos.tgz')
-#         # !tar xfz flower_photos.tgz
-#     print('Flower photos are located in %s' % FLOWERS_DIR)
+def download_images():
+    """If the images aren't already downloaded, save them to FLOWERS_DIR."""
+    if not os.path.exists(FLOWERS_DIR):
+        DOWNLOAD_URL = 'http://download.tensorflow.org/example_images/flower_photos.tgz'
+        print('Downloading flower images from %s...' % DOWNLOAD_URL)
+        urllib.request.urlretrieve(DOWNLOAD_URL, 'flower_photos.tgz')
+        # !tar xfz flower_photos.tgz
+    print('Flower photos are located in %s' % FLOWERS_DIR)
 
 
 def make_train_and_test_sets():
