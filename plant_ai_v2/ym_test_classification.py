@@ -66,11 +66,15 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 import PIL
+
+print('kill')
+
 import tensorflow as tf
 
 from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras.models import Sequential
+# from tensorflow.python.keras import Sequential
 
 print('hello!')
 
@@ -155,6 +159,7 @@ img_width = 180
 
 # In[11]:
 
+print('wtf')
 
 train_ds = tf.keras.preprocessing.image_dataset_from_directory(
   data_dir,
@@ -164,6 +169,7 @@ train_ds = tf.keras.preprocessing.image_dataset_from_directory(
   image_size=(img_height, img_width),
   batch_size=batch_size)
 
+print('plz kill me')
 
 # In[12]:
 
