@@ -503,11 +503,13 @@ plt.show()
 # In[31]:
 
 
-sunflower_url = "https://storage.googleapis.com/download.tensorflow.org/example_images/592px-Red_sunflower.jpg"
-sunflower_path = tf.keras.utils.get_file('Red_sunflower', origin=sunflower_url)
+# sunflower_url = "https://storage.googleapis.com/download.tensorflow.org/example_images/592px-Red_sunflower.jpg"
+# sunflower_path = tf.keras.utils.get_file('Red_sunflower', origin=sunflower_url)
+
+test_image_path = './test_imgs/test3.jpg'
 
 img = keras.preprocessing.image.load_img(
-    sunflower_path, target_size=(img_height, img_width)
+    test_image_path, target_size=(img_height, img_width)
 )
 img_array = keras.preprocessing.image.img_to_array(img)
 img_array = tf.expand_dims(img_array, 0) # Create a batch
@@ -520,3 +522,5 @@ print(
     .format(class_names[np.argmax(score)], 100 * np.max(score))
 )
 
+
+# %%
