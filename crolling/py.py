@@ -5,8 +5,7 @@ from urllib.parse import quote_plus
 from bs4 import BeautifulSoup
 from selenium import webdriver
 import os
-from pathlib import Path
-home = str(Path.home())
+import time
 
 
 def createFolder(directory):
@@ -21,12 +20,14 @@ search = input('검색어 : ')
 url = f'https://www.google.co.kr/search?hl=ko&tbm=isch&sxsrf=ALeKk02xceXoVDnzcb4k1sUPNDKBpny69g%3A1600754661979&source=hp&biw=1920&bih=937&ei=5ZNpX5jDOYqTr7wP5pGv6Ak&q={quote_plus(search)}&oq={quote_plus(search)}&gs_lcp=CgNpbWcQAzICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADICCAA6BQgAELEDUPQHWJ4fYMIkaAFwAHgAgAGEAYgBgQaSAQMwLjeYAQCgAQGqAQtnd3Mtd2l6LWltZ7ABAA&sclient=img&ved=0ahUKEwjYyf3ni_zrAhWKyYsBHebIC50Q4dUDCAc&uact=5'
 print(url)
 
-driver = webdriver.Chrome(
-    home + '\\crolling\\chromedriver.exe')
+driver = webdriver.Chrome('.\\chromedriver.exe')
 driver.get(url)
-for i in range(500):
-    driver.execute_script('window.scrollBy(0,10000)')
-
+for i in range(1000):
+    driver.execute_script('window.scrollBy(0,100000)')
+time.sleep(3)
+driver.find_element_by_css_selector('#islmp > div > div > div > div > div.YstHxe > input').click()
+for i in range(1000):
+    driver.execute_script('window.scrollBy(0,100000)')
 
 html = driver.page_source
 soup = BeautifulSoup(html, 'html.parser')
@@ -40,14 +41,16 @@ for i in img:
     except KeyError:
         imgurl.append(i.attrs['data-src'])
 
-print(len(imgurl))
+print('크롤링 사진 수 : ', len(imgurl))
 
-createFolder(home + f'\\crolling\\{search}')
+createFolder(f'.\\{search}')
 
 n = 1
 for i in imgurl:
     urlretrieve(
-        i, home + f'\\crolling\\{search}\\' + search + str(n) + '.jpg')
+        i, f'.\\{search}\\' + search + str(n) + '.jpg')
     n += 1
 
-driver.close()
+print('저장 완료')
+
+driver.quit()
