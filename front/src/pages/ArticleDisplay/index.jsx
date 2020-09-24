@@ -21,7 +21,7 @@ import CommentForm from "../../components/Community/Comment/CommentForm/";
 
 export default function (props) {
   console.log(props.location.state);
-  const item = props.location.state.article;
+  const [item, setItem] = useState(props.location.state.article);
   console.log(item);
   // const { serverUrl, user } = useContext(CommonContext);
   const user = {
@@ -218,19 +218,26 @@ export default function (props) {
   const [myLike, setMyLike] = useState(item.LIKE.includes(user.user.id));
 
   function likeIt(item) {
-    console.log(item.LIKE);
+    console.log(item);
+    let array = item.LIKE;
     if (myLike) {
-      item.LIKE.pop();
+      setItem({
+        ...item,
+        LIKE: array.filter((id) => id !== user.user.id),
+      });
       setMyLike(false);
     } else {
-      item.LIKE.push(user.user.id);
+      setItem({
+        ...item,
+        LIKE: array.concat([user.user.id]),
+      });
       setMyLike(true);
     }
   }
 
   let likeButton = null;
   let countLikeIt1 = null;
-  if (item.LIKE.includes(user.user.id)) {
+  if (myLike) {
     // 현재 유저가 item.LIKE에 있으면 1 없으면 0
     likeButton = (
       <FavoriteIcon

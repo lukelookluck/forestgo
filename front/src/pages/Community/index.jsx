@@ -204,12 +204,12 @@ export default function () {
   //       history.push("/Main");
   //     });
   // }
-  console.log("articleList", articleList);
   let article = articleList.map((item, index) => {
     let likeButton = null;
     let countLikeIt1 = null;
-    if (item.LIKE.includes(user.user.id)) {
-      // 현재 유저가 item.LIKE에 있으면 1 없으면 0
+    const [myLike, setMyLike] = useState(item.LIKE.includes(user.user.id));
+
+    if (myLike) {
       likeButton = (
         <FavoriteIcon
           className="btn-icon"
@@ -235,27 +235,30 @@ export default function () {
         );
       }
     }
-    const [myLike, setMyLike] = useState(item.LIKE.includes(user.user.id));
 
     function likeIt(item) {
-      console.log(item.LIKE, articleList[index]);
       let array = item.LIKE;
-      // setArticleList(...item, (LIKE: array));
       if (myLike) {
-        array.splice(array, user.user.id);
+        setArticleList([
+          ...articleList.slice(0, index),
+          {
+            ...articleList[index],
+            LIKE: array.filter((id) => id !== user.user.id),
+          },
+          ...articleList.slice(index + 1, articleList.length),
+        ]);
         setMyLike(false);
       } else {
-        array.concat(user.user.id);
-        console.log("asdasdnasdn", array);
-        setArticleList({
-          ...articleList,
-          ...articleList[index],
-          array,
-        });
-
+        setArticleList([
+          ...articleList.slice(0, index),
+          {
+            ...articleList[index],
+            LIKE: array.concat([user.user.id]),
+          },
+          ...articleList.slice(index + 1, articleList.length),
+        ]);
         setMyLike(true);
       }
-      console.log(item.LIKE, articleList[index]);
     }
 
     const [mySave, setMySave] = useState(item.SAVE.includes(user.user.id));
