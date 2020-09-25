@@ -7,7 +7,7 @@ SECRET_KEY = 'ws=8q$6ggyrrc8%zn9b-aftem5qx(&b*yew*r3yd!2f$68h$y!'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 DATABASES = {
     'default': {

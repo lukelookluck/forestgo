@@ -1,0 +1,10 @@
+데이터셋
+
+-식물
+https://www.quantitative-plant.org/dataset
+https://plants.sc.egov.usda.gov/java/
+https://www.imageclef.org/2013/plant
+
+-꽃
+https://www.robots.ox.ac.uk/~vgg/data/flowers/
+https://www.kaggle.com/alxmamaev/flowers-recognition
