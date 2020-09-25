@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
     logotext: {
-        fontFamily: 'Cafe24Ohsquare'
+        fontFamily: 'BBTreeTB'
     }
 })
 
@@ -15,9 +15,18 @@ const Header = () => {
   return (
     <Wrapper>
       <Grid container justify="center" alignItems="center">
-        <Grid item xs={12} className="logoGrid">
+      <Grid item className="imgGrid">
+        <img src="./images/forest.png" id="imglogo"></img>
+      </Grid>
+        
+
+      <Grid item className="logoGrid">
           <p className={classes.logotext} id="logo">ForestGo</p>
-        </Grid>
+      </Grid>
+        
+        {/* <Grid item xs={12} className="logoGrid">
+          <p className={classes.logotext} id="logo">ForestGo</p>
+        </Grid> */}
       </Grid>
     </Wrapper>
   );

@@ -14,6 +14,7 @@ import MyForest from "../../pages/MyForest/";
 import CameraAltOutlinedIcon from "@material-ui/icons/CameraAltOutlined";
 import Upload from "../../pages/Upload/";
 import Form from "../../pages/ArticleForm/";
+import Community from "../../pages/Community/";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -100,7 +101,7 @@ export default function NavigationTab() {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          <Discovery></Discovery>
+          <Community></Community>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
           <Upload></Upload>

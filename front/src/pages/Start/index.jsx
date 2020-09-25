@@ -8,7 +8,7 @@ import "../../index.css";
 
 const useStyles = makeStyles({
   logotext: {
-    fontFamily: "Cafe24Ohsquare",
+    fontFamily: "BBTreeTB",
   },
 });
 
@@ -58,6 +58,7 @@ const Start = () => {
     <Wrapper>
       <Grid container className="root" justify="center" alignItems="center">
         <Grid item xs={12} className="logoGrid">
+          <img src="./images/forest.png" className="forestimg"></img>
           <p className={classes.logotext} id="logo_en">
             ForestGo
           </p>
@@ -71,7 +72,7 @@ const Start = () => {
               id="id"
               type="text"
               name="id"
-              placeholder="아이디"
+              placeholder=" 이메일"
               value={id}
               onChange={({ target: { value } }) => setId(value)}
             ></input>
@@ -81,7 +82,7 @@ const Start = () => {
               id="pw"
               type="password"
               name="pw"
-              placeholder="비밀번호"
+              placeholder=" 비밀번호"
               value={pw}
               onChange={({ target: { value } }) => setPw(value)}
             ></input>
@@ -101,9 +102,7 @@ const Start = () => {
         </Grid>
         <Grid item xs={6} className="bottom">
           <div id="findpw" onClick={onClickRedirectPathHandler("/FindPW")}>
-            비밀번호
-            <br />
-            찾기
+            비밀번호 찾기
           </div>
         </Grid>
       </Grid>
