@@ -21,7 +21,11 @@ import CommentForm from "../../components/Community/Comment/CommentForm/";
 
 export default function (props) {
   console.log(props.location.state);
+<<<<<<< HEAD
   const item = props.location.state.article;
+=======
+  const [item, setItem] = useState(props.location.state.article);
+>>>>>>> front
   console.log(item);
   // const { serverUrl, user } = useContext(CommonContext);
   const user = {
@@ -35,7 +39,11 @@ export default function (props) {
   const [listComment, setListComment] = useState([]);
   const [commentInput, setCommentInput] = useState({
     content: "",
+<<<<<<< HEAD
     article: 1,
+=======
+    article: item.id,
+>>>>>>> front
     parent: null,
     user: user.user.id,
   });
@@ -132,16 +140,35 @@ export default function (props) {
   //   <DeleteIcon className="comment-list-header-delete-click" fontSize="large" />
   // );
 
+<<<<<<< HEAD
   function clickComment(e, comment) {
     if (a) {
       if (myClicked) {
         e.target.closest(".comment-single").style.background = "#e0f2ff";
+=======
+  function initClicked() {
+    setClicked(1);
+    setMyClicked(true);
+    if (a) {
+      a.style.background = "";
+    }
+  }
+
+  function clickComment(e, comment) {
+    if (a) {
+      if (myClicked) {
+        e.target.closest(".comment-single").style.background = "#c7e2d9";
+>>>>>>> front
       } else {
         a.style.background = "";
       }
     } else {
       if (myClicked) {
+<<<<<<< HEAD
         e.target.closest(".comment-single").style.background = "#e0f2ff";
+=======
+        e.target.closest(".comment-single").style.background = "#c7e2d9";
+>>>>>>> front
       } else {
         e.target.closest(".comment-single").style.background = "";
       }
@@ -179,6 +206,17 @@ export default function (props) {
           onClick={goBack}
         />
         {/* <span className="comment-list-header-title">댓글</span> */}
+<<<<<<< HEAD
+=======
+        <div className="header-modal">
+          {user.user.id === item.user && (
+            <MenuModal
+              item={item}
+              // DeleteArticle={props.DeleteArticle}
+            />
+          )}
+        </div>
+>>>>>>> front
       </div>
     );
   } else {
@@ -199,12 +237,97 @@ export default function (props) {
     );
   }
 
+<<<<<<< HEAD
+=======
+  const [myLike, setMyLike] = useState(item.LIKE.includes(user.user.id));
+
+  function likeIt(item) {
+    console.log(item);
+    let array = item.LIKE;
+    if (myLike) {
+      setItem({
+        ...item,
+        LIKE: array.filter((id) => id !== user.user.id),
+      });
+      setMyLike(false);
+    } else {
+      setItem({
+        ...item,
+        LIKE: array.concat([user.user.id]),
+      });
+      setMyLike(true);
+    }
+  }
+
+  let likeButton = null;
+  let countLikeIt1 = null;
+  if (myLike) {
+    // 현재 유저가 item.LIKE에 있으면 1 없으면 0
+    likeButton = (
+      <FavoriteIcon
+        className="btn-icon"
+        onClick={() => likeIt(item)}
+        color="error"
+      />
+    );
+    countLikeIt1 = (
+      <span className="countLikeIt1">좋아요 {item.LIKE.length}개</span>
+    );
+  } else {
+    likeButton = (
+      <FavoriteBorderIcon className="btn-icon" onClick={() => likeIt(item)} />
+    );
+    if (item.LIKE.length) {
+      countLikeIt1 = (
+        <span className="countLikeIt1">좋아요 {item.LIKE.length}개</span>
+      );
+    }
+  }
+  const [mySave, setMySave] = useState(item.SAVE.includes(user.user.id));
+  let saveButton = null;
+  if (mySave) {
+    saveButton = (
+      <BookmarkIcon
+        className="btn-icon-save"
+        // onClick={() => {
+        //   props.saveSubmit(item);
+        //   item.SAVE.pop();
+        //   setOpen(0);
+        //   setMySave(false);
+        //   console.log(item);
+        // }}
+      />
+    );
+  } else {
+    saveButton = (
+      <BookmarkBorderIcon
+        className="btn-icon-save"
+        // onClick={() => {
+        //   props.saveSubmit(item);
+        //   setOpen(1);
+        //   setTimeout(() => {
+        //     setOpen(0);
+        //   }, 3000);
+        //   item.SAVE.push(user.user.id);
+        //   setMySave(true);
+
+        //   console.log(item);
+        // }}
+      />
+    );
+  }
+
+>>>>>>> front
   return (
     <Wrapper>
       <Grid>
         {commentHeader}
 
+<<<<<<< HEAD
         <div className="list-card">
+=======
+        <div className="list-card" onClick={initClicked}>
+>>>>>>> front
           <div className="list-user">
             <div>
               <div className="list-avata">
@@ -229,6 +352,7 @@ export default function (props) {
           </div>
           <div className="buttons">
             <div className="like-btn">
+<<<<<<< HEAD
               {/* {likeButton} */}
               {/* {countLikeIt1} */}
               {/* <Link
@@ -255,6 +379,23 @@ export default function (props) {
         <div className="comment-list-box">
           <CommentList
             comments={listComment}
+=======
+              {likeButton}
+              <InsertCommentOutlinedIcon className="btn-icon" />
+            </div>
+            {saveButton}
+          </div>
+          {/* <Alert open={open} setOpen={setOpen} /> */}
+          {/* <hr /> */}
+          {countLikeIt1}
+          {/* <CommentList comments={item.comments} article={item} /> */}
+        </div>
+
+        {/* 댓글 코드 */}
+        <div className="comment-list-box">
+          <CommentList
+            comments={item.comments}
+>>>>>>> front
             // likeSubmit={likeSubmit}
             doReply={doReply}
             clickComment={clickComment}

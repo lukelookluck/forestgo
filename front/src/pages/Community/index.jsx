@@ -33,6 +33,7 @@ export default function () {
       id: 1,
       user: 1,
       username: "임시1",
+<<<<<<< HEAD
       LIKE: [1],
       SAVE: [],
       detail: "아무말아무말",
@@ -41,11 +42,69 @@ export default function () {
     {
       id: 2,
       user: 1,
+=======
+      LIKE: [1, 2],
+      SAVE: [],
+      detail: "아무말아무말",
+      comments: [
+        {
+          id: 1,
+          username: "아무개",
+          content: "아무댓글",
+          LIKE: [1, 2],
+          replys: [],
+        },
+        {
+          id: 2,
+          username: "아무개2",
+          content: "아무댓글2",
+          LIKE: [1, 2],
+          replys: [],
+        },
+        {
+          id: 3,
+          username: "아무개3",
+          content: "아무댓글3",
+          LIKE: [1, 2],
+          replys: [],
+        },
+      ],
+    },
+    {
+      id: 2,
+      user: 2,
+>>>>>>> front
       username: "임시2",
       LIKE: [2],
       SAVE: [],
       detail: "아무말아무말",
+<<<<<<< HEAD
       comments: { id: 2 },
+=======
+      comments: [
+        {
+          id: 1,
+          username: "아무개",
+          content: "아무댓글",
+          LIKE: [1, 2],
+          replys: [],
+        },
+        {
+          id: 2,
+          username: "아무개2",
+          content: "아무댓글2",
+          LIKE: [1, 2],
+          replys: [],
+        },
+        {
+          id: 3,
+          username: "아무개3",
+          content: "아무댓글3",
+          LIKE: [1, 2],
+          replys: [],
+        },
+      ],
+>>>>>>> front
     },
     {
       id: 3,
@@ -55,7 +114,33 @@ export default function () {
       SAVE: [],
       detail:
         "아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말",
+<<<<<<< HEAD
       comments: { id: 2 },
+=======
+      comments: [
+        {
+          id: 1,
+          username: "아무개",
+          content: "아무댓글",
+          LIKE: [1, 2],
+          replys: [],
+        },
+        {
+          id: 2,
+          username: "아무개2",
+          content: "아무댓글2",
+          LIKE: [1, 2],
+          replys: [],
+        },
+        {
+          id: 3,
+          username: "아무개3",
+          content: "아무댓글3",
+          LIKE: [1, 2],
+          replys: [],
+        },
+      ],
+>>>>>>> front
     },
   ]);
 
@@ -138,6 +223,7 @@ export default function () {
   //       history.push("/Main");
   //     });
   // }
+<<<<<<< HEAD
 
   let article = articleList.map((item, index) => {
     let likeButton = null;
@@ -148,6 +234,18 @@ export default function () {
         <FavoriteIcon
           className="btn-icon"
           // onClick={likeIt}
+=======
+  let article = articleList.map((item, index) => {
+    let likeButton = null;
+    let countLikeIt1 = null;
+    const [myLike, setMyLike] = useState(item.LIKE.includes(user.user.id));
+
+    if (myLike) {
+      likeButton = (
+        <FavoriteIcon
+          className="btn-icon"
+          onClick={() => likeIt(item)}
+>>>>>>> front
           color="error"
           key={index}
         />
@@ -159,7 +257,11 @@ export default function () {
       likeButton = (
         <FavoriteBorderIcon
           className="btn-icon"
+<<<<<<< HEAD
           // onClick={likeIt}
+=======
+          onClick={() => likeIt(item)}
+>>>>>>> front
           key={index}
         />
       );
@@ -170,9 +272,36 @@ export default function () {
       }
     }
 
+<<<<<<< HEAD
     // function likeIt() {
     //   props.likeSubmit(item);
     // }
+=======
+    function likeIt(item) {
+      let array = item.LIKE;
+      if (myLike) {
+        setArticleList([
+          ...articleList.slice(0, index),
+          {
+            ...articleList[index],
+            LIKE: array.filter((id) => id !== user.user.id),
+          },
+          ...articleList.slice(index + 1, articleList.length),
+        ]);
+        setMyLike(false);
+      } else {
+        setArticleList([
+          ...articleList.slice(0, index),
+          {
+            ...articleList[index],
+            LIKE: array.concat([user.user.id]),
+          },
+          ...articleList.slice(index + 1, articleList.length),
+        ]);
+        setMyLike(true);
+      }
+    }
+>>>>>>> front
 
     const [mySave, setMySave] = useState(item.SAVE.includes(user.user.id));
 
@@ -210,6 +339,7 @@ export default function () {
       );
     }
 
+<<<<<<< HEAD
     let moreButton = (
       <a className="more-tag" href="#" onClick={moreContent}>
         더보기
@@ -229,6 +359,29 @@ export default function () {
     }
 
     function goArticleDetailPage(id) {
+=======
+    // let moreButton = (
+    //   <a className="more-tag" href="#" onClick={moreContent}>
+    //     더보기
+    //   </a>
+    // );
+
+    let myHide = "";
+    if (item.detail.length > 50) {
+      myHide = "...";
+    }
+    const [cardContent, setCardContent] = useState(
+      item.detail.substring(0, 50) + myHide
+    );
+
+    // function moreContent(e) {
+    //   setCardContent("누르면 상세글페이지로");
+    //   e.preventDefault();
+    // }
+
+    function goArticleDetailPage(id) {
+      window.scrollTo(0, 0);
+>>>>>>> front
       history.push({
         pathname: `/article/${id}`,
         state: {
@@ -262,11 +415,20 @@ export default function () {
         <div className="list-item" onClick={() => goArticleDetailPage(item.id)}>
           <div className="list-item-detail">
             {cardContent}
+<<<<<<< HEAD
             {myHide}
           </div>
           <div className="list-item-imageBox">
             {/* <img className="list-item-image" src="images/sample.jpg" alt="" /> */}
             <img className="list-item-image" src={item.image} alt="" />
+=======
+
+            {/* {myHide} */}
+          </div>
+          <div className="list-item-imageBox">
+            <img className="list-item-image" src="/images/sample.jpg" alt="" />
+            {/* <img className="list-item-image" src={item.image} alt="게시글 이미지" /> */}
+>>>>>>> front
           </div>
         </div>
         <div className="buttons">
