@@ -31,16 +31,16 @@
 > 종류도 30종부터 시작하여 점점 더 많이 추가해나갈 예정입니다.
 
 ## 기술 스택
-> React-Native
-> Django
-> SQLite
-> AWS
-> Docker
-> Jenkins
-> tensorflow
-> Keras
-> meterial-ui
-> selenium
+> - React-Native
+> - Django
+> - SQLite
+> - AWS
+> - Docker
+> - Jenkins
+> - tensorflow
+> - Keras
+> - meterial-ui
+> - selenium
 
 ## 기술 설명
 > 추가 바람
