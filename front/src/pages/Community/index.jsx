@@ -14,19 +14,10 @@ import BookmarkIcon from "@material-ui/icons/Bookmark";
 import Alert from "../../components/Community/Alert/";
 import MenuModal from "../../components/Community/Article/MenuModal/";
 import CommentList from "../../components/Community/Comment/CommentList/";
-// import { CommonContext } from "../../../../context/CommonContext";
+import { CommonContext } from "../../context/CommonContext";
 
 export default function () {
-  // const { serverUrl, user } = useContext(CommonContext);
-
-  const user = {
-    token: "",
-    user: {
-      id: 1,
-      username: "임시아이디",
-      email: "",
-    },
-  };
+  const { serverUrl, user } = useContext(CommonContext);
 
   const [articleList, setArticleList] = useState([
     {
