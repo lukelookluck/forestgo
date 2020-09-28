@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import Header from "../../layout/Header/";
 import Wrapper from "./styles";
 import { Grid, Button, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import "../../index.css";
+import { CommonContext } from "../../context/CommonContext";
+import Axios from "axios";
 
 const useStyles = makeStyles({
   signupText: {
@@ -21,6 +23,8 @@ const SignUp = () => {
   const [Password, setPassword] = useState("")
   const [Name, setName] = useState("")
   const [confirmPassword, setconfirmPassword] = useState("");
+
+  const { serverUrl, user, setUser } = useContext(CommonContext);
 
   const onEmailHandler = (event) => {
     setEmail(event.currentTarget.value)
@@ -39,7 +43,7 @@ const SignUp = () => {
   }
 
   const hasError = passwordEntered =>
-    Password.length < 5 ? true : false;
+    Password.length < 8 ? true : false;
 
   const hasNotSameError = passwordEntered =>
     Password != confirmPassword ? true : false;
@@ -50,11 +54,32 @@ const SignUp = () => {
       return alert('비밀번호와 비밀번호 확인은 같아야 합니다.');
     }
 
-    // axios 보내는 코드 삽입하기
-
-    alert('회원가입이 완료되었습니다!');
-    history.push('/Main');
-
+    const url = `${serverUrl}/api/rest-auth/registration/`;
+    const data = {
+      username: Name,
+      password1: Password,
+      password2: confirmPassword,
+      email: Email,
+    };
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    Axios.post(url, data, headers)
+      .then((response) => {
+        console.log(response);
+        console.log(response.data);
+        setUser({ ...response.data });
+        alert('회원가입이 완료되었습니다.');
+        history.push('/Main');
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("사용할 수 없는 이메일 또는 비밀번호입니다.");
+        setEmail("");
+        setName("");
+        setPassword("");
+        setconfirmPassword("");
+      });
   }
 
   const onResetHandler = (event) => {
@@ -105,7 +130,7 @@ const SignUp = () => {
                 onChange={onPasswordHandler}
                 error={hasError('password')}
                 id="password"
-                label="비밀번호(5글자 이상 필수)"
+                label="비밀번호(8글자 이상 필수)"
                 variant="outlined"
                 type="password"
               ></TextField>
