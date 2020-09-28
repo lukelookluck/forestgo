@@ -122,7 +122,7 @@ export default function () {
 
   function refreshList() {
     axios
-      .get(`${serverUrl}/api/community/`, {
+      .get(`${serverUrl}/community/`, {
         headers: {
           Authorization: `JWT ${user.token}`,
         },
@@ -133,33 +133,33 @@ export default function () {
       .then((res) => {
         // setArticleList([]);
         // console.log(res.data);
-        // setArticleList(res.data);
+        setArticleList(res.data);
         // console.log(this.state.loading);
       })
       .catch((err) => console.log(err));
   }
 
-  // function likeSubmit(article) {
-  //   // console.log(article);
-  //   axios
-  //     .post(
-  //       `${serverUrl}/community/article_like/${article.id}/`,
-  //       { user: user.user.id }, // 현재 유저 정보 넣기
-  //       {
-  //         headers: {
-  //           Authorization: `JWT ${user.token}`,
-  //         },
-  //       }
-  //     )
-  //     .then((res) => {
-  //       console.log(res.data.LIKE);
-  //       refreshList();
-  //     })
-  //     .catch((err) => console.log(err));
-  // }
+  function likeSubmit(article) {
+    console.log("article", article);
+    axios
+      .post(
+        `${serverUrl}/community/article/${article.id}/`,
+        { user: user.user.id }, // 현재 유저 정보 넣기
+        {
+          headers: {
+            Authorization: `JWT ${user.token}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data.LIKE);
+        refreshList();
+      })
+      .catch((err) => console.log(err));
+  }
 
   // function saveSubmit(article) {
-  //   // console.log(article);
+  //   console.log(article);
   //   axios
   //     .post(
   //       `${serverUrl}/community/article_save/${article.id}/`,
@@ -195,11 +195,10 @@ export default function () {
   //       history.push("/Main");
   //     });
   // }
-  console.log("user.user.id", user);
   let article = articleList.map((item, index) => {
     let likeButton = null;
     let countLikeIt1 = null;
-    const [myLike, setMyLike] = useState(item.LIKE.includes(user.user.id));
+    let myLike = item.LIKE.includes(user.user.id);
 
     if (myLike) {
       likeButton = (
@@ -231,6 +230,7 @@ export default function () {
     function likeIt(item) {
       let array = item.LIKE;
       if (myLike) {
+        likeSubmit(item);
         setArticleList([
           ...articleList.slice(0, index),
           {
@@ -239,8 +239,9 @@ export default function () {
           },
           ...articleList.slice(index + 1, articleList.length),
         ]);
-        setMyLike(false);
+        myLike = false;
       } else {
+        likeSubmit(item);
         setArticleList([
           ...articleList.slice(0, index),
           {
@@ -249,13 +250,14 @@ export default function () {
           },
           ...articleList.slice(index + 1, articleList.length),
         ]);
-        setMyLike(true);
+        myLike = true;
       }
+      console.log(item.LIKE);
     }
 
-    const [mySave, setMySave] = useState(item.SAVE.includes(user.user.id));
+    let mySave = item.SAVE.includes(user.user.id);
 
-    const [open, setOpen] = useState(0);
+    let open = 0;
     let saveButton = null;
     if (mySave) {
       saveButton = (
@@ -299,19 +301,17 @@ export default function () {
     if (item.detail.length > 50) {
       myHide = "...";
     }
-    const [cardContent, setCardContent] = useState(
-      item.detail.substring(0, 50) + myHide
-    );
+    let cardContent = item.detail.substring(0, 50) + myHide;
 
     // function moreContent(e) {
     //   setCardContent("누르면 상세글페이지로");
     //   e.preventDefault();
     // }
 
-    function goArticleDetailPage(id) {
+    function goArticleDetailPage(item) {
       window.scrollTo(0, 0);
       history.push({
-        pathname: `/article/${id}`,
+        pathname: `/article/${item.id}`,
         state: {
           comments: item.comments,
           article: item,
@@ -340,7 +340,7 @@ export default function () {
             )}
           </div>
         </div>
-        <div className="list-item" onClick={() => goArticleDetailPage(item.id)}>
+        <div className="list-item" onClick={() => goArticleDetailPage(item)}>
           <div className="list-item-detail">
             {cardContent}
 
@@ -370,7 +370,7 @@ export default function () {
           </div>
           {saveButton}
         </div>
-        <Alert open={open} setOpen={setOpen} />
+        <Alert open={open} />
         {/* <hr /> */}
         {countLikeIt1}
         {/* <CommentList comments={item.comments} article={item} /> */}

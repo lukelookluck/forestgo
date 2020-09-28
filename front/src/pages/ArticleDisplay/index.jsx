@@ -12,26 +12,19 @@ import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import InsertCommentOutlinedIcon from "@material-ui/icons/InsertCommentOutlined";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import BookmarkIcon from "@material-ui/icons/Bookmark";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 import Alert from "../../components/Community/Alert/";
 import MenuModal from "../../components/Community/Article/MenuModal/";
 import CommentList from "../../components/Community/Comment/CommentList/";
 import CommentForm from "../../components/Community/Comment/CommentForm/";
-// import { CommonContext } from "../../context/CommonContext";
+import { CommonContext } from "../../context/CommonContext";
 
 export default function (props) {
-  console.log(props.location.state);
   const [item, setItem] = useState(props.location.state.article);
-  console.log(item);
-  // const { serverUrl, user } = useContext(CommonContext);
-  const user = {
-    token: "",
-    user: {
-      id: 1,
-      username: "임시아이디",
-      email: "",
-    },
-  };
+  const { serverUrl, user } = useContext(CommonContext);
+  console.log(user.user.id);
+
   const [listComment, setListComment] = useState([]);
   const [commentInput, setCommentInput] = useState({
     content: "",
@@ -46,74 +39,74 @@ export default function (props) {
       ...commentInput,
       content: e.content,
     });
-    // console.log("commentinput", commentInput);
+    console.log("commentinput", commentInput);
   }
 
-  // useEffect(() => {
-  //   refreshList();
-  // }, []);
+  useEffect(() => {
+    refreshList();
+  }, []);
 
   function goBack() {
     props.history.goBack();
   }
 
-  // function refreshList() {
-  //   axios
-  //     .get(`${serverUrl}/community/comment/`, {
-  //       headers: {
-  //         Authorization: `JWT ${user.token}`,
-  //       },
-  //       params: {
-  //         article: props.location.state.article,
-  //       },
-  //     })
-  //     .then((res) => {
-  //       setListComment(res.data);
-  //       console.log(res.data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }
+  function refreshList() {
+    axios
+      .get(`${serverUrl}/community/comment/`, {
+        headers: {
+          Authorization: `JWT ${user.token}`,
+        },
+        // params: {
+        //   article: item,
+        // },
+      })
+      .then((res) => {
+        setListComment(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err));
+  }
 
-  // function handleSubmit(data) {
-  //   axios
-  //     .post(`${serverUrl}/community/comment/`, data, {
-  //       headers: {
-  //         Authorization: `JWT ${user.token}`,
-  //       },
-  //     })
-  //     .then((res) => {
-  //       commentInput.content = "";
-  //       commentInput.parent = null;
+  function handleSubmit(data) {
+    axios
+      .post(`${serverUrl}/community/comment/`, data, {
+        headers: {
+          Authorization: `JWT ${user.token}`,
+        },
+      })
+      .then((res) => {
+        commentInput.content = "";
+        commentInput.parent = null;
 
-  //       refreshList();
+        refreshList();
 
-  //       setTimeout(() => {
-  //         refreshList();
-  //       }, 3000);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }
+        setTimeout(() => {
+          refreshList();
+        }, 3000);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
-  // function likeSubmit(comment) {
-  //   axios
-  //     .post(
-  //       `${serverUrl}/community/comment/like/${comment.id}/`,
-  //       { user: user.user.id }, // 현재 유저 정보 넣기
-  //       {
-  //         headers: {
-  //           Authorization: `JWT ${user.token}`,
-  //         },
-  //       }
-  //     )
-  //     .then((res) => {
-  //       console.log(res.data);
+  function likeSubmit(comment) {
+    axios
+      .post(
+        `${serverUrl}/community/comment/like/${comment.id}/`,
+        { user: user.user.id }, // 현재 유저 정보 넣기
+        {
+          headers: {
+            Authorization: `JWT ${user.token}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
 
-  //       refreshList();
-  //     })
-  //     .catch((err) => console.log(err));
-  // }
+        refreshList();
+      })
+      .catch((err) => console.log(err));
+  }
 
   function doReply(reply) {
     setCommentInput({
@@ -127,7 +120,7 @@ export default function (props) {
   const [myClicked, setMyClicked] = useState(true);
   let [a, setA] = useState("");
 
-  let [deleteBtn, setDeleteBtn] = useState(null);
+  const [deleteBtn, setDeleteBtn] = useState(null);
   // deleteBtn = (
   //   <DeleteIcon className="comment-list-header-delete-click" fontSize="large" />
   // );
@@ -140,7 +133,7 @@ export default function (props) {
     }
   }
 
-  function clickComment(e, comment) {
+  function clickComment(e) {
     if (a) {
       if (myClicked) {
         e.target.closest(".comment-single").style.background = "#c7e2d9";
@@ -162,20 +155,21 @@ export default function (props) {
     setClicked(!clicked);
   }
 
-  // function DeleteComment(comment) {
-  //   axios
-  //     .delete(`${serverUrl}/community/comment/${comment.id}/`, {
-  //       headers: {
-  //         Authorization: `JWT ${user.token}`,
-  //       },
-  //     })
-  //     .then((res) => {
-  //       setClicked(1);
-  //       refreshList();
-  //       window.scrollTo(0, 0);
-  //       // history.push("/Main");
-  //     });
-  // }
+  function DeleteComment(comment) {
+    axios
+      .delete(`${serverUrl}/community/comment/${comment.id}/`, {
+        headers: {
+          Authorization: `JWT ${user.token}`,
+        },
+      })
+      .then((res) => {
+        a.style.background = "";
+        initClicked();
+        refreshList();
+        window.scrollTo(0, 0);
+        // history.push("/Main");
+      });
+  }
 
   let commentHeader = null;
   if (clicked) {
@@ -208,7 +202,7 @@ export default function (props) {
               onClick={(e) => clickComment(e)}
             />
           </div>
-          <span className="comment-list-header-title-click">선택됨</span>
+          <div className="comment-list-header-title-click">선택됨</div>
         </div>
         {deleteBtn}
       </div>
@@ -337,8 +331,8 @@ export default function (props) {
         {/* 댓글 코드 */}
         <div className="comment-list-box">
           <CommentList
-            comments={item.comments}
-            // likeSubmit={likeSubmit}
+            comments={listComment}
+            likeSubmit={likeSubmit}
             doReply={doReply}
             clickComment={clickComment}
             clicked={clicked}
@@ -346,14 +340,14 @@ export default function (props) {
             a={a}
             deleteBtn={deleteBtn}
             setDeleteBtn={setDeleteBtn}
-            // DeleteComment={DeleteComment}
+            DeleteComment={DeleteComment}
           />
         </div>
         <CommentForm
           commentInput={commentInput}
           // setCommentInput={this.state.setCommentInput}
           setCommentInput={handleChangeCommentInput}
-          // handleSubmit={handleSubmit} // 부모에서 자식으로 부모 이벤트 넘겨줄 떄 자식에선 'props.부모이벤트' 로 사용
+          handleSubmit={handleSubmit} // 부모에서 자식으로 부모 이벤트 넘겨줄 떄 자식에선 'props.부모이벤트' 로 사용
           // this.setState({ listComment: res.data });
         />
       </Grid>

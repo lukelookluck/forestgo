@@ -52,7 +52,7 @@ const Wrapper = styled.div`
 
   & .list-item-imageBox {
     width: 100%;
-    height: 50vw;
+    height: 70vw;
     /* padding: 5vw 0; */
     overflow: hidden;
   }
@@ -139,9 +139,9 @@ const Wrapper = styled.div`
     top: 0;
     width: 100%;
     border-bottom: solid 0.5px #dddddd;
-    padding: 10px 5px;
+    padding: 10px 0px;
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row; */
     justify-content: space-between;
     background-color: #488c75;
   }
@@ -149,6 +149,7 @@ const Wrapper = styled.div`
   & .comment-list-header-clicked-1 {
     height: 35px;
     display: flex;
+    align-items: center;
   }
 
   & .comment-list-header-arrow {
@@ -159,10 +160,12 @@ const Wrapper = styled.div`
   & .comment-list-header-arrow-click {
     font-size: 35px;
     color: #ffffff;
+    margin-left: 5px;
   }
 
   & .comment-list-header-delete-click {
-    font-size: 45px;
+    font-size: 35px;
+    margin-right: 5px;
     color: #ffffff;
   }
 
