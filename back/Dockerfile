@@ -7,7 +7,7 @@ RUN apt-get -y update
 RUN apt-get -y install vim
 RUN apt-get install -y uwsgi-plugin-python3
 
-RUN mkdir /srv/docker-server
+RUN mkdir -p /srv/docker-server
 ADD . /srv/docker-server
 
 WORKDIR /srv/docker-server
