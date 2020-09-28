@@ -10,11 +10,19 @@ from .models import Userinfo
 from .serializers import UserinfoSerializer
 
 # # rest framework R
+
+
 @api_view(['GET'])
 def userinfo_list(request):
     userinfos = Userinfo.objects.all()
     serializer = UserinfoSerializer(userinfos, many=True)
+    print(serializer.data)
     return Response(serializer.data)
+
+
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'accounts.serializers.UserinfoSerializer',
+}
 
 # @api_view(['GET'])
 # def userinfo_detail(request, userinfo_pk):
@@ -25,13 +33,9 @@ def userinfo_list(request):
 # @api_view(['POST'])
 # def create_userinfo(request):
 #     pass
-    
 
 
-
-
-
-#--- 아래는 legacy
+# --- 아래는 legacy
 
 # 노가다
 # @require_GET
@@ -48,7 +52,7 @@ def userinfo_list(request):
 #             'user_profile_img' : userinfo.profile_img,
 #             'user_registered_at' : userinfo.registered_at,
 #         })
-    
+
 #     return JsonResponse(data, safe=False)
 
 # # django core serializer
@@ -60,4 +64,3 @@ def userinfo_list(request):
 #     data = serializers.serialize('json', userinfos)
 
 #     return HttpResponse(data, content_type='application/json')
-
