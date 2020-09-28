@@ -54,3 +54,19 @@ def LikeArticle(request, article_pk):
 
     result = article.LIKE.all().count()
     return Response(result)
+
+
+@ api_view(['POST'])
+def LikeComment(request, comment_pk):
+    comment = Comment.objects.get(pk=comment_pk)
+    user_id = request.data.get('user')
+    user = Userinfo.objects.get(id=user_id)
+    LIKE = comment.LIKE.all()
+
+    if user in LIKE:
+        comment.LIKE.remove(user)
+    else:
+        comment.LIKE.add(user)
+    result = comment.LIKE.all().count()
+    print(result)
+    return Response(result)

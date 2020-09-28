@@ -12,5 +12,9 @@ urlpatterns = [
     path('comment/<int:pk>/', views.DetailComment.as_view()),
     path('article/<int:article_pk>/', views.LikeArticle),
 
+    path('article_like/<int:article_pk>/', views.LikeArticle),
+    path('comment/like/<int:comment_pk>/', views.LikeComment),
+
+
 
 ]
