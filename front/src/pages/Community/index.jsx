@@ -20,124 +20,124 @@ export default function () {
   const { serverUrl, user } = useContext(CommonContext);
 
   const [articleList, setArticleList] = useState([
-    {
-      id: 1,
-      user: 1,
-      username: "임시1",
-      LIKE: [1, 2],
-      SAVE: [],
-      detail: "아무말아무말",
-      comments: [
-        {
-          id: 1,
-          username: "아무개",
-          content: "아무댓글",
-          LIKE: [1, 2],
-          replys: [],
-        },
-        {
-          id: 2,
-          username: "아무개2",
-          content: "아무댓글2",
-          LIKE: [1, 2],
-          replys: [],
-        },
-        {
-          id: 3,
-          username: "아무개3",
-          content: "아무댓글3",
-          LIKE: [1, 2],
-          replys: [],
-        },
-      ],
-    },
-    {
-      id: 2,
-      user: 2,
-      username: "임시2",
-      LIKE: [2],
-      SAVE: [],
-      detail: "아무말아무말",
-      comments: [
-        {
-          id: 1,
-          username: "아무개",
-          content: "아무댓글",
-          LIKE: [1, 2],
-          replys: [],
-        },
-        {
-          id: 2,
-          username: "아무개2",
-          content: "아무댓글2",
-          LIKE: [1, 2],
-          replys: [],
-        },
-        {
-          id: 3,
-          username: "아무개3",
-          content: "아무댓글3",
-          LIKE: [1, 2],
-          replys: [],
-        },
-      ],
-    },
-    {
-      id: 3,
-      user: 1,
-      username: "임시3",
-      LIKE: [2],
-      SAVE: [],
-      detail:
-        "아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말",
-      comments: [
-        {
-          id: 1,
-          username: "아무개",
-          content: "아무댓글",
-          LIKE: [1, 2],
-          replys: [],
-        },
-        {
-          id: 2,
-          username: "아무개2",
-          content: "아무댓글2",
-          LIKE: [1, 2],
-          replys: [],
-        },
-        {
-          id: 3,
-          username: "아무개3",
-          content: "아무댓글3",
-          LIKE: [1, 2],
-          replys: [],
-        },
-      ],
-    },
+    // {
+    //   id: 1,
+    //   user: 1,
+    //   username: "임시1",
+    //   LIKE: [1, 2],
+    //   SAVE: [],
+    //   detail: "아무말아무말",
+    //   comments: [
+    //     {
+    //       id: 1,
+    //       username: "아무개",
+    //       content: "아무댓글",
+    //       LIKE: [1, 2],
+    //       replys: [],
+    //     },
+    //     {
+    //       id: 2,
+    //       username: "아무개2",
+    //       content: "아무댓글2",
+    //       LIKE: [1, 2],
+    //       replys: [],
+    //     },
+    //     {
+    //       id: 3,
+    //       username: "아무개3",
+    //       content: "아무댓글3",
+    //       LIKE: [1, 2],
+    //       replys: [],
+    //     },
+    //   ],
+    // },
+    // {
+    //   id: 2,
+    //   user: 2,
+    //   username: "임시2",
+    //   LIKE: [2],
+    //   SAVE: [],
+    //   detail: "아무말아무말",
+    //   comments: [
+    //     {
+    //       id: 1,
+    //       username: "아무개",
+    //       content: "아무댓글",
+    //       LIKE: [1, 2],
+    //       replys: [],
+    //     },
+    //     {
+    //       id: 2,
+    //       username: "아무개2",
+    //       content: "아무댓글2",
+    //       LIKE: [1, 2],
+    //       replys: [],
+    //     },
+    //     {
+    //       id: 3,
+    //       username: "아무개3",
+    //       content: "아무댓글3",
+    //       LIKE: [1, 2],
+    //       replys: [],
+    //     },
+    //   ],
+    // },
+    // {
+    //   id: 3,
+    //   user: 1,
+    //   username: "임시3",
+    //   LIKE: [2],
+    //   SAVE: [],
+    //   detail:
+    //     "아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말",
+    //   comments: [
+    //     {
+    //       id: 1,
+    //       username: "아무개",
+    //       content: "아무댓글",
+    //       LIKE: [1, 2],
+    //       replys: [],
+    //     },
+    //     {
+    //       id: 2,
+    //       username: "아무개2",
+    //       content: "아무댓글2",
+    //       LIKE: [1, 2],
+    //       replys: [],
+    //     },
+    //     {
+    //       id: 3,
+    //       username: "아무개3",
+    //       content: "아무댓글3",
+    //       LIKE: [1, 2],
+    //       replys: [],
+    //     },
+    //   ],
+    // },
   ]);
 
   useEffect(() => {
-    // refreshList();
+    refreshList();
   }, []);
 
-  // function refreshList() {
-  //   axios
-  //     .get(`${serverUrl}/community/`, {
-  //       headers: {
-  //         Authorization: `JWT ${user.token}`,
-  //       },
-  //       // params: {
-  //       //   article: 1,
-  //       // },
-  //     })
-  //     .then((res) => {
-  //       setArticleList([]);
-  //       console.log(res.data);
-  //       setArticleList(res.data);
-  //       // console.log(this.state.loading);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }
+  function refreshList() {
+    axios
+      .get(`${serverUrl}/api/community/`, {
+        headers: {
+          Authorization: `JWT ${user.token}`,
+        },
+        // params: {
+        //   article: 1,
+        // },
+      })
+      .then((res) => {
+        // setArticleList([]);
+        // console.log(res.data);
+        // setArticleList(res.data);
+        // console.log(this.state.loading);
+      })
+      .catch((err) => console.log(err));
+  }
 
   // function likeSubmit(article) {
   //   // console.log(article);
@@ -195,6 +195,7 @@ export default function () {
   //       history.push("/Main");
   //     });
   // }
+  console.log("user.user.id", user);
   let article = articleList.map((item, index) => {
     let likeButton = null;
     let countLikeIt1 = null;
