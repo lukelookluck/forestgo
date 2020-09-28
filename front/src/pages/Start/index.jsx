@@ -27,9 +27,9 @@ const Start = () => {
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    const url = `${serverUrl}/api/rest-auth/login/`;
+    const url = `${serverUrl}/api/accounts/login/`;
     const data = {
-      email: email,
+      username: email,
       password: password,
     };
     const headers = {
