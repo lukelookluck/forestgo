@@ -33,7 +33,7 @@ const MyForest = () => {
     <Wrapper>
       <Grid container className="root" justify="center" alignItems="center">
         <Grid container>
-          <Grid item xs={9} className="nick">닉네임 님</Grid>
+          <Grid item xs={9} className="nick">{user.user.username} 님</Grid>
           <Grid item xs={3} className="logout">
             <div onClick={handlelogout}>로그아웃</div>
           </Grid>

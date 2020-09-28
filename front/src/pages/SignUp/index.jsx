@@ -153,13 +153,13 @@ const SignUp = () => {
             </div>
             <Grid container justify="center" alignItems="center">
               <Grid item xs={6}>
-                <Button type="submit" variant="contained" className="submitBtn" onClick={onSubmitHandler}>
-                  등록
+                <Button type="reset" variant="contained" className="resetBtn" onClick={onResetHandler}>
+                  다시 입력
                 </Button>
               </Grid>
               <Grid item xs={6}>
-                <Button type="reset" variant="contained" className="resetBtn" onClick={onResetHandler}>
-                  다시 입력
+                <Button type="submit" variant="contained" className="submitBtn" onClick={onSubmitHandler}>
+                  등록
                 </Button>
               </Grid>
             </Grid>
