@@ -7,7 +7,10 @@ from . import views
 
 urlpatterns = [
     path('', views.ArticleViewSet.as_view()),
-    path('<int:article_pk>', views.ArticleViewSet.as_view()),
+    path('<int:article_pk>/', views.ArticleViewSet.as_view()),
+    path('comment/', views.ListComment.as_view()),
+    path('comment/<int:pk>/', views.DetailComment.as_view()),
     path('article/<int:article_pk>/', views.LikeArticle),
+
 
 ]

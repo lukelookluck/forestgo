@@ -5,13 +5,37 @@ from rest_framework import viewsets, generics
 from rest_framework.response import Response
 from accounts.models import Userinfo
 
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 from rest_framework.decorators import permission_classes, authentication_classes, api_view
+from django_filters.rest_framework import DjangoFilterBackend
+
 
 # Create your views here.
 
 
+@permission_classes((IsAuthenticated,))
+@authentication_classes((JSONWebTokenAuthentication,))
 class ArticleViewSet(generics.ListCreateAPIView):
     queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+
+
+@permission_classes((IsAuthenticated,))
+@authentication_classes((JSONWebTokenAuthentication,))
+class ListComment(generics.ListCreateAPIView):
+    queryset = Comment.objects.filter(parent=None)
+    # queryset = queryset.filter(parent=None)
+
+    serializer_class = CommentSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['article']  # 요청받은 article과 같은 값을 가진 댓글만 가져오기
+
+
+@permission_classes((IsAuthenticated,))
+@authentication_classes((JSONWebTokenAuthentication,))
+class DetailComment(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Comment.objects.all()
     serializer_class = ArticleSerializer
 
 
