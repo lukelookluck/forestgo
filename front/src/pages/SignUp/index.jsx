@@ -69,7 +69,7 @@ const SignUp = () => {
         console.log(response);
         console.log(response.data);
         setUser({ ...response.data });
-        alert('회원가입이 완료되었습니다!');
+        alert('회원가입이 완료되었습니다.');
         history.push('/Main');
       })
       .catch((error) => {
