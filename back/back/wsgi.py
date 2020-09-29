@@ -9,8 +9,14 @@ https://docs.djangoproject.com/en/2.2/howto/deployment/wsgi/
 
 import sys
 print(sys.path)
-sys.path.append('/usr/local/lib/python3.7/site-packages')
-sys.path.append('/srv/docker-server')
+sys.path = [
+    '/srv/docker-server',
+    '/usr/local/lib/python37.zip',
+    '/usr/local/lib/python3.7',
+    '/usr/local/lib/python3.7/lib-dynload',
+    '/usr/local/lib/python3.7/site-packages',
+]
+print(sys.path)
 
 import os
 
