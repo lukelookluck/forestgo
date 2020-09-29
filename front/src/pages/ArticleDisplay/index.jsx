@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
+import { useHistory } from "react-router-dom";
+
 import Grid from "@material-ui/core/Grid";
 import Wrapper from "./style";
 
@@ -56,9 +58,9 @@ export default function (props) {
         headers: {
           Authorization: `JWT ${user.token}`,
         },
-        // params: {
-        //   article: item,
-        // },
+        params: {
+          article: item.id,
+        },
       })
       .then((res) => {
         setListComment(res.data);
@@ -116,14 +118,11 @@ export default function (props) {
     });
   }
 
-  const [clicked, setClicked] = useState(1);
-  const [myClicked, setMyClicked] = useState(true);
+  let [clicked, setClicked] = useState(1);
+  let [myClicked, setMyClicked] = useState(true);
   let [a, setA] = useState("");
 
   const [deleteBtn, setDeleteBtn] = useState(null);
-  // deleteBtn = (
-  //   <DeleteIcon className="comment-list-header-delete-click" fontSize="large" />
-  // );
 
   function initClicked() {
     setClicked(1);
@@ -155,7 +154,7 @@ export default function (props) {
     setClicked(!clicked);
   }
 
-  function DeleteComment(comment) {
+  function DeleteComment(e, comment) {
     axios
       .delete(`${serverUrl}/community/comment/${comment.id}/`, {
         headers: {
@@ -163,11 +162,26 @@ export default function (props) {
         },
       })
       .then((res) => {
-        a.style.background = "";
         initClicked();
         refreshList();
         window.scrollTo(0, 0);
         // history.push("/Main");
+      });
+  }
+
+  let history = useHistory();
+
+  function DeleteArticle(article) {
+    axios
+      .delete(`${serverUrl}/community/${article.id}/`, {
+        headers: {
+          Authorization: `JWT ${user.token}`,
+        },
+      })
+      .then((res) => {
+        refreshList();
+        window.scrollTo(0, 0);
+        history.push("/Main");
       });
   }
 
@@ -183,10 +197,7 @@ export default function (props) {
         {/* <span className="comment-list-header-title">댓글</span> */}
         <div className="header-modal">
           {user.user.id === item.user && (
-            <MenuModal
-              item={item}
-              // DeleteArticle={props.DeleteArticle}
-            />
+            <MenuModal item={item} DeleteArticle={DeleteArticle} />
           )}
         </div>
       </div>

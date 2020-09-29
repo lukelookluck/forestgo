@@ -19,102 +19,7 @@ import { CommonContext } from "../../context/CommonContext";
 export default function () {
   const { serverUrl, user } = useContext(CommonContext);
 
-  const [articleList, setArticleList] = useState([
-    // {
-    //   id: 1,
-    //   user: 1,
-    //   username: "임시1",
-    //   LIKE: [1, 2],
-    //   SAVE: [],
-    //   detail: "아무말아무말",
-    //   comments: [
-    //     {
-    //       id: 1,
-    //       username: "아무개",
-    //       content: "아무댓글",
-    //       LIKE: [1, 2],
-    //       replys: [],
-    //     },
-    //     {
-    //       id: 2,
-    //       username: "아무개2",
-    //       content: "아무댓글2",
-    //       LIKE: [1, 2],
-    //       replys: [],
-    //     },
-    //     {
-    //       id: 3,
-    //       username: "아무개3",
-    //       content: "아무댓글3",
-    //       LIKE: [1, 2],
-    //       replys: [],
-    //     },
-    //   ],
-    // },
-    // {
-    //   id: 2,
-    //   user: 2,
-    //   username: "임시2",
-    //   LIKE: [2],
-    //   SAVE: [],
-    //   detail: "아무말아무말",
-    //   comments: [
-    //     {
-    //       id: 1,
-    //       username: "아무개",
-    //       content: "아무댓글",
-    //       LIKE: [1, 2],
-    //       replys: [],
-    //     },
-    //     {
-    //       id: 2,
-    //       username: "아무개2",
-    //       content: "아무댓글2",
-    //       LIKE: [1, 2],
-    //       replys: [],
-    //     },
-    //     {
-    //       id: 3,
-    //       username: "아무개3",
-    //       content: "아무댓글3",
-    //       LIKE: [1, 2],
-    //       replys: [],
-    //     },
-    //   ],
-    // },
-    // {
-    //   id: 3,
-    //   user: 1,
-    //   username: "임시3",
-    //   LIKE: [2],
-    //   SAVE: [],
-    //   detail:
-    //     "아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말아무말",
-    //   comments: [
-    //     {
-    //       id: 1,
-    //       username: "아무개",
-    //       content: "아무댓글",
-    //       LIKE: [1, 2],
-    //       replys: [],
-    //     },
-    //     {
-    //       id: 2,
-    //       username: "아무개2",
-    //       content: "아무댓글2",
-    //       LIKE: [1, 2],
-    //       replys: [],
-    //     },
-    //     {
-    //       id: 3,
-    //       username: "아무개3",
-    //       content: "아무댓글3",
-    //       LIKE: [1, 2],
-    //       replys: [],
-    //     },
-    //   ],
-    // },
-  ]);
+  const [articleList, setArticleList] = useState([]);
 
   useEffect(() => {
     refreshList();
@@ -179,22 +84,20 @@ export default function () {
 
   let history = useHistory();
 
-  // function DeleteArticle(article) {
-  //   console.log(article);
-  //   console.log(history);
+  function DeleteArticle(article) {
+    axios
+      .delete(`${serverUrl}/community/${article.id}/`, {
+        headers: {
+          Authorization: `JWT ${user.token}`,
+        },
+      })
+      .then((res) => {
+        refreshList();
+        window.scrollTo(0, 0);
+        history.push("/Main");
+      });
+  }
 
-  //   axios
-  //     .delete(`${serverUrl}/community/${article.id}/`, {
-  //       headers: {
-  //         Authorization: `JWT ${user.token}`,
-  //       },
-  //     })
-  //     .then((res) => {
-  //       refreshList();
-  //       window.scrollTo(0, 0);
-  //       history.push("/Main");
-  //     });
-  // }
   let article = articleList.map((item, index) => {
     let likeButton = null;
     let countLikeIt1 = null;
@@ -333,10 +236,7 @@ export default function () {
           </div>
           <div>
             {user.user.id === item.user && (
-              <MenuModal
-                item={item}
-                // DeleteArticle={props.DeleteArticle}
-              />
+              <MenuModal item={item} DeleteArticle={DeleteArticle} />
             )}
           </div>
         </div>

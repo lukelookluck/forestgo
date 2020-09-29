@@ -112,7 +112,7 @@ export default function (props) {
           <DeleteIcon
             className="comment-list-header-delete-click"
             fontSize="large"
-            onClick={() => props.DeleteComment(comment)}
+            onClick={() => props.DeleteComment(e, comment)}
           />
         );
       } else {
@@ -122,7 +122,7 @@ export default function (props) {
 
     return (
       <div key={idx}>
-        {}
+        {idx}
         <div className="comment-single">
           <AccountCircleTwoToneIcon
             className="comment-avata"
