@@ -13,6 +13,8 @@ from django.utils.decorators import method_decorator
 from .forms import PictureTestForm
 from rest_framework import status
 from rest_framework.response import Response
+from django.core import serializers
+from django.http import HttpResponse
 
 
 
@@ -21,7 +23,14 @@ def flower_check(request):
     flower_form = PictureTestForm(request.POST, request.FILES, user=request.user)
     if flower_form.is_valid():
         flower_form.save()
-        return Response(status=status.HTTP_201_CREATED)
+        print("==========")
+        print(request.user)
+        recent_user_flower = Userbook.objects.filter(userinfo_id__email=request.user.email).order_by('-id')[:1].get()
+        print(recent_user_flower)
+        recent_flower = Forestbook.objects.filter(name=recent_user_flower.forestbook_id.name)
+        print(recent_flower)
+        json_data = serializers.serialize('json', recent_flower)
+        return HttpResponse(json_data, content_type='application/json')
     return Response(status=status.HTTP_400_BAD_REQUEST)
 
 class ForestbookViewSet(viewsets.ModelViewSet):

@@ -16,20 +16,13 @@ class PictureTestForm(forms.ModelForm):
         super(PictureTestForm, self).__init__(*args, **kwargs)
     
     def save(self, commit=True):
-        print("---------123-------")
-        print(self.userinfo_id)
         instance = super(PictureTestForm, self).save()
         instance = super(PictureTestForm, self).save(commit=False)
         if instance.img:
             flower_name, flower_score = flower_check(instance.img.url)
-            print("-----------------------")
-            print(flower_name)
             flower = Forestbook.objects.get(name=flower_name)
-            print(flower)
             instance.forestbook_id = flower
             instance.userinfo_id = self.userinfo_id
-            print("-----------------------")
         if commit:
-            print("3")
             instance.save()    
         return instance

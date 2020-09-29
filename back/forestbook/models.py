@@ -13,8 +13,8 @@ class Forestbook(models.Model):
     img = models.ImageField(default=None)
 
 class Userbook(models.Model):
-    userinfo_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, verbose_name='', blank=True, null=True)
-    forestbook_id = models.ForeignKey(Forestbook, on_delete=models.CASCADE, blank=True, null=True)
+    userinfo_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, verbose_name='userinfo_id', blank=True, null=True)
+    forestbook_id = models.ForeignKey(Forestbook, on_delete=models.CASCADE, verbose_name='forestbook_id', blank=True, null=True)
     date = models.DateTimeField('date', auto_now_add=True)
     img = models.ImageField(default=None)
     
