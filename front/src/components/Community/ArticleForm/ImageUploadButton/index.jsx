@@ -46,6 +46,9 @@ export default function ImageUploadButton(props) {
       ]); // 파일 base64 상태 업데이트
 
       console.log("imgBase64", imgBase64);
+      window.scrollTo({ left: 0, top: 1000, behavior: "smooth" });
+
+      props.setIsImage(true);
       // props.setArticleFormData({
       //   ...props.articleFormData,
       //   image: base64,
@@ -66,26 +69,28 @@ export default function ImageUploadButton(props) {
     <Wrapper>
       {/* <div className="input-image-box">{inputImage}</div> */}
       <InputImage temp={imgBase64} />
-      <div className="input-footer">
-        <input
-          accept="image/*"
-          capture="camera"
-          className={classes.input}
-          id="icon-button-file"
-          type="file"
-          // multiple
-          onChange={handleChangeFile}
-        />
-        <label htmlFor="icon-button-file">
-          <IconButton
-            color="primary"
-            aria-label="upload picture"
-            component="span"
-          >
-            <PhotoCamera fontSize="large" />
-          </IconButton>
-        </label>
-      </div>
+      {imgBase64.length == 0 && (
+        <div className="input-footer">
+          <input
+            accept="image/*"
+            capture="camera"
+            className={classes.input}
+            id="icon-button-file"
+            type="file"
+            // multiple
+            onChange={handleChangeFile}
+          />
+          <label htmlFor="icon-button-file">
+            <IconButton
+              color="primary"
+              aria-label="upload picture"
+              component="span"
+            >
+              <PhotoCamera className="CameraIcon" />
+            </IconButton>
+          </label>
+        </div>
+      )}
     </Wrapper>
   );
 }
