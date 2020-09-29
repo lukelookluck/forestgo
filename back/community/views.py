@@ -23,6 +23,13 @@ class ArticleViewSet(generics.ListCreateAPIView):
 
 @permission_classes((IsAuthenticated,))
 @authentication_classes((JSONWebTokenAuthentication,))
+class DetailArticle(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+
+
+@permission_classes((IsAuthenticated,))
+@authentication_classes((JSONWebTokenAuthentication,))
 class ListComment(generics.ListCreateAPIView):
     queryset = Comment.objects.filter(parent=None)
     # queryset = queryset.filter(parent=None)
