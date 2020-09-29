@@ -16,7 +16,7 @@ new_path = [
     '/usr/local/lib/python3.7/lib-dynload',
     '/usr/local/lib/python3.7/site-packages',
 ]
-sys.path.extends(new_path)
+sys.path.extend(new_path)
 print(sys.path)
 
 import os
