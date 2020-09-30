@@ -47,7 +47,7 @@ export default function ImageUploadButton(props) {
       ]); // 파일 base64 상태 업데이트
 
       // console.log("imgBase64", imgBase64);
-      window.scrollTo({ left: 0, top: 1000, behavior: "smooth" });
+      window.scroll({ left: 0, top: 1000, behavior: "smooth" });
 
       props.setIsImage(true);
       props.setArticleFormData({

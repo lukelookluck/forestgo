@@ -34,6 +34,7 @@ export default function Upload(props) {
         .then((res) => {
           history.push("/main");
           props.setValue(0);
+          window.scrollTo({ bottom: 0, behavior: "smooth" });
         })
         .catch((err) => {
           console.log(err);
@@ -49,6 +50,7 @@ export default function Upload(props) {
       .then((res) => {
         history.push("/main");
         props.setValue(0);
+        window.scrollTo({ bottom: 0, behavior: "smooth" });
       })
       .catch((err) => {
         console.log(err);

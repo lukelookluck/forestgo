@@ -64,6 +64,7 @@ export default function NavigationTab() {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    window.scrollTo(0, 0);
   };
 
   const handleChangeIndex = (index) => {

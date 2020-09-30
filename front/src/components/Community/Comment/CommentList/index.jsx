@@ -13,7 +13,9 @@ export default function (props) {
   const { user } = useContext(CommonContext);
 
   console.log("ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴ", props.comments);
-  let comments = props.comments.map((comment, idx) => {
+  let mycomments = props.comments.sort((a, b) => b.id - a.id);
+  console.log(mycomments);
+  let comments = mycomments.map((comment, idx) => {
     let likeButton = null;
     let countLikeIt1 = null;
     if (comment.LIKE.includes(user.user.id)) {
@@ -122,7 +124,6 @@ export default function (props) {
 
     return (
       <div key={idx}>
-        {idx}
         <div className="comment-single">
           <AccountCircleTwoToneIcon
             className="comment-avata"

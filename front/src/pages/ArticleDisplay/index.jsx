@@ -298,6 +298,62 @@ export default function (props) {
     );
   }
 
+  function getTime(myTime) {
+    let theTime = null;
+
+    const now = new Date();
+    const old = new Date(myTime);
+    const gap = now - old;
+    const sec_gap = Math.floor(gap / 1000);
+    const min_gap = Math.floor(sec_gap / 60);
+    const hour_gap = Math.floor(min_gap / 60);
+    const day_gap = Math.floor(hour_gap / 24);
+    const mon_gap = Math.floor(day_gap / 30);
+    const year_gap = Math.floor(mon_gap / 12);
+    console.log(old.getFullYear());
+    // console.log(sec_gap, min_gap, hour_gap, day_gap, mon_gap);
+    // console.log(old, now);
+    if (year_gap >= 1) {
+      theTime = (
+        <span className="comment-createdTime">
+          {old.getFullYear()}년 {old.getMonth()}월 {old.getDate()}일
+        </span>
+      );
+    } else {
+      if (mon_gap >= 1) {
+        theTime = (
+          <span className="comment-createdTime">
+            {old.getMonth()}월 {old.getDate()}일
+          </span>
+        );
+      } else {
+        if (day_gap >= 1) {
+          theTime = <span className="comment-createdTime">{day_gap}일 전</span>;
+        } else {
+          if (hour_gap >= 1) {
+            theTime = (
+              <span className="comment-createdTime">{hour_gap}시간 전</span>
+            );
+          } else {
+            if (min_gap >= 1) {
+              theTime = (
+                <span className="comment-createdTime">{min_gap}분 전</span>
+              );
+            } else {
+              if (sec_gap >= 1) {
+                theTime = <span className="comment-createdTime">몇초 전</span>;
+              } else {
+                theTime = <span className="comment-createdTime">등록 중</span>;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    return <div>{theTime}</div>;
+  }
+
   return (
     <Wrapper>
       <Grid>
@@ -310,7 +366,9 @@ export default function (props) {
                 <AccountCircleIcon className="list-useravata" />
                 <div className="list-avata-1">
                   <span className="list-username">{item.username}</span>
-                  <span className="list-username-time">작성시간</span>
+                  <span className="list-username-time">
+                    {getTime(item.created_at)}
+                  </span>
                 </div>
               </div>
             </div>
@@ -318,12 +376,12 @@ export default function (props) {
           <div className="list-item">
             <div className="list-item-detail">{item.detail}</div>
             <div className="list-item-imageBox">
-              <img
+              {/* <img
                 className="list-item-image"
                 src="/images/sample.jpg"
                 alt=""
-              />
-              {/* <img className="list-item-image" src={item.image} alt="" /> */}
+              /> */}
+              <img className="list-item-image" src={item.image} alt="" />
             </div>
           </div>
           <div className="buttons">

@@ -35,12 +35,11 @@ const Wrapper = styled.div`
 
   & .list-username {
     margin-left: 5px;
-    font-size: 15px;
+    font-size: 15.5px;
   }
 
   & .list-username-time {
-    margin-left: 5px;
-    font-size: 12px;
+    height: 14px;
   }
 
   & .list-item {
@@ -229,7 +228,7 @@ const Wrapper = styled.div`
   }
 
   & .comment-createdTime {
-    font-size: 10px;
+    font-size: 12px;
     margin-left: 5.5px;
     margin-right: 20px;
     float: left;
