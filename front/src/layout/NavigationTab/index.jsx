@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Wrapper from "./styles";
 import { Grid } from "@material-ui/core";
 import PropTypes from "prop-types";
@@ -18,7 +18,6 @@ import Community from "../../pages/Community/";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-
   return (
     <div
       role="tabpanel"
@@ -104,7 +103,7 @@ export default function NavigationTab() {
           <Community></Community>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <Upload></Upload>
+          <Upload setValue={setValue} value={value}></Upload>
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
           <MyForest></MyForest>
