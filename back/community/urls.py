@@ -1,14 +1,20 @@
 from django.urls import path
 from django.conf.urls import url
 from . import views
-from .views import ArticleViewSet, CommentViewSet
 
-article_list = ArticleViewSet.as_view({"get": "list", "post": "create"})
-article_detail = ArticleViewSet.as_view(
-    {"get": "retrieve", "patch": "partial_update", "delete": "destroy"}
-)
+# article_list = ArticleViewSet.as_view({"get": "list", "post": "create"})
+# article_detail = ArticleViewSet.as_view({"get": "list", "post": "create"})
 
 urlpatterns = [
-    url('', article_list, name="article-list"),
-    url('<int:article_pk>', article_detail, name="article-detail"),
+    path('', views.ArticleViewSet.as_view()),
+    path('<int:pk>/', views.DetailArticle.as_view()),
+    path('comment/', views.ListComment.as_view()),
+    path('comment/<int:pk>/', views.DetailComment.as_view()),
+    path('article/<int:article_pk>/', views.LikeArticle),
+
+    path('article_like/<int:article_pk>/', views.LikeArticle),
+    path('comment/like/<int:comment_pk>/', views.LikeComment),
+
+
+
 ]
