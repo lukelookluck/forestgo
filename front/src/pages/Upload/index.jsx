@@ -13,6 +13,8 @@ import { CommonContext } from "../../context/CommonContext";
 export default function Upload(props) {
   const { serverUrl, user } = useContext(CommonContext);
   const [isImage, setIsImage] = useState(false);
+  const [flowerName, setflowerName] = useState();
+
   const [articleFormData, setArticleFormData] = useState({
     id: null,
     user: user.user.id,
@@ -22,6 +24,30 @@ export default function Upload(props) {
   });
 
   let history = useHistory();
+
+  let cnt = 0;
+  function getFlowerInfo(){
+    cnt++;
+
+    const data = {
+      img: articleFormData.image,
+    };
+    axios.post(`${serverUrl}/api/forestbook/flower/`, data , {
+      headers: {
+        Authorization: `Token ${user.user.token}`,
+        // 'Accept' : 'application/json',
+        // 'Content-Type': 'image/jpg',
+      },
+    })
+    .then((res) => {
+      console.log(res);
+      console.log("찾음");
+    })
+    .catch((err) => {
+      console.log(err);
+      console.log("못찾음");
+    });
+  }
 
   function handleSubmit(data) {
     if (data.id) {
@@ -69,9 +95,10 @@ export default function Upload(props) {
             setArticleFormData={setArticleFormData}
           />
         </Grid>
+        {cnt == 0 && isImage && getFlowerInfo()}
         {isImage && (
           <Grid item xs={12}>
-            <p>식물 이름 : OOO</p>
+            <p>식물 이름 : {flowerName}</p>
             <p>식물 정보 : OOO</p>
             <p>식물 정보 : OOO</p>
             <p>식물 정보 : OOO</p>
