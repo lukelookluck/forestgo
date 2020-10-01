@@ -43,12 +43,11 @@ const Wrapper = styled.div`
 
   & .list-username {
     margin-left: 5px;
-    font-size: 15px;
+    font-size: 15.5px;
   }
 
   & .list-username-time {
-    margin-left: 5px;
-    font-size: 12px;
+    height: 14px;
   }
 
   & .list-item {
@@ -60,7 +59,7 @@ const Wrapper = styled.div`
 
   & .list-item-imageBox {
     width: 100%;
-    height: 50vw;
+    height: 70vw;
     /* padding: 5vw 0; */
     overflow: hidden;
   }
@@ -179,9 +178,9 @@ const Wrapper = styled.div`
     top: 0;
     width: 100%;
     border-bottom: solid 0.5px #dddddd;
-    padding: 10px 5px;
+    padding: 10px 0px;
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row; */
     justify-content: space-between;
 <<<<<<< HEAD
     background-color: #4477b5;
@@ -197,6 +196,7 @@ const Wrapper = styled.div`
     height: 35px;
 >>>>>>> front
     display: flex;
+    align-items: center;
   }
 
   & .comment-list-header-arrow {
@@ -215,10 +215,12 @@ const Wrapper = styled.div`
     font-size: 35px;
 >>>>>>> front
     color: #ffffff;
+    margin-left: 5px;
   }
 
   & .comment-list-header-delete-click {
-    font-size: 45px;
+    font-size: 35px;
+    margin-right: 5px;
     color: #ffffff;
   }
 
@@ -290,7 +292,7 @@ const Wrapper = styled.div`
   }
 
   & .comment-createdTime {
-    font-size: 10px;
+    font-size: 12px;
     margin-left: 5.5px;
     margin-right: 20px;
     float: left;
