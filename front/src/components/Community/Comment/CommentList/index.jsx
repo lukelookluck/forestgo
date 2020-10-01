@@ -12,7 +12,6 @@ import { CommonContext } from "../../../../context/CommonContext";
 export default function (props) {
   const { user } = useContext(CommonContext);
 
-  console.log("ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴ", props.comments);
   let mycomments = props.comments.sort((a, b) => b.id - a.id);
   console.log(mycomments);
   let comments = mycomments.map((comment, idx) => {

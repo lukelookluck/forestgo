@@ -1,0 +1,54 @@
+TABLE Field
+
+회원정보
+[userinfo] (django에서 생성)
+id (pk)
+password
+last_login
+is_superuser
+username (unique)
+firest_name
+last_name
+email (unique)
+is_staff (boolean)
+is_active (boolean)
+date_joined
+groups
+user_permissions
+
+
+[forestbook]
+id (pk)
+name
+fullname
+species (종)
+description
+type 
+habitat (서식지)
+season (봄/여름/가을/겨울)
+img (식물 대표 사진 이미지 주소)
+
+
+[userbook] (사용자가 발견한 식물들)
+id (pk)
+userinfo_id (fk)
+forestbook_id (fk)
+date (발견한 날짜, 시간)
+img (내가 찍은 식물 사진 이미지 주소)
+
+
+[challenge] (도전과제 목록)
+id (pk)
+title
+description
+type
+iconimg (도전과제 아이콘 주소)
+
+
+[userchallenge] (사용자가 달성한 도전과제)
+id (pk)
+userinfo_id (fk)
+challenge_id (fk)
+date (달성한 날짜, 시간)
+
+
