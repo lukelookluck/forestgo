@@ -191,6 +191,8 @@ JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'accounts.custom_responses.my_jwt_response_handler'
 }
 
+REST_USE_JWT = True
+
 # CSRF 해결
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
