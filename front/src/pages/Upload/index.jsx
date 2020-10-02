@@ -26,27 +26,30 @@ export default function Upload(props) {
   let history = useHistory();
 
   let cnt = 0;
-  function getFlowerInfo(){
+
+  function getFlowerInfo() {
     cnt++;
 
     const data = {
       img: articleFormData.image,
     };
-    axios.post(`${serverUrl}/api/forestbook/flower/`, data , {
-      headers: {
-        Authorization: `Token ${user.user.token}`,
-        // 'Accept' : 'application/json',
-        // 'Content-Type': 'image/jpg',
-      },
-    })
-    .then((res) => {
-      console.log(res);
-      console.log("찾음");
-    })
-    .catch((err) => {
-      console.log(err);
-      console.log("못찾음");
-    });
+    console.log(data);
+    // axios
+    //   .post(`${serverUrl}/api/forestbook/flower/`, data, {
+    //     headers: {
+    //       Authorization: `Token ${user.user.token}`,
+    //       // 'Accept' : 'application/json',
+    //       // 'Content-Type': 'image/jpg',
+    //     },
+    //   })
+    //   .then((res) => {
+    //     console.log(res);
+    //     console.log("찾음");
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //     console.log("못찾음");
+    //   });
   }
 
   function handleSubmit(data) {

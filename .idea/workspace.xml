@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a313f3b1-7b63-4220-a4eb-17bb53645f9d" name="Default Changelist" comment="" />
+    <list default="true" id="a313f3b1-7b63-4220-a4eb-17bb53645f9d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/front/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/src/pages/Upload/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/pages/Upload/index.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

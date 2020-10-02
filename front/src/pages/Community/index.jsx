@@ -39,9 +39,9 @@ export default function () {
         // setArticleList([]);
         // console.log(res.data);
         setArticleList(res.data);
-        setTimeout(() => {
-          refreshList();
-        }, 3000);
+        // setTimeout(() => {
+        //   refreshList();
+        // }, 3000);
         // console.log(this.state.loading);
       })
       .catch((err) => console.log(err));
