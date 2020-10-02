@@ -4,7 +4,8 @@ const Wrapper = styled.div`
   & .input-image-box {
     /* position: absolute; */
     /* bottom: 60px; */
-    /* margin-bottom: 60px; */
+    margin: 100px 0;
+
     width: 100%;
     height: 100%;
   }

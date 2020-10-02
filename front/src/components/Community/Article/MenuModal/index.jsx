@@ -81,6 +81,7 @@ export default function (props) {
             <div>
               <button
                 className={classes.Button}
+                onClick={handleClose}
                 onClick={() => props.DeleteArticle(props.item)}
               >
                 삭제
