@@ -30,7 +30,7 @@ export default function (props) {
   const [listComment, setListComment] = useState([]);
   const [commentInput, setCommentInput] = useState({
     content: "",
-    article: item.id,
+    article: 1,
     parent: null,
     user: user.user.id,
   });
@@ -135,13 +135,13 @@ export default function (props) {
   function clickComment(e) {
     if (a) {
       if (myClicked) {
-        e.target.closest(".comment-single").style.background = "#c7e2d9";
+        e.target.closest(".comment-single").style.background = "#e0f2ff";
       } else {
         a.style.background = "";
       }
     } else {
       if (myClicked) {
-        e.target.closest(".comment-single").style.background = "#c7e2d9";
+        e.target.closest(".comment-single").style.background = "#e0f2ff";
       } else {
         e.target.closest(".comment-single").style.background = "";
       }
@@ -359,7 +359,7 @@ export default function (props) {
       <Grid>
         {commentHeader}
 
-        <div className="list-card" onClick={initClicked}>
+        <div className="list-card">
           <div className="list-user">
             <div>
               <div className="list-avata">
@@ -386,18 +386,29 @@ export default function (props) {
           </div>
           <div className="buttons">
             <div className="like-btn">
-              {likeButton}
-              <InsertCommentOutlinedIcon className="btn-icon" />
+              {/* {likeButton} */}
+              {/* {countLikeIt1} */}
+              {/* <Link
+                className="more-comment"
+                to={{
+                  pathname: "/community/comment",
+                  state: {
+                    comments: item.comments,
+                    article: item.id,
+                  },
+                }}
+              >
+                <InsertCommentOutlinedIcon className="btn-icon" />
+              </Link> */}
             </div>
-            {saveButton}
+            {/* {saveButton} */}
           </div>
           {/* <Alert open={open} setOpen={setOpen} /> */}
           {/* <hr /> */}
-          {countLikeIt1}
+          {/* {countLikeIt1} */}
           {/* <CommentList comments={item.comments} article={item} /> */}
         </div>
 
-        {/* 댓글 코드 */}
         <div className="comment-list-box">
           <CommentList
             comments={listComment}

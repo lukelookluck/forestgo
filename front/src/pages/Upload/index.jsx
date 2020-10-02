@@ -25,33 +25,6 @@ export default function Upload(props) {
 
   let history = useHistory();
 
-  let cnt = 0;
-
-  function getFlowerInfo() {
-    cnt++;
-
-    const data = {
-      img: articleFormData.image,
-    };
-    console.log(data);
-    // axios
-    //   .post(`${serverUrl}/api/forestbook/flower/`, data, {
-    //     headers: {
-    //       Authorization: `Token ${user.user.token}`,
-    //       // 'Accept' : 'application/json',
-    //       // 'Content-Type': 'image/jpg',
-    //     },
-    //   })
-    //   .then((res) => {
-    //     console.log(res);
-    //     console.log("찾음");
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     console.log("못찾음");
-    //   });
-  }
-
   function handleSubmit(data) {
     if (data.id) {
       axios
@@ -96,14 +69,15 @@ export default function Upload(props) {
             setIsImage={setIsImage}
             articleFormData={articleFormData}
             setArticleFormData={setArticleFormData}
+            flowerName={flowerName}
+            setflowerName={setflowerName}
           />
         </Grid>
-        {cnt == 0 && isImage && getFlowerInfo()}
         {isImage && (
           <Grid item xs={12}>
-            <p>식물 이름 : {flowerName}</p>
-            <p>식물 정보 : OOO</p>
-            <p>식물 정보 : OOO</p>
+            {/* <p>사용자 토큰 : {user.token}</p> */}
+            {/* <p>파일이름 : {articleFormData.image}</p> */}
+            <p>식물 정보 : {flowerName}</p>
             <p>식물 정보 : OOO</p>
           </Grid>
         )}
