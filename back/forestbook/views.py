@@ -20,6 +20,12 @@ from django.http import HttpResponse
 
 @api_view(["POST"])
 def flower_check(request):
+    print("#####################")
+    print(request.POST)
+    print(request.FILES)
+    print(request.user)
+    print("#####################")
+
     flower_form = PictureTestForm(request.POST, request.FILES, user=request.user)
     if flower_form.is_valid():
         flower_form.save()
