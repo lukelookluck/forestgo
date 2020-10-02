@@ -37,12 +37,11 @@ export default function () {
       })
       .then((res) => {
         // setArticleList([]);
-        // console.log(res.data);
+        console.log(res.data);
         setArticleList(res.data);
         // setTimeout(() => {
         //   refreshList();
         // }, 3000);
-        // console.log(this.state.loading);
       })
       .catch((err) => console.log(err));
   }
@@ -60,8 +59,7 @@ export default function () {
         }
       )
       .then((res) => {
-        console.log(res.data.LIKE);
-        refreshList();
+        // refreshList();
       })
       .catch((err) => console.log(err));
   }
@@ -107,12 +105,15 @@ export default function () {
       let likeButton = null;
       let countLikeIt1 = null;
       let myLike = item.LIKE.includes(user.user.id);
+      let open = item.SAVE.includes(user.user.id);
 
       if (myLike) {
         likeButton = (
           <FavoriteIcon
             className="btn-icon"
-            onClick={() => likeIt(item)}
+            onClick={() => {
+              likeIt(item);
+            }}
             color="error"
             key={index}
           />
@@ -124,7 +125,12 @@ export default function () {
         likeButton = (
           <FavoriteBorderIcon
             className="btn-icon"
-            onClick={() => likeIt(item)}
+            onClick={() => {
+              likeIt(item);
+              // setTimeout(() => {
+              //   open = 0;
+              // }, 3000);
+            }}
             key={index}
           />
         );
@@ -136,6 +142,7 @@ export default function () {
       }
 
       function likeIt(item) {
+        console.log("myLike", myLike);
         let array = item.LIKE;
         if (myLike) {
           likeSubmit(item);
@@ -144,10 +151,10 @@ export default function () {
             {
               ...articleList[index],
               LIKE: array.filter((id) => id !== user.user.id),
+              SAVE: array.filter((id) => id !== user.user.id),
             },
             ...articleList.slice(index + 1, articleList.length),
           ]);
-          myLike = false;
         } else {
           likeSubmit(item);
           setArticleList([
@@ -155,17 +162,27 @@ export default function () {
             {
               ...articleList[index],
               LIKE: array.concat([user.user.id]),
+              SAVE: array.concat([user.user.id]),
             },
             ...articleList.slice(index + 1, articleList.length),
           ]);
-          myLike = true;
+          setTimeout(() => {
+            setArticleList([
+              ...articleList.slice(0, index),
+              {
+                ...articleList[index],
+                LIKE: array.concat([user.user.id]),
+                SAVE: array.filter((id) => id !== user.user.id),
+              },
+              ...articleList.slice(index + 1, articleList.length),
+            ]);
+            console.log(articleList[index]);
+          }, 3000);
         }
-        console.log(item.LIKE);
       }
 
       let mySave = item.SAVE.includes(user.user.id);
 
-      let open = 0;
       let saveButton = null;
       if (mySave) {
         saveButton = (
@@ -205,11 +222,17 @@ export default function () {
       //   </a>
       // );
 
-      let myHide = "";
-      if (item.detail.length > 50) {
-        myHide = "...";
+      let myHideTitle = "";
+      if (item.title.length > 11) {
+        myHideTitle = "...";
       }
-      let cardContent = item.detail.substring(0, 50) + myHide;
+      let cardTitle = item.title.substring(0, 11) + myHideTitle;
+
+      let myHideComment = "";
+      if (item.detail.length > 50) {
+        myHideComment = "...";
+      }
+      let cardContent = item.detail.substring(0, 50) + myHideComment;
 
       // function moreContent(e) {
       //   setCardContent("누르면 상세글페이지로");
@@ -239,7 +262,6 @@ export default function () {
         const day_gap = Math.floor(hour_gap / 24);
         const mon_gap = Math.floor(day_gap / 30);
         const year_gap = Math.floor(mon_gap / 12);
-        console.log(old.getFullYear());
         // console.log(sec_gap, min_gap, hour_gap, day_gap, mon_gap);
         // console.log(old, now);
         if (year_gap >= 1) {
@@ -321,6 +343,7 @@ export default function () {
           </div>
           <div className="list-item" onClick={() => goArticleDetailPage(item)}>
             <div className="list-item-detail">
+              <div className="list-item-title">{cardTitle}</div>
               {cardContent}
 
               {/* {myHide} */}

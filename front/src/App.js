@@ -9,6 +9,7 @@ import Main from "./pages/Main/";
 import Discovery from "./pages/Discovery/";
 import Upload from "./pages/Upload/";
 import ArticleDisplay from "./pages/ArticleDisplay/";
+import Temp from "./pages/Temp/";
 
 import { useLocalStorageSetState } from "./common/CommonHooks";
 import { CommonContext } from "./context/CommonContext";
@@ -53,6 +54,7 @@ function App() {
             path="/Article/:articleId"
             component={ArticleDisplay}
           ></Route>
+          <Route exact path="/Temp" component={Temp}></Route>
         </Switch>
       </BrowserRouter>
     </CommonContext.Provider>

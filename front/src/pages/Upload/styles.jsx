@@ -7,12 +7,12 @@ const Wrapper = styled.div`
     position: relative;
 
     margin-bottom: 50px;
-    height: 1120px;
+    height: 920px;
   }
 
   & .uploadForm {
     position: absolute;
-    top: 750px;
+    top: 550px;
     width: 100%;
   }
 
@@ -34,7 +34,7 @@ const Wrapper = styled.div`
 
   & .submitBtn-box {
     position: absolute;
-    top: 1030px;
+    top: 830px;
     left: 50%;
     transform: translate(-50%);
   }

@@ -25,12 +25,12 @@ import { CommonContext } from "../../context/CommonContext";
 export default function (props) {
   const [item, setItem] = useState(props.location.state.article);
   const { serverUrl, user } = useContext(CommonContext);
-  console.log(user.user.id);
+  console.log(props.location.state.article.id);
 
   const [listComment, setListComment] = useState([]);
   const [commentInput, setCommentInput] = useState({
     content: "",
-    article: 1,
+    article: props.location.state.article.id,
     parent: null,
     user: user.user.id,
   });
@@ -374,6 +374,8 @@ export default function (props) {
             </div>
           </div>
           <div className="list-item">
+            <div className="list-item-title">{item.title}</div>
+
             <div className="list-item-detail">{item.detail}</div>
             <div className="list-item-imageBox">
               {/* <img
@@ -425,7 +427,6 @@ export default function (props) {
         </div>
         <CommentForm
           commentInput={commentInput}
-          // setCommentInput={this.state.setCommentInput}
           setCommentInput={handleChangeCommentInput}
           handleSubmit={handleSubmit} // 부모에서 자식으로 부모 이벤트 넘겨줄 떄 자식에선 'props.부모이벤트' 로 사용
           // this.setState({ listComment: res.data });
