@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   & .list-card {
     padding-top: 18px;
     margin-top: 60px;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     /* width: 92.3vw; */
     text-align: left;
   }
@@ -78,8 +78,8 @@ const Wrapper = styled.div`
   }
 
   & .buttons {
-    padding: 10px 15px;
-    margin: 0;
+    padding: 10px 18px;
+    margin-top: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -93,7 +93,7 @@ const Wrapper = styled.div`
 
   & .detail-content {
     font-size: 1em;
-    padding: 2vw 0;
+    padding: 20px 0;
     margin: 0;
     width: 100%;
   }
@@ -112,7 +112,8 @@ const Wrapper = styled.div`
 
   & .countLikeIt1 {
     font-weight: 600;
-    margin-left: 15px;
+    margin-left: 20px;
+    font-size: 16px;
   }
 
   & .to-update-button {
@@ -120,7 +121,7 @@ const Wrapper = styled.div`
   }
 
   & .btn-icon {
-    font-size: 25px;
+    font-size: 30px;
     margin-right: 10px;
   }
 
@@ -239,10 +240,6 @@ const Wrapper = styled.div`
     margin-left: 5.5px;
     margin-right: 20px;
     float: left;
-  }
-
-  & .comment-likeIt-count {
-    font-size: 1vh;
   }
 
   & .header-modal {

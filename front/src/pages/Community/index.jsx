@@ -6,10 +6,8 @@ import Wrapper from "./style";
 
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
-import InsertCommentOutlinedIcon from "@material-ui/icons/InsertCommentOutlined";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import BookmarkIcon from "@material-ui/icons/Bookmark";
+import ModeCommentOutlinedIcon from "@material-ui/icons/ModeCommentOutlined";
 
 import Alert from "../../components/Community/Alert/";
 import MenuModal from "../../components/Community/Article/MenuModal/";
@@ -32,7 +30,7 @@ export default function () {
           Authorization: `JWT ${user.token}`,
         },
         // params: {
-        //   article: 1,
+        //   user: 3,
         // },
       })
       .then((res) => {
@@ -105,7 +103,15 @@ export default function () {
       let likeButton = null;
       let countLikeIt1 = null;
       let myLike = item.LIKE.includes(user.user.id);
-      let open = item.SAVE.includes(user.user.id);
+      let countComment = null;
+
+      if (item.comments.length) {
+        countComment = (
+          <span className="countLikeIt1">댓글 {item.comments.length}개</span>
+        );
+      } else {
+        countComment = <span className="countLikeIt1"> </span>;
+      }
 
       if (myLike) {
         likeButton = (
@@ -127,9 +133,6 @@ export default function () {
             className="btn-icon"
             onClick={() => {
               likeIt(item);
-              // setTimeout(() => {
-              //   open = 0;
-              // }, 3000);
             }}
             key={index}
           />
@@ -166,61 +169,8 @@ export default function () {
             },
             ...articleList.slice(index + 1, articleList.length),
           ]);
-          setTimeout(() => {
-            setArticleList([
-              ...articleList.slice(0, index),
-              {
-                ...articleList[index],
-                LIKE: array.concat([user.user.id]),
-                SAVE: array.filter((id) => id !== user.user.id),
-              },
-              ...articleList.slice(index + 1, articleList.length),
-            ]);
-            console.log(articleList[index]);
-          }, 3000);
         }
       }
-
-      let mySave = item.SAVE.includes(user.user.id);
-
-      let saveButton = null;
-      if (mySave) {
-        saveButton = (
-          <BookmarkIcon
-            className="btn-icon"
-            // onClick={() => {
-            //   props.saveSubmit(item);
-            //   item.SAVE.pop();
-            //   setOpen(0);
-            //   setMySave(false);
-            //   console.log(item);
-            // }}
-          />
-        );
-      } else {
-        saveButton = (
-          <BookmarkBorderIcon
-            className="btn-icon"
-            // onClick={() => {
-            //   props.saveSubmit(item);
-            //   setOpen(1);
-            //   setTimeout(() => {
-            //     setOpen(0);
-            //   }, 3000);
-            //   item.SAVE.push(user.user.id);
-            //   setMySave(true);
-
-            //   console.log(item);
-            // }}
-          />
-        );
-      }
-
-      // let moreButton = (
-      //   <a className="more-tag" href="#" onClick={moreContent}>
-      //     더보기
-      //   </a>
-      // );
 
       let myHideTitle = "";
       if (item.title.length > 11) {
@@ -360,26 +310,19 @@ export default function () {
           <div className="buttons">
             <div className="like-btn">
               {likeButton}
-              {/* {countLikeIt1} */}
-              <Link
-                className="more-comment"
-                to={{
-                  pathname: "/community/comment",
-                  state: {
-                    comments: item.comments,
-                    article: item.id,
-                  },
-                }}
-              >
-                <InsertCommentOutlinedIcon className="btn-icon" />
-              </Link>
+              <div className="more-comment">
+                <ModeCommentOutlinedIcon
+                  className="btn-icon"
+                  onClick={() => goArticleDetailPage(item)}
+                />
+              </div>
             </div>
-            {saveButton}
           </div>
-          <Alert open={open} />
-          {/* <hr /> */}
-          {countLikeIt1}
-          {/* <CommentList comments={item.comments} article={item} /> */}
+          <div className="mention-group">
+            {countLikeIt1}
+            {countComment}
+          </div>
+          {/* <Alert open={open} /> */}
         </div>
       );
     });

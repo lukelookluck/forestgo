@@ -19,39 +19,38 @@ const SignUp = () => {
   const classes = useStyles();
   let history = useHistory();
 
-  const [Email, setEmail] = useState("")
-  const [Password, setPassword] = useState("")
-  const [Name, setName] = useState("")
+  const [Email, setEmail] = useState("");
+  const [Password, setPassword] = useState("");
+  const [Name, setName] = useState("");
   const [confirmPassword, setconfirmPassword] = useState("");
 
   const { serverUrl, user, setUser } = useContext(CommonContext);
 
   const onEmailHandler = (event) => {
-    setEmail(event.currentTarget.value)
-  }
+    setEmail(event.currentTarget.value);
+  };
 
   const onPasswordHandler = (event) => {
-    setPassword(event.currentTarget.value)
-  }
+    setPassword(event.currentTarget.value);
+  };
 
   const onNameHandler = (event) => {
-    setName(event.currentTarget.value)
-  }
+    setName(event.currentTarget.value);
+  };
 
   const onconfirmPasswordHandler = (event) => {
-    setconfirmPassword(event.currentTarget.value)
-  }
+    setconfirmPassword(event.currentTarget.value);
+  };
 
-  const hasError = passwordEntered =>
-    Password.length < 8 ? true : false;
+  const hasError = (passwordEntered) => (Password.length < 8 ? true : false);
 
-  const hasNotSameError = passwordEntered =>
+  const hasNotSameError = (passwordEntered) =>
     Password != confirmPassword ? true : false;
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
     if (Password !== confirmPassword) {
-      return alert('비밀번호와 비밀번호 확인은 같아야 합니다.');
+      return alert("비밀번호와 비밀번호 확인은 같아야 합니다.");
     }
 
     const url = `${serverUrl}/api/rest-auth/registration/`;
@@ -68,9 +67,10 @@ const SignUp = () => {
       .then((response) => {
         console.log(response);
         console.log(response.data);
-        setUser({ ...response.data });
-        alert('회원가입이 완료되었습니다.');
-        history.push('/Main');
+        alert("회원가입이 완료되었습니다.");
+
+        // 저 로그인을 거쳐야지만 user 정보가 들어와서 일단 이렇게 했음
+        handleLogin(data);
       })
       .catch((error) => {
         console.log(error);
@@ -80,15 +80,38 @@ const SignUp = () => {
         setPassword("");
         setconfirmPassword("");
       });
-  }
+  };
 
+  const handleLogin = (predata) => {
+    const url = `${serverUrl}/api/accounts/login/`;
+    const data = {
+      username: predata.email,
+      password: predata.password1,
+    };
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    Axios.post(url, data, headers)
+      .then((response) => {
+        console.log(response);
+        console.log(response.data);
+        setUser({ ...response.data });
+        history.push("/Main");
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("이메일, 비밀번호를 확인해주세요");
+        setEmail("");
+        setPassword("");
+      });
+  };
   const onResetHandler = (event) => {
     event.preventDefault();
     setEmail("");
     setName("");
     setPassword("");
     setconfirmPassword("");
-  }
+  };
 
   return (
     <Wrapper>
@@ -128,7 +151,7 @@ const SignUp = () => {
                 fullWidth
                 value={Password}
                 onChange={onPasswordHandler}
-                error={hasError('password')}
+                error={hasError("password")}
                 id="password"
                 label="비밀번호(8글자 이상 필수)"
                 variant="outlined"
@@ -145,20 +168,32 @@ const SignUp = () => {
                 type="password"
                 value={confirmPassword}
                 onChange={onconfirmPasswordHandler}
-                error={hasNotSameError('confirmPassword')}
+                error={hasNotSameError("confirmPassword")}
                 helperText={
-                  hasNotSameError('confirmPassword') ? "입력한 비밀번호와 일치하지 않습니다." : null
+                  hasNotSameError("confirmPassword")
+                    ? "입력한 비밀번호와 일치하지 않습니다."
+                    : null
                 }
               ></TextField>
             </div>
             <Grid container justify="center" alignItems="center">
               <Grid item xs={6}>
-                <Button type="reset" variant="contained" className="resetBtn" onClick={onResetHandler}>
+                <Button
+                  type="reset"
+                  variant="contained"
+                  className="resetBtn"
+                  onClick={onResetHandler}
+                >
                   다시 입력
                 </Button>
               </Grid>
               <Grid item xs={6}>
-                <Button type="submit" variant="contained" className="submitBtn" onClick={onSubmitHandler}>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  className="submitBtn"
+                  onClick={onSubmitHandler}
+                >
                   등록
                 </Button>
               </Grid>

@@ -13,7 +13,6 @@ export default function (props) {
   const { user } = useContext(CommonContext);
 
   let mycomments = props.comments.sort((a, b) => b.id - a.id);
-  console.log(mycomments);
   let comments = mycomments.map((comment, idx) => {
     let likeButton = null;
     let countLikeIt1 = null;

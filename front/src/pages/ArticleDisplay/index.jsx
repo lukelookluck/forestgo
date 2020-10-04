@@ -25,7 +25,6 @@ import { CommonContext } from "../../context/CommonContext";
 export default function (props) {
   const [item, setItem] = useState(props.location.state.article);
   const { serverUrl, user } = useContext(CommonContext);
-  console.log(props.location.state.article.id);
 
   const [listComment, setListComment] = useState([]);
   const [commentInput, setCommentInput] = useState({
@@ -64,7 +63,6 @@ export default function (props) {
       })
       .then((res) => {
         setListComment(res.data);
-        console.log(res.data);
       })
       .catch((err) => console.log(err));
   }
@@ -91,6 +89,24 @@ export default function (props) {
       });
   }
 
+  function articleLikeSubmit(article) {
+    console.log("article", article);
+    axios
+      .post(
+        `${serverUrl}/community/article/${article.id}/`,
+        { user: user.user.id }, // 현재 유저 정보 넣기
+        {
+          headers: {
+            Authorization: `JWT ${user.token}`,
+          },
+        }
+      )
+      .then((res) => {
+        // refreshList();
+      })
+      .catch((err) => console.log(err));
+  }
+
   function likeSubmit(comment) {
     axios
       .post(
@@ -104,7 +120,6 @@ export default function (props) {
       )
       .then((res) => {
         console.log(res.data);
-
         refreshList();
       })
       .catch((err) => console.log(err));
@@ -231,12 +246,14 @@ export default function (props) {
         LIKE: array.filter((id) => id !== user.user.id),
       });
       setMyLike(false);
+      articleLikeSubmit(item);
     } else {
       setItem({
         ...item,
         LIKE: array.concat([user.user.id]),
       });
       setMyLike(true);
+      articleLikeSubmit(item);
     }
   }
 
@@ -310,9 +327,6 @@ export default function (props) {
     const day_gap = Math.floor(hour_gap / 24);
     const mon_gap = Math.floor(day_gap / 30);
     const year_gap = Math.floor(mon_gap / 12);
-    console.log(old.getFullYear());
-    // console.log(sec_gap, min_gap, hour_gap, day_gap, mon_gap);
-    // console.log(old, now);
     if (year_gap >= 1) {
       theTime = (
         <span className="comment-createdTime">
@@ -387,28 +401,9 @@ export default function (props) {
             </div>
           </div>
           <div className="buttons">
-            <div className="like-btn">
-              {/* {likeButton} */}
-              {/* {countLikeIt1} */}
-              {/* <Link
-                className="more-comment"
-                to={{
-                  pathname: "/community/comment",
-                  state: {
-                    comments: item.comments,
-                    article: item.id,
-                  },
-                }}
-              >
-                <InsertCommentOutlinedIcon className="btn-icon" />
-              </Link> */}
-            </div>
-            {/* {saveButton} */}
+            <div className="like-btn">{likeButton}</div>
           </div>
-          {/* <Alert open={open} setOpen={setOpen} /> */}
-          {/* <hr /> */}
-          {/* {countLikeIt1} */}
-          {/* <CommentList comments={item.comments} article={item} /> */}
+          {countLikeIt1}
         </div>
 
         <div className="comment-list-box">

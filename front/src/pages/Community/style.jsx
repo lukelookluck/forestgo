@@ -111,7 +111,7 @@ const Wrapper = styled.div`
 
   & .countLikeIt1 {
     font-weight: 600;
-    margin-left: 8px;
+    margin: 0 8px;
   }
 
   & .to-update-button {
@@ -134,6 +134,11 @@ const Wrapper = styled.div`
 
   & .btn-icon {
     font-size: 25px;
+  }
+
+  & .mention-group {
+    display: flex;
+    /* justify-content: space-between; */
   }
 `;
 
