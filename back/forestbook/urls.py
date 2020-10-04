@@ -14,6 +14,6 @@ forestbook_detail = ForestbookViewSet.as_view(
 urlpatterns = [
     url('my_forest/', my_forest, name="my-forest"),
     url('list/', forestbook_list, name = "forestbook-list"),
-    url('detail/<int:pk>/', forestbook_detail, name="forestbook-detail"),
+    url('detail/' + r'(?P<pk>[0-9]+)/', forestbook_detail, name="forestbook-detail"),
     url('flower/', flower_check)
 ]
