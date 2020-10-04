@@ -7,7 +7,6 @@ import Header from "../../layout/Header/";
 
 import ImageUploadBtn from "../../components/Community/ArticleForm/ImageUploadButton/";
 
-import Temp1 from "../../components/Community/ArticleForm/Temp1";
 import { CommonContext } from "../../context/CommonContext";
 
 export default function (props) {
@@ -153,10 +152,6 @@ export default function (props) {
               ></TextField>
             </div>
 
-            <Temp1
-              setArticleFormData={setArticleFormData}
-              articleFormData={articleFormData}
-            />
             <ImageUploadBtn
               articleFormData={articleFormData}
               setArticleFormData={setArticleFormData}
