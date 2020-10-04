@@ -15,13 +15,7 @@ export default function Upload(props) {
   const [isImage, setIsImage] = useState(false);
   const [flowerName, setflowerName] = useState();
 
-  const [articleFormData, setArticleFormData] = useState({
-    id: null,
-    user: user.user.id,
-    title: "",
-    detail: "",
-    image: "",
-  });
+  const [takenImage, setTakenImage] = useState("");
 
   let history = useHistory();
 
@@ -68,7 +62,7 @@ export default function Upload(props) {
     }, 500);
 
     history.push({
-      pathname: "/ArticleForm",
+      pathname: "/Create",
       state: {
         image: data,
       },
@@ -81,8 +75,8 @@ export default function Upload(props) {
         <Grid item xs={12}>
           <ImageUploadBtn
             setIsImage={setIsImage}
-            articleFormData={articleFormData}
-            setArticleFormData={setArticleFormData}
+            takenImage={takenImage}
+            setTakenImage={setTakenImage}
             flowerName={flowerName}
             setflowerName={setflowerName}
           />
@@ -105,7 +99,7 @@ export default function Upload(props) {
                 type="submit"
                 variant="contained"
                 className="submitBtn"
-                onClick={() => goArticleForm(articleFormData.image)}
+                onClick={() => goArticleForm(takenImage)}
               >
                 글쓰러가기
               </Button>

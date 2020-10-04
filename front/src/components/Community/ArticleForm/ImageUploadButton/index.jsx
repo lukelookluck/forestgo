@@ -50,10 +50,7 @@ export default function ImageUploadButton(props) {
       }, 800);
 
       props.setIsImage(true);
-      props.setArticleFormData({
-        ...props.articleFormData,
-        image: base64,
-      });
+      props.setTakenImage(base64);
     };
   };
 

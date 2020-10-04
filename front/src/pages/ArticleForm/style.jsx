@@ -29,10 +29,8 @@ const Wrapper = styled.div`
   }
 
   & .submitBtn-box {
-    /* position: absolute; */
-    /* top: 80%; */
-    /* left: 0%; */
-    /* transform: translate(-50%, -50%); */
+    display: flex;
+    justify-content: space-around;
   }
 
   & .input-image-box {

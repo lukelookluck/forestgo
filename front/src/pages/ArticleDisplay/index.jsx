@@ -281,39 +281,6 @@ export default function (props) {
       );
     }
   }
-  const [mySave, setMySave] = useState(item.SAVE.includes(user.user.id));
-  let saveButton = null;
-  if (mySave) {
-    saveButton = (
-      <BookmarkIcon
-        className="btn-icon-save"
-        // onClick={() => {
-        //   props.saveSubmit(item);
-        //   item.SAVE.pop();
-        //   setOpen(0);
-        //   setMySave(false);
-        //   console.log(item);
-        // }}
-      />
-    );
-  } else {
-    saveButton = (
-      <BookmarkBorderIcon
-        className="btn-icon-save"
-        // onClick={() => {
-        //   props.saveSubmit(item);
-        //   setOpen(1);
-        //   setTimeout(() => {
-        //     setOpen(0);
-        //   }, 3000);
-        //   item.SAVE.push(user.user.id);
-        //   setMySave(true);
-
-        //   console.log(item);
-        // }}
-      />
-    );
-  }
 
   function getTime(myTime) {
     let theTime = null;
@@ -373,7 +340,7 @@ export default function (props) {
       <Grid>
         {commentHeader}
 
-        <div className="list-card">
+        <div className="list-card" onClick={() => initClicked()}>
           <div className="list-user">
             <div>
               <div className="list-avata">

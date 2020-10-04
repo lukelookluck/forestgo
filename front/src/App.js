@@ -54,7 +54,7 @@ function App() {
             path="/Article/:articleId"
             component={ArticleDisplay}
           ></Route>
-          <Route exact path="/ArticleForm" component={ArticleFrom}></Route>
+          <Route exact path="/Create" component={ArticleFrom}></Route>
         </Switch>
       </BrowserRouter>
     </CommonContext.Provider>

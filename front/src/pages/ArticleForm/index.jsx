@@ -11,7 +11,7 @@ import InputImage from "../../components/Community/ArticleForm/InputImage/";
 import { CommonContext } from "../../context/CommonContext";
 
 export default function (props) {
-  console.log([props.location.state.image]);
+  console.log(props.location.state.article);
   const { serverUrl, user } = useContext(CommonContext);
   const [articleFormData, setArticleFormData] = useState({
     id: null,
@@ -20,80 +20,71 @@ export default function (props) {
     detail: "",
     image: "",
   });
+  function refreshList() {
+    if (props.location.state.article) {
+      const article = props.location.state.article;
+      setArticleFormData({
+        ...articleFormData,
+        id: article.id,
+        title: article.title,
+        detail: article.detail,
+        image: article.image,
+      });
+    }
+  }
+  let mySubmit = "등록";
+  if (props.location.state.article) {
+    mySubmit = "수정완료";
+  }
 
-  // function refreshList() {
-  //   if (props.location.state) {
-  //     const article = props.location.state.article;
-  //     setArticleFormData({
-  //       ...articleFormData,
-  //       id: article.id,
-  //       title: article.title,
-  //       detail: article.detail,
-  //       drink_name: article.title,
-  //       ingredient1: article.ingredient1,
-  //       ingredient2: article.ingredient2,
-  //       ingredient3: article.ingredient3,
-  //       ingredient4: article.ingredient4,
-  //       ingredient5: article.ingredient5,
-  //       ingredient6: article.ingredient6,
-  //       measure1: article.measure1,
-  //       measure2: article.measure2,
-  //       measure3: article.measure3,
-  //       measure4: article.measure4,
-  //       measure5: article.measure5,
-  //       measure6: article.measure6,
-  //     });
-  //   }
-  // }
+  useEffect(() => {
+    refreshList();
+  }, []);
 
-  // useEffect(() => {
-  //   refreshList();
-  // }, []);
+  useEffect(() => {
+    const unblock = props.history.block((location, action) => {
+      if (action === "POP") {
+        if (window.confirm("작성하던 내용이 없어집니다. 정말 떠나실건가요?")) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    });
+    return () => {
+      unblock();
+    };
+  }, [props.history]);
 
-  // useEffect(() => {
-  //   const unblock = props.history.block((location, action) => {
-  //     if (action === "POP") {
-  //       if (window.confirm("작성하던 내용이 없어집니다. 정말 떠나실건가요?")) {
-  //         return true;
-  //       } else {
-  //         return false;
-  //       }
-  //     }
-  //   });
-  //   return () => {
-  //     unblock();
-  //   };
-  // }, [props.history]);
-
-  // function handleSubmit(data) {
-  //   if (data.id) {
-  //     axios
-  //       .put(`${serverUrl}/community/${data.id}/`, data, {
-  //         headers: {
-  //           Authorization: `JWT ${user.token}`,
-  //         },
-  //       })
-  //       .then((res) => {
-  //         props.history.push("/main");
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //     return;
-  //   }
-  //   axios
-  //     .post(`${serverUrl}/community/`, data, {
-  //       headers: {
-  //         Authorization: `JWT ${user.token}`,
-  //       },
-  //     })
-  //     .then((res) => {
-  //       props.history.push("/main");
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }
+  function handleSubmit(data) {
+    if (data.id) {
+      axios
+        .put(`${serverUrl}/community/${data.id}/`, data, {
+          headers: {
+            Authorization: `JWT ${user.token}`,
+          },
+        })
+        .then((res) => {
+          props.history.push("/main");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      return;
+    }
+    axios
+      .post(`${serverUrl}/community/`, data, {
+        headers: {
+          Authorization: `JWT ${user.token}`,
+        },
+      })
+      .then((res) => {
+        props.history.push("/main");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   return (
     <Wrapper>
@@ -102,7 +93,7 @@ export default function (props) {
         <div className="input-image-box">
           <img
             className="input-image"
-            src={props.location.state.image}
+            src={props.location.state.image || articleFormData.image}
             alt="image"
           />
         </div>
@@ -151,9 +142,17 @@ export default function (props) {
             type="submit"
             variant="contained"
             className="submitBtn"
-            // onClick={() => handleSubmit(articleFormData)}
+            onClick={() => props.history.goBack()}
           >
-            등록
+            뒤로가기
+          </Button>
+          <Button
+            type="submit"
+            variant="contained"
+            className="submitBtn"
+            onClick={() => handleSubmit(articleFormData)}
+          >
+            {mySubmit}
           </Button>
         </Grid>
       </Grid>

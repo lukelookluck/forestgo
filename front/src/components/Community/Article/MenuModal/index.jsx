@@ -74,7 +74,7 @@ export default function (props) {
             <div>
               <Link
                 to={{
-                  pathname: "/Community/Create",
+                  pathname: "/Create",
                   state: {
                     article: props.item,
                   },
