@@ -9,7 +9,7 @@ class Forestbook(models.Model):
     description = models.TextField('description')
     use = models.TextField('use')
     growth = models.TextField('growth')
-    season = models.CharField('season', max_length=30)
+    season = models.CharField('season', max_length=20)
     img = models.ImageField(default=None)
 
 class Userbook(models.Model):
