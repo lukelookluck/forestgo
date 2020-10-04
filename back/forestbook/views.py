@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .serializers import ForestbookSerializer, UserbookSerializer
 from .models import Forestbook, Userbook
+from accounts.models import Userinfo
 
 from rest_framework import viewsets, generics
 from rest_framework.decorators import api_view
@@ -24,7 +25,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 @permission_classes((IsAuthenticated,))
 @authentication_classes((JSONWebTokenAuthentication,))
-class UserbookViewSet(generics.ListCreateAPIView):
+class MyUserbookViewSet(generics.ListCreateAPIView):
     queryset = Userbook.objects.all()
     serializer_class = UserbookSerializer
     filter_backends = [DjangoFilterBackend]
