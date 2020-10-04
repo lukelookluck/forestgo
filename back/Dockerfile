@@ -1,13 +1,13 @@
 # /docker-server/server_dev/Dockerfile
-FROM python:3.6.9
+FROM python:3.7
 
 ENV PYTHONUNBUFFERED 1 
 
 RUN apt-get -y update 
 RUN apt-get -y install vim
-RUN apt-get install -y uwsgi-plugin-python3
+RUN apt-get install -y uwsgi uwsgi-plugin-python3
 
-RUN mkdir /srv/docker-server
+RUN mkdir -p /srv/docker-server
 ADD . /srv/docker-server
 
 WORKDIR /srv/docker-server

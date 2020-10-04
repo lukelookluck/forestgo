@@ -1,11 +1,8 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-<<<<<<< HEAD
-=======
   font-family: "NanumSquareRound";
 
->>>>>>> front
   & .list-card {
     margin-top: 2.5vw;
     margin-bottom: 10vw;
@@ -66,6 +63,11 @@ const Wrapper = styled.div`
     padding: 0;
   }
 
+  & .list-item-title {
+    font-size: 17px;
+    font-weight: 600;
+  }
+
   & .list-item-detail {
     justify-content: center;
     align-items: center;
@@ -109,7 +111,7 @@ const Wrapper = styled.div`
 
   & .countLikeIt1 {
     font-weight: 600;
-    margin-left: 8px;
+    margin: 0 8px;
   }
 
   & .to-update-button {
@@ -132,6 +134,11 @@ const Wrapper = styled.div`
 
   & .btn-icon {
     font-size: 25px;
+  }
+
+  & .mention-group {
+    display: flex;
+    /* justify-content: space-between; */
   }
 `;
 
