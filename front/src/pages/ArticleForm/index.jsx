@@ -18,7 +18,7 @@ export default function (props) {
     user: user.user.id,
     title: "",
     detail: "",
-    image: "",
+    image: props.location.state.image,
   });
   function refreshList() {
     if (props.location.state.article) {
@@ -57,6 +57,7 @@ export default function (props) {
   }, [props.history]);
 
   function handleSubmit(data) {
+    console.log(data);
     if (data.id) {
       axios
         .put(`${serverUrl}/community/${data.id}/`, data, {
