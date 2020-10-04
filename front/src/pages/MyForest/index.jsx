@@ -1,32 +1,41 @@
-import React from "react";
+import React, {useContext} from "react";
 import { useHistory } from "react-router-dom";
 import Wrapper from "./styles";
 import { Grid } from "@material-ui/core";
 import Paper from '@material-ui/core/Paper';
 import SeasonChart from "./seasonchart";
+import Axios from "axios";
+import { CommonContext } from "../../context/CommonContext";
 
 const MyForest = () => {
 
   let history = useHistory();
+  const { serverUrl, user, setUser } = useContext(CommonContext);
 
-  const onClickRedirectPathHandler = (name) => (e) => {
-
-    // 로그아웃하는 코드 삽입
-    
-
-
-    alert("로그아웃 되었습니다.");
-    window.scrollTo(0, 0);
-    history.push(name);
+  const handlelogout = () => {
+    // 로그아웃
+    const url = `${serverUrl}/api/rest-auth/logout/`;
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    Axios.post(url, headers)
+      .then(() => {
+        alert("로그아웃 되었습니다.");
+        window.scrollTo(0, 0);
+        history.push("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
     <Wrapper>
       <Grid container className="root" justify="center" alignItems="center">
         <Grid container>
-          <Grid item xs={9} className="nick">닉네임 님</Grid>
+          <Grid item xs={9} className="nick">{user.user.username} 님</Grid>
           <Grid item xs={3} className="logout">
-            <div onClick={onClickRedirectPathHandler("/")}>로그아웃</div>
+            <div onClick={handlelogout}>로그아웃</div>
           </Grid>
         </Grid>
 

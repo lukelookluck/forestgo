@@ -13,15 +13,8 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { CommonContext } from "../../../context/CommonContext";
 
 export default function (props) {
-  // const { serverUrl, user } = useContext(CommonContext);
-  const user = {
-    token: "",
-    user: {
-      id: 1,
-      username: "임시아이디",
-      email: "",
-    },
-  };
+  const { serverUrl, user } = useContext(CommonContext);
+
   const [myIndex, setMyIndex] = useState(2);
 
   function moreComment() {
