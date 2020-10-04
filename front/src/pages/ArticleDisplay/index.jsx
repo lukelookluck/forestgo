@@ -389,14 +389,8 @@ export default function (props) {
           </div>
           <div className="list-item">
             <div className="list-item-title">{item.title}</div>
-
             <div className="list-item-detail">{item.detail}</div>
             <div className="list-item-imageBox">
-              {/* <img
-                className="list-item-image"
-                src="/images/sample.jpg"
-                alt=""
-              /> */}
               <img className="list-item-image" src={item.image} alt="" />
             </div>
           </div>

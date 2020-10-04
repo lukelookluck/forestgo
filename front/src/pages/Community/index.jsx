@@ -107,7 +107,7 @@ export default function () {
 
       if (item.comments.length) {
         countComment = (
-          <span className="countLikeIt1">댓글 {item.comments.length}개</span>
+          <span className="countLikeIt1">댓글 {item.commentcnt}개</span>
         );
       } else {
         countComment = <span className="countLikeIt1"> </span>;

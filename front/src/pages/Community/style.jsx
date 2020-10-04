@@ -138,7 +138,7 @@ const Wrapper = styled.div`
 
   & .mention-group {
     display: flex;
-    /* justify-content: space-between; */
+    justify-content: space-between;
   }
 `;
 
