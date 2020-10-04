@@ -1,4 +1,4 @@
-import React, { useContext , useEffect, useState } from "react";
+import React, { Fragment, useContext , useEffect, useState, Component } from "react";
 import { useHistory } from "react-router-dom";
 import Wrapper from "./styles";
 import { Grid } from "@material-ui/core";
@@ -13,8 +13,19 @@ const MyForest = () => {
   
   const [flowerList, setFlowerList] = useState([]);
   const { serverUrl, user } = useContext(CommonContext);
+  const [spring, setSpring] = useState(0);
+  const [summer, setSummer] = useState(0);
+  const [fall, setFall] = useState(0);
+  const [winter, setWinter] = useState(0);
+  const [flag, setFlag] = useState(0);
 
-  let medalImg = "";
+  let season = ""; 
+
+  let sprcnt = 0;
+  let sumcnt = 0;
+  let falcnt = 0;
+  let wincnt = 0;
+  let flacnt = 0;
 
   useEffect(() => {
     refreshList();
@@ -23,8 +34,43 @@ const MyForest = () => {
     }
   }, []);
 
-  function refreshList() {
+  useEffect(() => {
+    for(let i = 0; i < flowerList.length; i++){
+      Axios.get(`${serverUrl}/api/forestbook/detail/${flowerList[i].forestbook_id}`, {
+        headers: {
+          Authorization: `JWT ${user.token}`,
+        },
+      })
+        .then((response) => {
+          season = response.data.season;
+          console.log(season);
 
+          if(season.indexOf('3') >= 0 || season.indexOf('4') >= 0 || season.indexOf('5') >= 0){
+            sprcnt++;
+            setSpring(sprcnt);
+          }
+          if(season.indexOf('6') >= 0 || season.indexOf('7') >= 0 || season.indexOf('8') >= 0){
+            sumcnt++;
+            setSummer(sumcnt);
+          }
+          if(season.indexOf('9') >= 0 || season.indexOf('10') >= 0 || season.indexOf('11') >= 0){
+            falcnt++;
+            setFall(falcnt);
+          }
+          if(season.indexOf('12') >= 0 || (season.indexOf('10') < 0 && season.indexOf('11') <= 0 && season.indexOf('1') >= 0) || season.indexOf('2') >= 0){
+            wincnt++;
+            setWinter(wincnt);
+          }
+          flacnt++;
+          setFlag(flacnt);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [flowerList]);
+
+  function refreshList() {
     Axios.get(`${serverUrl}/api/forestbook/my_forest/`, {
       headers: {
         Authorization: `JWT ${user.token}`,
@@ -40,25 +86,7 @@ const MyForest = () => {
       .catch((error) => {
         console.log(error);
       });
-
-    // Axios.get(`${serverUrl}/api/forestbook/detail/${flowerList[1].forestbook_id}`, {
-    //   headers: {
-    //     Authorization: `JWT ${user.token}`,
-    //   },
-    // })
-    //   .then((response) => {
-    //     console.log(response);
-    //     // console.log('사용자 아이디는 ' + user.user.id);
-    //     console.log(response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-
-
   }
-
-
 
   const handlelogout = () => {
     // 로그아웃
@@ -77,29 +105,11 @@ const MyForest = () => {
       });
   };
 
-  const menu = flowerList.map((item) => {
-    return (
-      <div key={item.id}>
-        <div>뭐냐고 {item.created_at}</div>
-      </div>
-
-
-      // <Carousel.Item key={item.id} className="caroitem" onClick={onClickRedirectPathHandler('/SelectCocktail/' + item.id)}>
-      //   <img src={item.imgDrink} alt={item.strDrink} className="cocktailimg"></img>
-      //   <Carousel.Caption>
-      //     <h1>{item.strDrink}</h1>
-      //     <p>{item.strInstructions}</p>
-      //   </Carousel.Caption>
-      // </Carousel.Item>
-    );
-  });
-
-
   return (
     <Wrapper>
       <Grid container className="root" justify="center" alignItems="center">
         <Grid container>
-          <Grid item xs={9} className="nick">{user.user.username} 님</Grid>
+          <Grid item xs={9} className="nick"></Grid>
           <Grid item xs={3} className="logout">
             <div onClick={handlelogout}>로그아웃</div>
           </Grid>
@@ -107,8 +117,7 @@ const MyForest = () => {
 
         <Grid item xs={12} className="papergrid">
           <Paper variant="outlined">
-            <Grid className="title">등급</Grid>
-
+            <Grid className="title">{user.user.username}님의 등급은</Grid>
             <img src={flowerList.length < 10 ? "/images/bronze.png" 
             : flowerList.length < 20 ? "/images/silver.png"
             : "/images/gold.png"} className="medal" width="100px"></img>
@@ -121,29 +130,38 @@ const MyForest = () => {
 
         <Grid item xs={12} className="papergrid">
           <Paper variant="outlined">
-            <Grid className="title">발견한 식물 수</Grid>
+            <Grid className="title">{user.user.username}님의 식물은 총</Grid>
             <Grid className="count">{flowerList.length} 개</Grid>
           </Paper>
         </Grid>
+        
 
         <Grid item xs={12} className="papergrid">
           <Paper variant="outlined">
-            <Grid className="title">서식지</Grid>
-            <Grid container justify="center" alignItems="center">
-              <Grid item xs={6} className="habi">육상 : 7개</Grid>
-              <Grid item xs={6} className="habi">수상 : 2개</Grid>
+            <Grid className="title">{user.user.username}님의 식물을 볼 수 있는 계절은</Grid>
+            <Grid item xs={12} className="chart">
+              { flag === flowerList.length
+              ? <Fragment>
+                  <SeasonChart
+                    SeasonCnt={[spring, summer, fall, winter]}
+                    ></SeasonChart>
+                  <Grid item xs={12}>더운 여름을 잘 이겨내는 사람이군요! 같은 가장 많이 모은 계절에 맞는 멘트 넣기</Grid>
+              </Fragment>
+              : <Fragment></Fragment>}
             </Grid>
           </Paper>
         </Grid>
 
         <Grid item xs={12} className="papergrid" id="lastgrid">
           <Paper variant="outlined">
-            <Grid className="title">계절</Grid>
-            <Grid item xs={12} className="chart">
-              <SeasonChart className="chart"></SeasonChart>
+            <Grid className="title">{user.user.username}님의 꽃말은</Grid>
+            <Grid container justify="center" alignItems="center">
+              <Grid item xs={12} className="habi">가장 많이 모은 꽃말? 단어? 보여주기</Grid>
+              <Grid item xs={12} className="habi">좀 시각적으로 예쁘게</Grid>
             </Grid>
           </Paper>
         </Grid>
+
 
       </Grid>
     </Wrapper>

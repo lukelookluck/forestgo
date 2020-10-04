@@ -12,7 +12,6 @@ class ChartsPage extends React.Component {
                 plugins: {
                     labels: {
                         render: 'label',
-                        // fontColor: ['green', 'white', 'red'],
                         precision: 2
                     },
                     datalabels: {
@@ -22,7 +21,7 @@ class ChartsPage extends React.Component {
             },
             datasets: [
                 {
-                    data: [4, 2, 2, 1],
+                    data: this.props.SeasonCnt,
                     backgroundColor: [
                         "#FDB45C",
                         "#F7464A",

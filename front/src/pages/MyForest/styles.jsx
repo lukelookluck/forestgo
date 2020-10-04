@@ -4,7 +4,7 @@ const Wrapper = styled.div`
 
     .title {
         text-align: left;
-        font-size: 23px;
+        font-size: 18px;
         font-weight: bold;
         margin-left: 13px;
         margin-top: 10px;
@@ -23,8 +23,6 @@ const Wrapper = styled.div`
     }
 
     .habi {
-        margin-top: 10px;
-        margin-bottom: 10px;
         font-size: 20px;
     }
 
@@ -34,7 +32,7 @@ const Wrapper = styled.div`
     }
 
     #lastgrid {
-        margin-bottom: 50px;
+        margin-bottom: 30px;
     }
 
     .chart {
@@ -50,7 +48,9 @@ const Wrapper = styled.div`
         color: #509c82;
     }
 
-    
+    .root {
+        padding-bottom: 30px;
+    }
 `;
 
 export default Wrapper;
