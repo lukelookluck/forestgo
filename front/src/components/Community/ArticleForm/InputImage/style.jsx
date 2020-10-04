@@ -14,7 +14,7 @@ const Wrapper = styled.div`
     /* max-width: 20%; */
     /* overflow: hidden; */
     width: 80vw;
-    height: 50vh;
+    height: 40vh;
     border-radius: 25px;
   }
 `;

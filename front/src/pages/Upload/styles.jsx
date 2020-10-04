@@ -4,10 +4,10 @@ const Wrapper = styled.div`
   text-align: center;
 
   .root {
-    position: relative;
+    /* position: relative; */
 
-    margin-bottom: 50px;
-    height: 920px;
+    padding-bottom: 50px;
+    /* height: 700px; */
   }
 
   & .uploadForm {
@@ -16,8 +16,14 @@ const Wrapper = styled.div`
     width: 100%;
   }
 
-  & .uploadForm-unit {
-    width: 100%;
+  & .createAritlce-box {
+  }
+
+  & .submitBtn-box {
+    position: absolute;
+    top: 830px;
+    left: 50%;
+    transform: translate(-50%);
   }
 
   & .submitBtn {
@@ -30,13 +36,6 @@ const Wrapper = styled.div`
     color: white;
     font-size: 20px;
     font-family: "NanumSquareRound";
-  }
-
-  & .submitBtn-box {
-    position: absolute;
-    top: 830px;
-    left: 50%;
-    transform: translate(-50%);
   }
 
   & .submitBtn:hover {

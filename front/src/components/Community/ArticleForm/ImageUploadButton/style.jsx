@@ -4,7 +4,7 @@ const Wrapper = styled.div`
   & .input-footer {
     /*  position: fixed; */
     bottom: 0%;
-    margin-top: 180px;
+    padding-top: 25vh;
   }
 
   & .CameraIcon {

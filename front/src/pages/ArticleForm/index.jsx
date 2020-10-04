@@ -7,29 +7,17 @@ import Header from "../../layout/Header/";
 
 import ImageUploadBtn from "../../components/Community/ArticleForm/ImageUploadButton/";
 
-import Temp1 from "../../components/Community/ArticleForm/Temp1";
+import InputImage from "../../components/Community/ArticleForm/InputImage/";
 import { CommonContext } from "../../context/CommonContext";
 
 export default function (props) {
-  // const { serverUrl, user } = useContext(CommonContext);
+  console.log([props.location.state.image]);
+  const { serverUrl, user } = useContext(CommonContext);
   const [articleFormData, setArticleFormData] = useState({
     id: null,
+    user: user.user.id,
     title: "",
     detail: "",
-    drink_name: "",
-    user: "",
-    ingredient1: "",
-    ingredient2: "",
-    ingredient3: "",
-    ingredient4: "",
-    ingredient5: "",
-    ingredient6: "",
-    measure1: "",
-    measure2: "",
-    measure3: "",
-    measure4: "",
-    measure5: "",
-    measure6: "",
     image: "",
   });
 
@@ -109,21 +97,24 @@ export default function (props) {
 
   return (
     <Wrapper>
+      <Header></Header>
       <Grid container className="root" justify="center" alignItems="center">
-        <Grid item xs={12} className="form-header-title">
-          <div>나만의 레시피 만들기</div>
-        </Grid>
-
-        <Grid item xs={10}>
+        <div className="input-image-box">
+          <img
+            className="input-image"
+            src={props.location.state.image}
+            alt="image"
+          />
+        </div>
+        <Grid item xs={12} className="uploadForm">
           <form>
             <div>
               <TextField
                 required
                 fullWidth
                 id="name"
-                label="칵테일 이름"
-                variant="outlined"
-                autoFocus
+                label="제목"
+                variant="standard"
                 value={articleFormData.title}
                 onChange={({ target: { value } }) => {
                   setArticleFormData({
@@ -138,50 +129,32 @@ export default function (props) {
                 required
                 fullWidth
                 id="details"
-                label="칵테일 소개"
+                label="내용을 입력하세요"
                 multiline
-                rows={4}
-                variant="outlined"
+                rows={10}
+                variant="standard"
                 value={articleFormData.detail}
                 onChange={({ target: { value } }) => {
                   setArticleFormData({
                     ...articleFormData,
                     detail: value,
-                    drink_name: value,
                   });
                 }}
               ></TextField>
             </div>
-
-            <Temp1
-              setArticleFormData={setArticleFormData}
-              articleFormData={articleFormData}
-            />
-            <ImageUploadBtn
-              articleFormData={articleFormData}
-              setArticleFormData={setArticleFormData}
-            />
-
-            <Grid container justify="center" alignItems="center">
-              <Grid item xs={6}>
-                <Button
-                  type="button"
-                  variant="contained"
-                  className="article-create-button"
-                  onClick={() => {
-                    // handleSubmit(articleFormData);
-                  }}
-                >
-                  공유하기
-                </Button>
-              </Grid>
-              <Grid item xs={6}>
-                <Button type="reset" variant="contained" className="resetBtn">
-                  다시 입력
-                </Button>
-              </Grid>
-            </Grid>
           </form>
+        </Grid>
+
+        {/* <InputImage temp={[props.location.state.image]} /> */}
+        <Grid item xs={12} className="submitBtn-box">
+          <Button
+            type="submit"
+            variant="contained"
+            className="submitBtn"
+            // onClick={() => handleSubmit(articleFormData)}
+          >
+            등록
+          </Button>
         </Grid>
       </Grid>
     </Wrapper>

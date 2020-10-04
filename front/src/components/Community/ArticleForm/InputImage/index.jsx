@@ -7,7 +7,6 @@ const useStyles = makeStyles((theme) => ({}));
 
 export default function SingleLineGridList(props) {
   const classes = useStyles();
-
   return (
     <Wrapper>
       <div className={classes.root}>
