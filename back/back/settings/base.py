@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'api',
-    'challenge',
     'forestbook',
     'community',
 
