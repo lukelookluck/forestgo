@@ -14,7 +14,7 @@ import MenuModal from "../../components/Community/Article/MenuModal/";
 import CommentList from "../../components/Community/Comment/CommentList/";
 import { CommonContext } from "../../context/CommonContext";
 
-export default function () {
+export default function (props) {
   const { serverUrl, user } = useContext(CommonContext);
 
   const [articleList, setArticleList] = useState([]);
@@ -24,24 +24,46 @@ export default function () {
   }, []);
 
   function refreshList() {
-    axios
-      .get(`${serverUrl}/community/`, {
-        headers: {
-          Authorization: `JWT ${user.token}`,
-        },
-        // params: {
-        //   user: 3,
-        // },
-      })
-      .then((res) => {
-        // setArticleList([]);
-        console.log(res.data);
-        setArticleList(res.data);
-        // setTimeout(() => {
-        //   refreshList();
-        // }, 5000);
-      })
-      .catch((err) => console.log(err));
+    if (props.myarticle) {
+      console.log(props.myarticle);
+      axios
+        .get(`${serverUrl}/community/my_article`, {
+          headers: {
+            Authorization: `JWT ${user.token}`,
+          },
+          params: {
+            user: user.user.id,
+          },
+        })
+        .then((res) => {
+          // setArticleList([]);
+          console.log(res.data);
+          setArticleList(res.data);
+          // setTimeout(() => {
+          //   refreshList();
+          // }, 5000);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      axios
+        .get(`${serverUrl}/community/`, {
+          headers: {
+            Authorization: `JWT ${user.token}`,
+          },
+          // params: {
+          //   user: 3,
+          // },
+        })
+        .then((res) => {
+          // setArticleList([]);
+          console.log(res.data);
+          setArticleList(res.data);
+          // setTimeout(() => {
+          //   refreshList();
+          // }, 5000);
+        })
+        .catch((err) => console.log(err));
+    }
   }
 
   function likeSubmit(article) {
