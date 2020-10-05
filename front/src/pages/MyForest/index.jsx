@@ -27,6 +27,12 @@ const MyForest = () => {
   let wincnt = 0;
   let flacnt = 0;
 
+  const onClickRedirectPathHandler = (name) => (e) => {
+    window.scrollTo(0, 0);
+    history.push(name);
+  };
+
+
   useEffect(() => {
     refreshList();
     if(flowerList.length === 0) {
@@ -145,6 +151,7 @@ const MyForest = () => {
                   <SeasonChart
                     SeasonCnt={[spring, summer, fall, winter]}
                     ></SeasonChart>
+
                   <Grid item xs={12}>더운 여름을 잘 이겨내는 사람이군요! 같은 가장 많이 모은 계절에 맞는 멘트 넣기</Grid>
               </Fragment>
               : <Fragment></Fragment>}
@@ -152,7 +159,7 @@ const MyForest = () => {
           </Paper>
         </Grid>
 
-        <Grid item xs={12} className="papergrid" id="lastgrid">
+        <Grid item xs={12} className="papergrid">
           <Paper variant="outlined">
             <Grid className="title">{user.user.username}님의 꽃말은</Grid>
             <Grid container justify="center" alignItems="center">
@@ -162,6 +169,51 @@ const MyForest = () => {
           </Paper>
         </Grid>
 
+        <Grid item xs={12} className="papergrid">
+          <Paper variant="outlined">
+            <Grid container>
+              <Grid className="title">{user.user.username}님이 촬영한 사진</Grid>
+              <Grid className="seepic">
+                <div onClick={onClickRedirectPathHandler("/MyPic")}>+ 더보기</div>
+              </Grid>
+            </Grid>
+            <Grid container justify="center" alignItems="center" className="picGrid">
+              { flowerList.length <= 0
+              ? <Fragment>사진을 찍어주세요</Fragment> 
+              : flowerList.length <= 3
+              ? <Fragment>
+                  {flowerList.map((pic) => (
+                    <Grid container key={pic.id}>
+                      <Grid item>
+                        <img src={pic.img} width="60px" height="60px"></img>
+                      </Grid>
+                    </Grid>
+                  ))}
+                </Fragment>
+              : <Grid container>
+                  <Grid item xs={4}>
+                    <img src={flowerList[flowerList.length - 1].img} width="60px" height="60px"></img>
+                  </Grid>
+                  <Grid item xs={4}>
+                    <img src={flowerList[flowerList.length - 2].img} width="60px" height="60px"></img>
+                  </Grid>
+                  <Grid item xs={4}>
+                    <img src={flowerList[flowerList.length - 3].img} width="60px" height="60px"></img>
+                  </Grid>
+                </Grid>
+              }
+            </Grid>
+          </Paper>
+        </Grid>
+
+        <Grid item xs={12} className="papergrid" id="lastgrid">
+          <Paper variant="outlined">
+            <Grid className="title">{user.user.username}님이 쓴 글</Grid>
+            <Grid container justify="center" alignItems="center">
+              
+            </Grid>
+          </Paper>
+        </Grid>
 
       </Grid>
     </Wrapper>

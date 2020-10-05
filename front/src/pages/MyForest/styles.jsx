@@ -22,10 +22,6 @@ const Wrapper = styled.div`
         font-size: 20px;
     }
 
-    .habi {
-        font-size: 20px;
-    }
-
     .papergrid {
         margin-top: 10px;
         margin-bottom: 10px;
@@ -50,6 +46,20 @@ const Wrapper = styled.div`
 
     .root {
         padding-bottom: 30px;
+    }
+
+    .picGrid {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .seepic {
+        text-align: right;
+        font-size: 18px;
+        font-weight: bold;
+        margin-left: 102px;
+        margin-top: 10px;
+        color: #509c82;
     }
 `;
 

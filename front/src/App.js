@@ -10,6 +10,7 @@ import Discovery from "./pages/Discovery/";
 import Upload from "./pages/Upload/";
 import ArticleDisplay from "./pages/ArticleDisplay/";
 import ArticleFrom from "./pages/ArticleForm/";
+import MyPic from "./pages/MyPic/";
 
 import { useLocalStorageSetState } from "./common/CommonHooks";
 import { CommonContext } from "./context/CommonContext";
@@ -49,6 +50,7 @@ function App() {
           <Route exact path="/MyForest" component={MyForest}></Route>
           <Route exact path="/Discovery" component={Discovery}></Route>
           <Route exact path="/Upload" component={Upload}></Route>
+          <Route exact path="/MyPic" component={MyPic}></Route>
           <Route
             exact
             path="/Article/:articleId"
