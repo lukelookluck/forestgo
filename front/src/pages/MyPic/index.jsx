@@ -19,14 +19,33 @@ import CardMedia from '@material-ui/core/CardMedia';
 const MyPic = () => {
 
   const [flowerList, setFlowerList] = useState([]);
-  const [detailList, setDetailList] = useState([]);
+  const [List, setList] = useState([]);
   const { serverUrl, user } = useContext(CommonContext);
 
   let history = useHistory();
 
+  let detailList = []
+
   const onClickRedirectPathHandler = (name) => (e) => {
     window.scrollTo(0, 0);
     history.push(name);
+  };
+
+  const showDetail = (id) => {
+    for(let i = 0; i < List.length; i++){
+      if(List[i].id === id){
+        return (
+          <Grid>
+            <Grid>{List[i].eng_name}</Grid>
+            <Grid>{List[i].sympolism}</Grid>
+            <Grid>{List[i].description}</Grid>
+            <Grid>{List[i].use}</Grid>
+            <Grid>{List[i].growth}</Grid>
+            <Grid>{List[i].season}</Grid>
+          </Grid>
+        );
+      }
+    }
   };
 
   useEffect(() => {
@@ -64,11 +83,10 @@ const MyPic = () => {
         },
       })
         .then((response) => {
-          console.log("여기?");
-          console.log(response.data);
-          // const list = [...detailList, response.data];
-          // setDetailList(detailList.concat(response.data));
-          setDetailList([...detailList, response.data])
+          // console.log("여기?");
+          detailList = detailList.concat([response.data]);
+          // console.log(detailList);
+          setList(detailList);
         })
         .catch((error) => {
           console.log("저기?");
@@ -106,15 +124,7 @@ const MyPic = () => {
                     <Grid>
                       {pic.created_at.substring(0,10)}
                     </Grid>
-                    {console.log(detailList.length)}
-                    {
-                      detailList
-                      ? <Fragment>꺄울</Fragment>
-                      : <Grid>
-                          {console.log(detailList.eng_name)}
-                          {detailList.eng_name}
-                        </Grid>
-                    }
+                    {List.length > 0 ? showDetail(pic.forestbook_id) : <Fragment></Fragment>}
                   </CardContent>
                 </CardActionArea>
               </Card>
