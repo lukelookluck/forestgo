@@ -9,12 +9,13 @@ import Main from "./pages/Main/";
 import Discovery from "./pages/Discovery/";
 import Upload from "./pages/Upload/";
 import ArticleDisplay from "./pages/ArticleDisplay/";
+import ArticleFrom from "./pages/ArticleForm/";
 
 import { useLocalStorageSetState } from "./common/CommonHooks";
 import { CommonContext } from "./context/CommonContext";
 
 function App() {
-  const HOST = "j3d207.p.ssafy.io:8000";
+  const HOST = "localhost:8000";
   const serverUrl = `http://${HOST}`;
 
   const [user, setUser] = useLocalStorageSetState(
@@ -53,6 +54,7 @@ function App() {
             path="/Article/:articleId"
             component={ArticleDisplay}
           ></Route>
+          <Route exact path="/Create" component={ArticleFrom}></Route>
         </Switch>
       </BrowserRouter>
     </CommonContext.Provider>

@@ -73,7 +73,7 @@ const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
     text-align: left;
-    margin-bottom: 20px;
+    margin-bottom: 5vw;
     /* width: 48vw; */
   }
 

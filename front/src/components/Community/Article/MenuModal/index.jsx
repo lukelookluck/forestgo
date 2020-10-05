@@ -47,6 +47,11 @@ export default function (props) {
     setOpen(false);
   };
 
+  function deleteIconOnClick(data) {
+    setOpen(false);
+    props.DeleteArticle(data);
+  }
+
   return (
     <Wrapper>
       <MoreVertIcon className="moreIcon" onClick={handleOpen}></MoreVertIcon>
@@ -69,7 +74,7 @@ export default function (props) {
             <div>
               <Link
                 to={{
-                  pathname: "/Community/Create",
+                  pathname: "/Create",
                   state: {
                     article: props.item,
                   },
@@ -81,8 +86,7 @@ export default function (props) {
             <div>
               <button
                 className={classes.Button}
-                onClick={handleClose}
-                onClick={() => props.DeleteArticle(props.item)}
+                onClick={() => deleteIconOnClick(props.item)}
               >
                 삭제
               </button>
