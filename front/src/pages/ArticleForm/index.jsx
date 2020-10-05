@@ -64,7 +64,7 @@ export default function (props) {
     const unblock = props.history.block((location, action) => {
       if (action === "POP") {
         if (window.confirm("작성하던 내용이 없어집니다. 정말 떠나실건가요?")) {
-          return true;
+          return props.history.push("/main");
         } else {
           return false;
         }
