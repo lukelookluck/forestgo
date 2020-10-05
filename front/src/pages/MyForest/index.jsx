@@ -18,6 +18,7 @@ const MyForest = () => {
   const [fall, setFall] = useState(0);
   const [winter, setWinter] = useState(0);
   const [flag, setFlag] = useState(0);
+  const [articleList, setArticleList] = useState([]);
 
   let season = ""; 
 
@@ -35,6 +36,7 @@ const MyForest = () => {
 
   useEffect(() => {
     refreshList();
+    refreshArticleList();
     if(flowerList.length === 0) {
       console.log("i don't know")
     }
@@ -94,6 +96,25 @@ const MyForest = () => {
       });
   }
 
+  function refreshArticleList() {
+    Axios.get(`${serverUrl}/community/my_article/`, {
+      headers: {
+        Authorization: `JWT ${user.token}`,
+      },
+      params: {
+        userinfo_id : user.user.id
+      },
+    })
+      .then((response) => {
+        console.log(user.user.id);
+        console.log(response.data);
+        setArticleList(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   const handlelogout = () => {
     // 로그아웃
     const url = `${serverUrl}/api/rest-auth/logout/`;
@@ -145,7 +166,9 @@ const MyForest = () => {
         <Grid item xs={12} className="papergrid">
           <Paper variant="outlined">
             <Grid className="title">{user.user.username}님의 식물을 볼 수 있는 계절은</Grid>
-            <Grid item xs={12} className="chart">
+            {flowerList.length === 0
+            ? <Fragment>아직 수집한 식물이 없어요. 식물을 촬영해보세요!</Fragment>
+            : <Grid item xs={12} className="chart">
               { flag === flowerList.length
               ? <Fragment>
                   <SeasonChart
@@ -156,6 +179,7 @@ const MyForest = () => {
               </Fragment>
               : <Fragment></Fragment>}
             </Grid>
+            }
           </Paper>
         </Grid>
 
@@ -172,14 +196,17 @@ const MyForest = () => {
         <Grid item xs={12} className="papergrid">
           <Paper variant="outlined">
             <Grid container>
-              <Grid className="title">{user.user.username}님이 촬영한 사진</Grid>
-              <Grid className="seepic">
-                <div onClick={onClickRedirectPathHandler("/MyPic")}>+ 더보기</div>
-              </Grid>
+              <Grid className="title_p">{user.user.username}님이 촬영한 사진</Grid>
+              {flowerList.length === 0
+              ? <Fragment></Fragment>
+              : <Grid className="seepic">
+                  <div onClick={onClickRedirectPathHandler("/MyPic")}>+ 더보기</div>
+                </Grid>
+              }
             </Grid>
             <Grid container justify="center" alignItems="center" className="picGrid">
               { flowerList.length <= 0
-              ? <Fragment>사진을 찍어주세요</Fragment> 
+              ? <Fragment>식물을 촬영해보세요</Fragment> 
               : flowerList.length <= 3
               ? <Fragment>
                   {flowerList.map((pic) => (
@@ -208,9 +235,76 @@ const MyForest = () => {
 
         <Grid item xs={12} className="papergrid" id="lastgrid">
           <Paper variant="outlined">
-            <Grid className="title">{user.user.username}님이 쓴 글</Grid>
+            <Grid container>
+              <Grid className="title_p">{user.user.username}님이 쓴 글</Grid>
+              {articleList.length === 0
+              ? <Fragment></Fragment>
+              : <Grid>
+                  <div className="seearti" onClick={onClickRedirectPathHandler("/MyArticle")}>+ 더보기</div>
+                </Grid> 
+              }
+            </Grid>
             <Grid container justify="center" alignItems="center">
-              
+            { articleList.length <= 0
+              ? <Fragment>게시글을 작성해보세요!</Fragment> 
+              : articleList.length <= 3
+              ? <Grid item xs={12}>
+                  {articleList.map((arti) => (
+                    <Fragment>
+                      <Grid container justify="center" alignItems="center" key={arti.id}>
+                      <Grid item xs={3}>
+                        <Paper className="imgPaper">
+                          <img src={arti.image} width="60px" height="60px"></img>
+                        </Paper>
+                      </Grid>
+                      <Grid item xs={9}>
+                        <div className="titleDiv">{arti.title}</div>
+                        <div className="dateDiv">{arti.created_at.substring(0,10)} 작성</div>
+                      </Grid>
+                    </Grid>
+                    <hr width="350px"></hr>
+                    </Fragment>
+                  ))}
+                </Grid>
+              : <Grid item xs={12}>
+                  <Grid container justify="center" alignItems="center">
+                    <Grid item xs={3}>
+                      <Paper className="imgPaper">
+                        <img src={articleList[articleList.length - 1].image} width="60px" height="60px"></img>
+                      </Paper>
+                    </Grid>
+                    <Grid item xs={9}>
+                      <div className="titleDiv">{articleList[articleList.length - 1].title}</div>
+                      <div className="dateDiv">{articleList[articleList.length - 1].created_at.substring(0,10)} 작성</div>
+                    </Grid>
+                  </Grid>
+                  <hr width="350px"></hr>
+                  <Grid container justify="center" alignItems="center">
+                    <Grid item xs={3}>
+                      <Paper className="imgPaper">
+                        <img src={articleList[articleList.length - 2].image} width="60px" height="60px"></img>
+                      </Paper>
+                    </Grid>
+                    <Grid item xs={9}>
+                      <div className="titleDiv">{articleList[articleList.length - 2].title}</div>
+                      <div className="dateDiv">{articleList[articleList.length - 2].created_at.substring(0,10)} 작성</div>
+                    </Grid>
+                  </Grid>
+                  <hr width="350px"></hr>
+                  <Grid container justify="center" alignItems="center">
+                    <Grid item xs={3}>
+                      <Paper className="imgPaper">
+                        <img src={articleList[articleList.length - 3].image} width="60px" height="60px"></img>
+                      </Paper>
+                    </Grid>
+                    <Grid item xs={9}>
+                      <div className="titleDiv">{articleList[articleList.length - 3].title}</div>
+                      <div className="dateDiv">{articleList[articleList.length - 3].created_at.substring(0,10)} 작성</div>
+                    </Grid>
+                  </Grid>
+                  <hr width="350px"></hr>
+                </Grid>
+              }
             </Grid>
           </Paper>
         </Grid>
