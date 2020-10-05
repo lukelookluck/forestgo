@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import Wrapper from "./style";
 
@@ -52,6 +52,22 @@ export default function (props) {
     props.DeleteArticle(data);
   }
 
+  let history = useHistory();
+
+  function goCreateArticle(data) {
+    window.scrollTo(0, 0);
+    setTimeout(() => {
+      window.scroll({ top: 100, behavior: "smooth" });
+    }, 500);
+
+    history.push({
+      pathname: "/Create",
+      state: {
+        article: data,
+      },
+    });
+  }
+
   return (
     <Wrapper>
       <MoreVertIcon className="moreIcon" onClick={handleOpen}></MoreVertIcon>
@@ -72,16 +88,12 @@ export default function (props) {
         <Fade in={open}>
           <div className={classes.paper}>
             <div>
-              <Link
-                to={{
-                  pathname: "/Create",
-                  state: {
-                    article: props.item,
-                  },
-                }}
+              <button
+                className={classes.Button}
+                onClick={() => goCreateArticle(props.item)}
               >
-                <button className={classes.Button}>수정</button>
-              </Link>
+                수정
+              </button>
             </div>
             <div>
               <button

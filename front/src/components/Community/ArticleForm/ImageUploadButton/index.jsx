@@ -41,6 +41,8 @@ export default function ImageUploadButton(props) {
     reader.onloadend = () => {
       // 2. 읽기가 완료되면
       const base64 = reader.result;
+      console.log(base64);
+
       setImgBase64((imgBase64) => [
         { id: imgBase64.length, value: base64.toString("base64") },
       ]); // 파일 base64 상태 업데이트
