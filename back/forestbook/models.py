@@ -9,12 +9,12 @@ class Forestbook(models.Model):
     description = models.TextField('description')
     use = models.TextField('use')
     growth = models.TextField('growth')
-    season = models.CharField('season', max_length=20)
+    season = models.CharField('season', max_length=30)
     img = models.ImageField(default=None)
 
 class Userbook(models.Model):
-    userinfo_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, verbose_name='userinfo_id', blank=True, null=True)
+    userinfo_id = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, verbose_name='userinfo_id', related_name='user_userbooks', blank=True, null=True)
     forestbook_id = models.ForeignKey(Forestbook, on_delete=models.CASCADE, verbose_name='forestbook_id', blank=True, null=True)
-    date = models.DateTimeField('date', auto_now_add=True)
+    created_at = models.DateTimeField('date', auto_now_add=True)
     img = models.ImageField(default=None)
     

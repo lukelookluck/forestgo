@@ -7,6 +7,7 @@ import Wrapper from "./style";
 import InputImage from "../InputImage/";
 
 import { CommonContext } from "../../../../context/CommonContext";
+import ArticleForm from "../../../../pages/ArticleForm";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,18 +41,20 @@ export default function ImageUploadButton(props) {
       // 2. 읽기가 완료되면
       console.log("reader", reader);
       const base64 = reader.result;
-      console.log("base64", base64);
+      // console.log("base64", base64);
       setImgBase64((imgBase64) => [
         { id: imgBase64.length, value: base64.toString("base64") },
       ]); // 파일 base64 상태 업데이트
 
-      console.log("imgBase64", imgBase64);
-      // props.setArticleFormData({
-      //   ...props.articleFormData,
-      //   image: base64,
-      // });
+      // console.log("imgBase64", imgBase64);
+      window.scroll({ left: 0, top: 1000, behavior: "smooth" });
+
+      props.setIsImage(true);
+      props.setArticleFormData({
+        ...props.articleFormData,
+        image: base64,
+      });
     };
-    // }
   };
 
   // const inputImage = imgBase64.map((item, index) => {
@@ -66,26 +69,28 @@ export default function ImageUploadButton(props) {
     <Wrapper>
       {/* <div className="input-image-box">{inputImage}</div> */}
       <InputImage temp={imgBase64} />
-      <div className="input-footer">
-        <input
-          accept="image/*"
-          capture="camera"
-          className={classes.input}
-          id="icon-button-file"
-          type="file"
-          // multiple
-          onChange={handleChangeFile}
-        />
-        <label htmlFor="icon-button-file">
-          <IconButton
-            color="primary"
-            aria-label="upload picture"
-            component="span"
-          >
-            <PhotoCamera fontSize="large" />
-          </IconButton>
-        </label>
-      </div>
+      {imgBase64.length == 0 && (
+        <div className="input-footer">
+          <input
+            accept="image/*"
+            capture="camera"
+            className={classes.input}
+            id="icon-button-file"
+            type="file"
+            // multiple
+            onChange={handleChangeFile}
+          />
+          <label htmlFor="icon-button-file">
+            <IconButton
+              color="primary"
+              aria-label="upload picture"
+              component="span"
+            >
+              <PhotoCamera className="CameraIcon" />
+            </IconButton>
+          </label>
+        </div>
+      )}
     </Wrapper>
   );
 }

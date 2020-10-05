@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from .serializers import ForestbookSerializer, UserbookSerializer
 from .models import Forestbook, Userbook
+from accounts.models import Userinfo
 
-from rest_framework import viewsets
+from rest_framework import viewsets, generics
 from rest_framework.decorators import api_view
 # Create your views here.
 
@@ -15,6 +16,20 @@ from rest_framework import status
 from rest_framework.response import Response
 from django.core import serializers
 from django.http import HttpResponse
+
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_jwt.authentication import JSONWebTokenAuthentication
+from rest_framework.decorators import permission_classes, authentication_classes, api_view
+from django_filters.rest_framework import DjangoFilterBackend
+
+
+@permission_classes((IsAuthenticated,))
+@authentication_classes((JSONWebTokenAuthentication,))
+class MyUserbookViewSet(generics.ListCreateAPIView):
+    queryset = Userbook.objects.all()
+    serializer_class = UserbookSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['userinfo_id']
 
 
 @api_view(["POST"])

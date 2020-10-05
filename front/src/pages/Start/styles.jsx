@@ -23,13 +23,13 @@ const Wrapper = styled.div`
     margin-top: 70px;
   }
 
-  & #id {
+  & #email {
     width: 100%;
     height: 40px;
     margin-bottom: 20px;
   }
 
-  & #pw {
+  & #password {
     width: 100%;
     height: 40px;
     margin-bottom: 20px;
