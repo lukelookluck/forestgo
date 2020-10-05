@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
 
+    font-family: "NanumSquareRound"; 
+    
     .title {
         text-align: left;
         font-size: 18px;
@@ -105,6 +107,10 @@ const Wrapper = styled.div`
         color: gray;
     }
 
+    & .header-title {
+        margin-left: 20px;
+        font-size: 17px;
+      }
     
 `;
 

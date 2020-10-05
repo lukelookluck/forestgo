@@ -173,8 +173,7 @@ const MyForest = () => {
                   <SeasonChart
                     SeasonCnt={[spring, summer, fall, winter]}
                     ></SeasonChart>
-
-                  <Grid item xs={12}>더운 여름을 잘 이겨내는 사람이군요! 같은 가장 많이 모은 계절에 맞는 멘트 넣기</Grid>
+                  {/* <Grid item xs={12}>더운 여름을 잘 이겨내는 사람이군요! 같은 가장 많이 모은 계절에 맞는 멘트 넣기</Grid> */}
               </Fragment>
               : <Fragment></Fragment>}
             </Grid>
@@ -195,7 +194,7 @@ const MyForest = () => {
         <Grid item xs={12} className="papergrid">
           <Paper variant="outlined">
             <Grid container>
-              <Grid className="title_p">{user.user.username}님이 촬영한 사진</Grid>
+              <Grid className="title_p">{user.user.username}님이 수집한 식물</Grid>
               {flowerList.length === 0
               ? <Fragment></Fragment>
               : <Grid className="seepic">
