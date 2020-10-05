@@ -102,7 +102,7 @@ const MyForest = () => {
         Authorization: `JWT ${user.token}`,
       },
       params: {
-        userinfo_id : user.user.id
+        user : user.user.id
       },
     })
       .then((response) => {
@@ -162,7 +162,6 @@ const MyForest = () => {
           </Paper>
         </Grid>
         
-
         <Grid item xs={12} className="papergrid">
           <Paper variant="outlined">
             <Grid className="title">{user.user.username}님의 식물을 볼 수 있는 계절은</Grid>
@@ -208,16 +207,14 @@ const MyForest = () => {
               { flowerList.length <= 0
               ? <Fragment>식물을 촬영해보세요</Fragment> 
               : flowerList.length <= 3
-              ? <Fragment>
-                  {flowerList.map((pic) => (
-                    <Grid container key={pic.id}>
-                      <Grid item>
+              ? <Grid container justify="center" alignItems="center">
+                  {flowerList.map((pic, index) => (
+                      <Grid item key={index} xs={12 / flowerList.length}>
                         <img src={pic.img} width="60px" height="60px"></img>
                       </Grid>
-                    </Grid>
                   ))}
-                </Fragment>
-              : <Grid container>
+                </Grid>
+              : <Grid container justify="center" alignItems="center">
                   <Grid item xs={4}>
                     <img src={flowerList[flowerList.length - 1].img} width="60px" height="60px"></img>
                   </Grid>
@@ -249,9 +246,9 @@ const MyForest = () => {
               ? <Fragment>게시글을 작성해보세요!</Fragment> 
               : articleList.length <= 3
               ? <Grid item xs={12}>
-                  {articleList.map((arti) => (
-                    <Fragment>
-                      <Grid container justify="center" alignItems="center" key={arti.id}>
+                  {articleList.map((arti, index) => (
+                    <Fragment key={index}>
+                      <Grid container justify="center" alignItems="center">
                       <Grid item xs={3}>
                         <Paper className="imgPaper">
                           <img src={arti.image} width="60px" height="60px"></img>

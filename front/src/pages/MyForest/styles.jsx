@@ -104,6 +104,8 @@ const Wrapper = styled.div`
         margin-right: 20px;
         color: gray;
     }
+
+    
 `;
 
 export default Wrapper;
