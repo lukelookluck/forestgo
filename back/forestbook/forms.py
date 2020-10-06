@@ -21,9 +21,16 @@ class PictureTestForm(forms.ModelForm):
         instance = super(PictureTestForm, self).save(commit=False)
         if instance.img:
             flower_name, flower_score = flower_check(instance.img.url)
-            flower = Forestbook.objects.get(name=flower_name)
-            instance.forestbook_id = flower
-            instance.userinfo_id = self.userinfo_id
+            if flower_score < 40:
+                flower = Forestbook.objects.get(name="알 수 없음")
+                instance.forestbook_id = flower
+                instance.userinfo_id = self.userinfo_id
+                instance.flag = -1
+            else :
+                flower = Forestbook.objects.get(name=flower_name)
+                instance.forestbook_id = flower
+                instance.userinfo_id = self.userinfo_id
+                instance.flag = 0
         if commit:
             instance.save()
         return instance

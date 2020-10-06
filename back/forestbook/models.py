@@ -17,4 +17,6 @@ class Userbook(models.Model):
     forestbook_id = models.ForeignKey(Forestbook, on_delete=models.CASCADE, verbose_name='forestbook_id', blank=True, null=True)
     created_at = models.DateTimeField('date', auto_now_add=True)
     img = models.ImageField(default=None)
-    
+    flag = models.IntegerField('flag', default=0)
+
+
