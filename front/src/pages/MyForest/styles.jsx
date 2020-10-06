@@ -42,7 +42,8 @@ const Wrapper = styled.div`
     }
 
     .nick {
-        text-align: right;
+        text-align: left;
+        padding-left: 15px;
     }
 
     .logout {
