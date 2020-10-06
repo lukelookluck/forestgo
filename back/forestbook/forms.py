@@ -4,6 +4,7 @@ from .models import Forestbook, Userbook
 from .check import *
 # from django.contrib.auth import get_user_model
 
+
 class PictureTestForm(forms.ModelForm):
     img = forms.ImageField()
 
@@ -14,7 +15,7 @@ class PictureTestForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         self.userinfo_id = kwargs.pop("user", None)
         super(PictureTestForm, self).__init__(*args, **kwargs)
-    
+
     def save(self, commit=True):
         instance = super(PictureTestForm, self).save()
         instance = super(PictureTestForm, self).save(commit=False)
@@ -24,5 +25,5 @@ class PictureTestForm(forms.ModelForm):
             instance.forestbook_id = flower
             instance.userinfo_id = self.userinfo_id
         if commit:
-            instance.save()    
+            instance.save()
         return instance

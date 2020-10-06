@@ -180,15 +180,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # }
 
-#CSRF 해결
+# CSRF 해결
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-           'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-           'rest_framework.authentication.BasicAuthentication',
-       )
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    )
 }
 
 JWT_AUTH = {
@@ -201,6 +201,11 @@ JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'accounts.custom_responses.my_jwt_response_handler'
 }
 
-
-
 REST_USE_JWT = True
+
+# # CSRF 해결
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': (
+#         'rest_framework.authentication.TokenAuthentication',
+#     )
+# }
