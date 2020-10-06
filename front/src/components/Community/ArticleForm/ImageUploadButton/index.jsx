@@ -9,7 +9,6 @@ import Wrapper from "./style";
 import InputImage from "../InputImage/";
 
 import { CommonContext } from "../../../../context/CommonContext";
-import ArticleForm from "../../../../pages/ArticleForm";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -66,20 +65,21 @@ export default function ImageUploadButton(props) {
       .then((res) => {
         console.log(res.data[0]);
         props.setflowerName(res.data[0].fields.name);
+        props.setflowerSymbol(res.data[0].fields.sympolism);
+        props.setflowerSeason(res.data[0].fields.season);
+        props.setflowerPk(res.data[0].pk);
         console.log("찾음");
       })
       .catch((err) => {
         console.log(err.response);
 
         console.log(err.response.data);
-        // console.log(err.response.headers);
         console.log("못찾음");
       });
   };
 
   return (
     <Wrapper>
-      {/* <div className="input-image-box">{inputImage}</div> */}
       <InputImage temp={imgBase64} />
       {imgBase64.length == 0 && (
         <div className="input-footer">
