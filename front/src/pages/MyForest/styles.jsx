@@ -3,6 +3,16 @@ import styled from "styled-components";
 const Wrapper = styled.div`
 
     font-family: "NanumSquareRound"; 
+
+    .not {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .nott{
+        margin-bottom: 10px;
+    }
+
     
     .title {
         text-align: left;

@@ -128,7 +128,7 @@ const MyPic = () => {
         {flowerList.length === 0 ? (
           <Fragment></Fragment>
         ) : (
-          flowerList.map((pic, index) => (
+          flowerList.sort((a, b) => b.id - a.id).map((pic, index) => (
             <Grid key={index} item xs={12}>
               <Paper className="paper">
                 <Grid>
@@ -142,7 +142,7 @@ const MyPic = () => {
                         {pic.flowername}
                       </Grid>
                       <Grid className="date">
-                        {pic.created_at.substring(0,10)} 촬영
+                        {pic.created_at.substring(0,10)} 수집
                       </Grid>
                     </Grid>
                     <hr width="340px"></hr>

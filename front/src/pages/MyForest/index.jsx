@@ -166,28 +166,17 @@ const MyForest = () => {
           <Paper variant="outlined">
             <Grid className="title">{user.user.username}님의 식물을 볼 수 있는 계절은</Grid>
             {flowerList.length === 0
-            ? <Fragment>아직 수집한 식물이 없어요. 식물을 촬영해보세요!</Fragment>
+            ? <Grid item xs={12} className="not">아직 수집한 식물이 없어요.<br></br>식물을 촬영해보세요!</Grid>
             : <Grid item xs={12} className="chart">
               { flag === flowerList.length
               ? <Fragment>
                   <SeasonChart
                     SeasonCnt={[spring, summer, fall, winter]}
                     ></SeasonChart>
-                  {/* <Grid item xs={12}>더운 여름을 잘 이겨내는 사람이군요! 같은 가장 많이 모은 계절에 맞는 멘트 넣기</Grid> */}
               </Fragment>
               : <Fragment></Fragment>}
             </Grid>
             }
-          </Paper>
-        </Grid>
-
-        <Grid item xs={12} className="papergrid">
-          <Paper variant="outlined">
-            <Grid className="title">{user.user.username}님의 꽃말은</Grid>
-            <Grid container justify="center" alignItems="center">
-              <Grid item xs={12} className="habi">가장 많이 모은 꽃말? 단어? 보여주기</Grid>
-              <Grid item xs={12} className="habi">좀 시각적으로 예쁘게</Grid>
-            </Grid>
           </Paper>
         </Grid>
 
@@ -204,7 +193,7 @@ const MyForest = () => {
             </Grid>
             <Grid container justify="center" alignItems="center" className="picGrid">
               { flowerList.length <= 0
-              ? <Fragment>식물을 촬영해보세요</Fragment> 
+              ? <Fragment>식물을 촬영해보세요!</Fragment> 
               : flowerList.length <= 3
               ? <Grid container justify="center" alignItems="center">
                   {flowerList.map((pic, index) => (
@@ -242,7 +231,7 @@ const MyForest = () => {
             </Grid>
             <Grid container justify="center" alignItems="center">
             { articleList.length <= 0
-              ? <Fragment>게시글을 작성해보세요!</Fragment> 
+              ? <Grid item xs={12} className="nott">게시글을 작성해보세요!</Grid>
               : articleList.length <= 3
               ? <Grid item xs={12}>
                   {articleList.map((arti, index) => (
