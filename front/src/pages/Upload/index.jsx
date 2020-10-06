@@ -95,22 +95,37 @@ export default function Upload(props) {
           <div>
             {flowerName === "알 수 없음"
             ? <Grid container justify="center" alignItems="center">
-                <Grid item xs={12}>
-                  식물을 촬영했는데 인식하지 못 했나요?<br></br>
-                  식물 종류 대규모 업데이트 예정입니다 :)<br></br>
+                <Grid item xs={12} className="ann">
+                  식물을 인식하지 못했어요 ;(
+                </Grid>
+                <Grid item xs={12} className="ann2">
+                  식물 종류 대규모 업데이트 예정이니<br></br>
                   기대해주세요!
                 </Grid>
               </Grid>
             : <Grid container justify="center" alignItems="center">
-                <Grid item xs={12} className="fname">
-                  {flowerName}
+                <Grid container justify="center" alignItems="center">
+                  <Grid item className="data">
+                    {flowerName}
+                  </Grid>
+                  <Grid item className="add">&nbsp;입니다!</Grid>
                 </Grid>
-                <Grid item xs={12} className="fsym">
-                  {flowerSymbol}
+
+                <Grid container justify="center" alignItems="center">
+                  <Grid item className="add">꽃말은&nbsp;</Grid>
+                  <Grid item className="data">
+                    {flowerSymbol}
+                  </Grid>
+                  <Grid item className="add">&nbsp;이며</Grid>
                 </Grid>
-                <Grid item xs={12} className="fsea">
-                  {flowerSeason}
+
+                <Grid container justify="center" alignItems="center">
+                  <Grid item className="data">
+                    {flowerSeason}
+                  </Grid>
+                  <Grid item className="add">&nbsp;에 볼 수 있어요</Grid>
                 </Grid>
+
                 <Grid item xs={6}>
                   <Button
                     className="savePic"
