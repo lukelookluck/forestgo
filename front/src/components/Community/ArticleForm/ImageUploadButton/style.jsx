@@ -11,5 +11,9 @@ const Wrapper = styled.div`
   & .CameraIcon {
     font-size: 50vw;
   }
+
+  & .MuiIconButton-colorPrimary {
+    color: #509c82;
+  }
 `;
 export default Wrapper;

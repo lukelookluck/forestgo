@@ -128,7 +128,7 @@ const MyPic = () => {
         {flowerList.length === 0 ? (
           <Fragment></Fragment>
         ) : (
-          flowerList.map((pic, index) => (
+          flowerList.sort((a, b) => b.id - a.id).map((pic, index) => (
             <Grid key={index} item xs={12}>
               <Paper className="paper">
                 <Grid>

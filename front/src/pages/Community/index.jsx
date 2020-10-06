@@ -226,8 +226,6 @@ export default function (props) {
         let myTime = myCreateTime;
         let updateComment = "";
         if (myCreateTime.slice(0, 19) != myUpdateTime.slice(0, 19)) {
-          console.log("dnajkln");
-          console.log(myCreateTime, myUpdateTime);
           myTime = myUpdateTime;
           updateComment = " (수정됨)";
         }
@@ -358,9 +356,21 @@ export default function (props) {
       );
     });
 
+  let emptyWord = "";
+  if (articleList.length == 0) {
+    console.log("articleList", articleList);
+    emptyWord = (
+      <div className="emptyWord-box">
+        <div className="emptyWord">텅</div>
+        <div className="emptyWord2">게시글이 없어요</div>
+      </div>
+    );
+  }
+
   return (
     <Wrapper>
       <Grid container className="root" justify="center" alignItems="center">
+        {emptyWord}
         {article}
       </Grid>
     </Wrapper>

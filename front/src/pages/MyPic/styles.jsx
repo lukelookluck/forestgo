@@ -72,19 +72,16 @@ const Wrapper = styled.div`
   & .engLabel {
     font-size: 20px;
     margin-right: 20px;
-    // padding-top: 3px;
   }
 
   & .engName {
     font-size: 20px;
     font-weight: bold;
-    // padding-top: 2px;
   }
 
   & .syLabel {
     font-size: 20px;
     margin-right: 20px;
-    // padding-top: 4px;
   }
 
   & .sym {
@@ -93,7 +90,6 @@ const Wrapper = styled.div`
   }
   
   & .seaLabel {
-    // padding-top: 4px;
     font-size: 20px;
     margin-right: 20px;
   }

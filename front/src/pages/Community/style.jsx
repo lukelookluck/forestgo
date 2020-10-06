@@ -140,6 +140,21 @@ const Wrapper = styled.div`
     display: flex;
     /* justify-content: space-between; */
   }
+
+  & .emptyWord-box {
+    margin-top: 25vh;
+    font-family: "Recipekorea";
+  }
+
+  & .emptyWord {
+    font-size: 25vw;
+    font-weight: 100;
+  }
+
+  & .emptyWord2 {
+    font-size: 5vw;
+    /* font-weight: 700; */
+  }
 `;
 
 export default Wrapper;

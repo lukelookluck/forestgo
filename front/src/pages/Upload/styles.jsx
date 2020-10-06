@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   text-align: center;
+  font-family: "NanumSquareRound";
 
   .root {
     /* position: relative; */
@@ -29,7 +30,7 @@ const Wrapper = styled.div`
   & .submitBtn {
     margin-top: 30px;
     height: 50px;
-    width: 150px;
+    width: 160px;
     background-color: #509c82;
     text-decoration: none;
     border: none;
@@ -41,6 +42,47 @@ const Wrapper = styled.div`
   & .submitBtn:hover {
     background-color: #509c82;
   }
+
+  & .savePic {
+    margin-top: 30px;
+    height: 50px;
+    width: 160px;
+    background-color: #509c82;
+    text-decoration: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    font-family: "NanumSquareRound";
+  }
+
+  & .savePic:hover {
+    background-color: #509c82;
+  }
+
+  & .ann {
+    font-size: 30px;
+    font-family: "Recipekorea";
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+
+  & .ann2 {
+    font-size: 20px;
+    font-family: "Recipekorea";
+  }
+
+  & .data {
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  & .add {
+    font-size: 25px;
+    float: left;
+  }
+
+  
+
 `;
 
 export default Wrapper;

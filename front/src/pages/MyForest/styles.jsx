@@ -12,6 +12,7 @@ const Wrapper = styled.div`
     .nott{
         margin-bottom: 10px;
     }
+
     
     .title {
         text-align: left;

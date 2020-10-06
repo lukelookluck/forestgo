@@ -180,16 +180,6 @@ const MyForest = () => {
           </Paper>
         </Grid>
 
-        {/* <Grid item xs={12} className="papergrid">
-          <Paper variant="outlined">
-            <Grid className="title">{user.user.username}님의 꽃말은</Grid>
-            <Grid container justify="center" alignItems="center">
-              <Grid item xs={12} className="habi">가장 많이 모은 꽃말? 단어? 보여주기</Grid>
-              <Grid item xs={12} className="habi">좀 시각적으로 예쁘게</Grid>
-            </Grid>
-          </Paper>
-        </Grid> */}
-
         <Grid item xs={12} className="papergrid">
           <Paper variant="outlined">
             <Grid container>
@@ -241,7 +231,7 @@ const MyForest = () => {
             </Grid>
             <Grid container justify="center" alignItems="center">
             { articleList.length <= 0
-              ? <Grid item xs={12} className="nott">게시글을 작성해보세요!</Grid> 
+              ? <Grid item xs={12} className="nott">게시글을 작성해보세요!</Grid>
               : articleList.length <= 3
               ? <Grid item xs={12}>
                   {articleList.map((arti, index) => (
