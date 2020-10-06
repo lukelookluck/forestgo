@@ -26,11 +26,19 @@ from django_filters.rest_framework import DjangoFilterBackend
 @permission_classes((IsAuthenticated,))
 @authentication_classes((JSONWebTokenAuthentication,))
 class MyUserbookViewSet(generics.ListCreateAPIView):
-    queryset = Userbook.objects.all()
+    queryset = Userbook.objects.filter(flag=1)
     serializer_class = UserbookSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['userinfo_id']
 
+
+@api_view(["GET"])
+def flower_save(request):
+    my_flower_pk = request.GET.get('pk')
+    recent_user_flower = Userbook.objects.get(pk=my_flower_pk)
+    recent_user_flower.flag = 1
+    recent_user_flower.save()
+    return HttpResponse(status=status.HTTP_200_OK)
 
 @api_view(["POST"])
 def flower_check(request):
@@ -38,14 +46,10 @@ def flower_check(request):
         request.POST, request.FILES, user=request.user)
     if flower_form.is_valid():
         flower_form.save()
-        print("==========")
-        print(request.user)
         recent_user_flower = Userbook.objects.filter(
             userinfo_id__email=request.user.email).order_by('-id')[:1].get()
-        print(recent_user_flower)
         recent_flower = Forestbook.objects.filter(
             name=recent_user_flower.forestbook_id.name)
-        print(recent_flower)
         json_data = serializers.serialize('json', recent_flower)
         return HttpResponse(json_data, content_type='application/json')
     return Response(status=status.HTTP_400_BAD_REQUEST)
