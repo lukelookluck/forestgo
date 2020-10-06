@@ -6,8 +6,7 @@ It exposes the WSGI callable as a module-level variable named ``application``.
 For more information on this file, see
 https://docs.djangoproject.com/en/2.2/howto/deployment/wsgi/
 """
-import os
-import sys
+import os, sys
 new_path = [
     '/srv/docker-server',
     '/usr/local/lib/python37.zip',
