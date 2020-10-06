@@ -5,6 +5,7 @@ const Wrapper = styled.div`
     /*  position: fixed; */
     bottom: 0%;
     padding-top: 25vh;
+    margin-bottom: 25vh;
   }
 
   & .CameraIcon {

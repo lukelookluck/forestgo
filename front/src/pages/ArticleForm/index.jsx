@@ -11,7 +11,6 @@ import InputImage from "../../components/Community/ArticleForm/InputImage/";
 import { CommonContext } from "../../context/CommonContext";
 
 export default function (props) {
-  console.log(props.location.state.article);
   const { serverUrl, user } = useContext(CommonContext);
   const [articleFormData, setArticleFormData] = useState({
     id: null,
@@ -20,15 +19,35 @@ export default function (props) {
     detail: "",
     image: props.location.state.image,
   });
+
+  function toDataURL(src, callback) {
+    var img = new Image();
+    img.crossOrigin = "Anonymous";
+    img.src = src;
+
+    img.onload = function () {
+      var canvas = document.createElement("CANVAS");
+      var ctx = canvas.getContext("2d");
+      var dataURL;
+      canvas.height = this.naturalHeight;
+      canvas.width = this.naturalWidth;
+      ctx.drawImage(this, 0, 0);
+      dataURL = canvas.toDataURL("image/jpeg");
+      callback(dataURL);
+    };
+  }
+
   function refreshList() {
     if (props.location.state.article) {
       const article = props.location.state.article;
-      setArticleFormData({
-        ...articleFormData,
-        id: article.id,
-        title: article.title,
-        detail: article.detail,
-        image: article.image,
+      toDataURL(props.location.state.article.image, function (dataURL) {
+        setArticleFormData({
+          ...articleFormData,
+          id: article.id,
+          title: article.title,
+          detail: article.detail,
+          image: dataURL,
+        });
       });
     }
   }
@@ -45,7 +64,7 @@ export default function (props) {
     const unblock = props.history.block((location, action) => {
       if (action === "POP") {
         if (window.confirm("작성하던 내용이 없어집니다. 정말 떠나실건가요?")) {
-          return true;
+          return props.history.push("/main");
         } else {
           return false;
         }
@@ -93,6 +112,7 @@ export default function (props) {
       <Grid container className="root" justify="center" alignItems="center">
         <div className="input-image-box">
           <img
+            id="img"
             className="input-image"
             src={props.location.state.image || articleFormData.image}
             alt="image"

@@ -14,7 +14,7 @@ import MenuModal from "../../components/Community/Article/MenuModal/";
 import CommentList from "../../components/Community/Comment/CommentList/";
 import { CommonContext } from "../../context/CommonContext";
 
-export default function () {
+export default function (props) {
   const { serverUrl, user } = useContext(CommonContext);
 
   const [articleList, setArticleList] = useState([]);
@@ -24,24 +24,46 @@ export default function () {
   }, []);
 
   function refreshList() {
-    axios
-      .get(`${serverUrl}/community/`, {
-        headers: {
-          Authorization: `JWT ${user.token}`,
-        },
-        // params: {
-        //   user: 3,
-        // },
-      })
-      .then((res) => {
-        // setArticleList([]);
-        console.log(res.data);
-        setArticleList(res.data);
-        // setTimeout(() => {
-        //   refreshList();
-        // }, 3000);
-      })
-      .catch((err) => console.log(err));
+    if (props.myarticle) {
+      console.log(props.myarticle);
+      axios
+        .get(`${serverUrl}/community/my_article`, {
+          headers: {
+            Authorization: `JWT ${user.token}`,
+          },
+          params: {
+            user: user.user.id,
+          },
+        })
+        .then((res) => {
+          // setArticleList([]);
+          console.log(res.data);
+          setArticleList(res.data);
+          // setTimeout(() => {
+          //   refreshList();
+          // }, 5000);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      axios
+        .get(`${serverUrl}/community/`, {
+          headers: {
+            Authorization: `JWT ${user.token}`,
+          },
+          // params: {
+          //   user: 3,
+          // },
+        })
+        .then((res) => {
+          // setArticleList([]);
+          console.log(res.data);
+          setArticleList(res.data);
+          // setTimeout(() => {
+          //   refreshList();
+          // }, 5000);
+        })
+        .catch((err) => console.log(err));
+    }
   }
 
   function likeSubmit(article) {
@@ -200,7 +222,15 @@ export default function () {
         });
       }
 
-      function getTime(myTime) {
+      function getTime(myCreateTime, myUpdateTime) {
+        let myTime = myCreateTime;
+        let updateComment = "";
+        if (myCreateTime.slice(0, 19) != myUpdateTime.slice(0, 19)) {
+          console.log("dnajkln");
+          console.log(myCreateTime, myUpdateTime);
+          myTime = myUpdateTime;
+          updateComment = " (수정됨)";
+        }
         let theTime = null;
 
         const now = new Date();
@@ -218,41 +248,42 @@ export default function () {
           theTime = (
             <span className="comment-createdTime" key={index}>
               {old.getFullYear()}년 {old.getMonth()}월 {old.getDate()}일
+              {updateComment}
             </span>
           );
         } else {
           if (mon_gap >= 1) {
             theTime = (
               <span className="comment-createdTime" key={index}>
-                {old.getMonth()}월 {old.getDate()}일
+                {old.getMonth()}월 {old.getDate()}일{updateComment}
               </span>
             );
           } else {
             if (day_gap >= 1) {
               theTime = (
                 <span className="comment-createdTime" key={index}>
-                  {day_gap}일 전
+                  {day_gap}일 전{updateComment}
                 </span>
               );
             } else {
               if (hour_gap >= 1) {
                 theTime = (
                   <span className="comment-createdTime" key={index}>
-                    {hour_gap}시간 전
+                    {hour_gap}시간 전{updateComment}
                   </span>
                 );
               } else {
                 if (min_gap >= 1) {
                   theTime = (
                     <span className="comment-createdTime" key={index}>
-                      {min_gap}분 전
+                      {min_gap}분 전{updateComment}
                     </span>
                   );
                 } else {
                   if (sec_gap >= 1) {
                     theTime = (
                       <span className="comment-createdTime" key={index}>
-                        몇초 전
+                        몇초 전{updateComment}
                       </span>
                     );
                   } else {
@@ -280,7 +311,7 @@ export default function () {
                 <div className="list-avata-1">
                   <span className="list-username">{item.username}</span>
                   <span className="list-username-time">
-                    {getTime(item.created_at)}
+                    {getTime(item.created_at, item.updated_at)}
                   </span>
                 </div>
               </div>
