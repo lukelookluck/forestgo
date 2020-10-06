@@ -67,7 +67,7 @@ export default function ImageUploadButton(props) {
         props.setflowerName(res.data[0].fields.name);
         props.setflowerSymbol(res.data[0].fields.sympolism);
         props.setflowerSeason(res.data[0].fields.season);
-        props.setflowerPk(res.data[0].pk);
+        props.setflowerPk(res.data[0].userbook_pk);
         console.log("찾음");
       })
       .catch((err) => {

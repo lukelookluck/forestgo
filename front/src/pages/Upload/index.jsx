@@ -22,42 +22,6 @@ export default function Upload(props) {
 
   let history = useHistory();
 
-  // function handleSubmit(data) {
-  //   if (data.id) {
-  //     axios
-  //       .put(`${serverUrl}/community/${data.id}/`, data, {
-  //         headers: {
-  //           Authorization: `JWT ${user.token}`,
-  //         },
-  //       })
-  //       .then((res) => {
-  //         history.push("/main");
-  //         props.setValue(0);
-  //         window.scrollTo({ bottom: 0, behavior: "smooth" });
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //     return;
-  //   }
-  //   axios
-  //     .post(`${serverUrl}/community/`, data, {
-  //       headers: {
-  //         Authorization: `JWT ${user.token}`,
-  //       },
-  //     })
-  //     .then((res) => {
-  //       history.push("/main");
-  //       props.setValue(0);
-  //       window.scrollTo({ bottom: 0, behavior: "smooth" });
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-
-  //   console.log("data", data);
-  // }
-
   function savePic() {
     console.log("여기!");
     console.log(flowerPk);
@@ -71,7 +35,8 @@ export default function Upload(props) {
     })
       .then((response) => {
         console.log(response);
-        history.push("/Main");
+        alert("식물이 저장되었습니다!");
+        window.location.reload();
       })
       .catch((error) => {
         console.log(error);
@@ -79,6 +44,22 @@ export default function Upload(props) {
   }
 
   function goArticleForm(data) {
+
+    Axios.get(`${serverUrl}/api/forestbook/save/`, {
+      headers: {
+        Authorization: `JWT ${user.token}`,
+      },
+      params: {
+        pk: flowerPk,
+      },
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
     window.scrollTo(0, 0);
     setTimeout(() => {
       window.scroll({ top: 100, behavior: "smooth" });
@@ -115,9 +96,9 @@ export default function Upload(props) {
             {flowerName === "알 수 없음"
             ? <Grid container justify="center" alignItems="center">
                 <Grid item xs={12}>
-                  <Button>
-                    다시 찾기
-                  </Button>
+                  식물을 촬영했는데 인식하지 못 했나요?<br></br>
+                  식물 종류 대규모 업데이트 예정입니다 :)<br></br>
+                  기대해주세요!
                 </Grid>
               </Grid>
             : <Grid container justify="center" alignItems="center">
