@@ -142,7 +142,7 @@ const MyPic = () => {
                         {pic.flowername}
                       </Grid>
                       <Grid className="date">
-                        {pic.created_at.substring(0,10)} 촬영
+                        {pic.created_at.substring(0,10)} 수집
                       </Grid>
                     </Grid>
                     <hr width="340px"></hr>
