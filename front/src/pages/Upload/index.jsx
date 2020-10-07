@@ -19,42 +19,6 @@ export default function Upload(props) {
 
   let history = useHistory();
 
-  function handleSubmit(data) {
-    if (data.id) {
-      axios
-        .put(`${serverUrl}/community/${data.id}/`, data, {
-          headers: {
-            Authorization: `JWT ${user.token}`,
-          },
-        })
-        .then((res) => {
-          history.push("/main");
-          props.setValue(0);
-          window.scrollTo({ bottom: 0, behavior: "smooth" });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      return;
-    }
-    axios
-      .post(`${serverUrl}/community/`, data, {
-        headers: {
-          Authorization: `JWT ${user.token}`,
-        },
-      })
-      .then((res) => {
-        history.push("/main");
-        props.setValue(0);
-        window.scrollTo({ bottom: 0, behavior: "smooth" });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    console.log("data", data);
-  }
-
   function goArticleForm(data) {
     window.scrollTo(0, 0);
     setTimeout(() => {
