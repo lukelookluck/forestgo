@@ -16,10 +16,21 @@ export default function (props) {
   const { serverUrl, user } = useContext(CommonContext);
 
   const [articleList, setArticleList] = useState([]);
+  const [myBool, setMyBool] = useState(false);
 
   useEffect(() => {
     refreshList();
   }, []);
+
+  let emptyWord = "";
+  if (articleList.length === 0 && myBool) {
+    emptyWord = (
+      <div className="emptyWord-box">
+        <div className="emptyWord">텅</div>
+        <div className="emptyWord2">게시글이 없어요</div>
+      </div>
+    );
+  }
 
   function refreshList() {
     if (props.myarticle) {
@@ -52,6 +63,7 @@ export default function (props) {
         .then((res) => {
           console.log(res.data);
           setArticleList(res.data);
+          setMyBool(true);
         })
         .catch((err) => {
           if (err.response.status === 401) {
@@ -317,16 +329,6 @@ export default function (props) {
         </div>
       );
     });
-
-  let emptyWord = "";
-  if (articleList.length === 0) {
-    emptyWord = (
-      <div className="emptyWord-box">
-        <div className="emptyWord">텅</div>
-        <div className="emptyWord2">게시글이 없어요</div>
-      </div>
-    );
-  }
 
   return (
     <Wrapper>
