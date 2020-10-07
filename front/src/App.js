@@ -6,7 +6,6 @@ import SignUp from "./pages/SignUp/";
 import FindPW from "./pages/FindPW/";
 import MyForest from "./pages/MyForest/";
 import Main from "./pages/Main/";
-import Discovery from "./pages/Discovery/";
 import Upload from "./pages/Upload/";
 import ArticleDisplay from "./pages/ArticleDisplay/";
 import ArticleFrom from "./pages/ArticleForm/";
@@ -49,7 +48,6 @@ function App() {
           <Route exact path="/FindpW" component={FindPW}></Route>
           <Route exact path="/Main" component={Main}></Route>
           <Route exact path="/MyForest" component={MyForest}></Route>
-          <Route exact path="/Discovery" component={Discovery}></Route>
           <Route exact path="/Upload" component={Upload}></Route>
           <Route exact path="/MyPic" component={MyPic}></Route>
           <Route exact path="/MyArticle" component={MyArticle}></Route>

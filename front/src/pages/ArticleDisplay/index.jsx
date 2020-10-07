@@ -10,13 +10,8 @@ import ArrowBackOutlinedIcon from "@material-ui/icons/ArrowBackOutlined";
 import ClearIcon from "@material-ui/icons/Clear";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
-import InsertCommentOutlinedIcon from "@material-ui/icons/InsertCommentOutlined";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import BookmarkIcon from "@material-ui/icons/Bookmark";
-import DeleteIcon from "@material-ui/icons/Delete";
 
-import Alert from "../../components/Community/Alert/";
 import MenuModal from "../../components/Community/Article/MenuModal/";
 import CommentList from "../../components/Community/Comment/CommentList/";
 import CommentForm from "../../components/Community/Comment/CommentForm/";
@@ -359,11 +354,6 @@ export default function (props) {
 
             <div className="list-item-detail">{item.detail}</div>
             <div className="list-item-imageBox">
-              {/* <img
-                className="list-item-image"
-                src="/images/sample.jpg"
-                alt=""
-              /> */}
               <img className="list-item-image" src={item.image} alt="" />
             </div>
           </div>

@@ -5,9 +5,6 @@ import axios from "axios";
 import Wrapper from "./style";
 import Header from "../../layout/Header/";
 
-import ImageUploadBtn from "../../components/Community/ArticleForm/ImageUploadButton/";
-
-import InputImage from "../../components/Community/ArticleForm/InputImage/";
 import { CommonContext } from "../../context/CommonContext";
 
 export default function (props) {
