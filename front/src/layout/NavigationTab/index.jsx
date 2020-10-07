@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import Wrapper from "./styles";
-import { Grid } from "@material-ui/core";
 import PropTypes from "prop-types";
 import SwipeableViews from "react-swipeable-views";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -9,11 +8,9 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import Discovery from "../../pages/Discovery/";
 import MyForest from "../../pages/MyForest/";
 import CameraAltOutlinedIcon from "@material-ui/icons/CameraAltOutlined";
 import Upload from "../../pages/Upload/";
-import Form from "../../pages/ArticleForm/";
 import Community from "../../pages/Community/";
 
 function TabPanel(props) {
@@ -110,7 +107,6 @@ export default function NavigationTab() {
           <MyForest></MyForest>
         </TabPanel>
       </SwipeableViews>
-      {value == 0}
     </Wrapper>
   );
 }

@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 const Start = () => {
   let history = useHistory();
 
-  const { serverUrl, user, setUser } = useContext(CommonContext);
+  const { serverUrl, setUser } = useContext(CommonContext);
 
   const onClickRedirectPathHandler = (name) => (e) => {
     window.scrollTo(0, 0);
@@ -93,14 +93,9 @@ const Start = () => {
             로그인
           </Button>
         </Grid>
-        <Grid item xs={6} className="bottom">
+        <Grid item xs={12} className="bottom">
           <div id="signup" onClick={onClickRedirectPathHandler("/SignUp")}>
             회원가입
-          </div>
-        </Grid>
-        <Grid item xs={6} className="bottom">
-          <div id="findpw" onClick={onClickRedirectPathHandler("/FindPW")}>
-            비밀번호 찾기
           </div>
         </Grid>
       </Grid>

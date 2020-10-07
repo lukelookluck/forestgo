@@ -24,7 +24,7 @@ const SignUp = () => {
   const [Name, setName] = useState("");
   const [confirmPassword, setconfirmPassword] = useState("");
 
-  const { serverUrl, user, setUser } = useContext(CommonContext);
+  const { serverUrl, setUser } = useContext(CommonContext);
 
   const onEmailHandler = (event) => {
     setEmail(event.currentTarget.value);

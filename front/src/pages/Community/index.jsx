@@ -23,7 +23,6 @@ export default function (props) {
 
   function refreshList() {
     if (props.myarticle) {
-      console.log(props.myarticle);
       axios
         .get(`${serverUrl}/community/my_article`, {
           headers: {
@@ -38,7 +37,7 @@ export default function (props) {
           setArticleList(res.data);
         })
         .catch((err) => {
-          if (err.response.status == 401) {
+          if (err.response.status === 401) {
             alert("세션이 만료되었습니다. 다시 로그인 해주세요.");
             history.push("/");
           }
@@ -55,7 +54,7 @@ export default function (props) {
           setArticleList(res.data);
         })
         .catch((err) => {
-          if (err.response.status == 401) {
+          if (err.response.status === 401) {
             alert("세션이 만료되었습니다. 다시 로그인 해주세요.");
             history.push("/");
           }
@@ -64,7 +63,6 @@ export default function (props) {
   }
 
   function likeSubmit(article) {
-    console.log("article", article);
     axios
       .post(
         `${serverUrl}/community/article/${article.id}/`,
@@ -75,8 +73,7 @@ export default function (props) {
           },
         }
       )
-      .then((res) => {
-      })
+      .then((res) => {})
       .catch((err) => console.log(err));
   }
 
@@ -144,7 +141,6 @@ export default function (props) {
       }
 
       function likeIt(item) {
-        console.log("myLike", myLike);
         let array = item.LIKE;
         if (myLike) {
           likeSubmit(item);
@@ -197,7 +193,7 @@ export default function (props) {
       function getTime(myCreateTime, myUpdateTime) {
         let myTime = myCreateTime;
         let updateComment = "";
-        if (myCreateTime.slice(0, 19) != myUpdateTime.slice(0, 19)) {
+        if (myCreateTime.slice(0, 19) !== myUpdateTime.slice(0, 19)) {
           myTime = myUpdateTime;
           updateComment = " (수정됨)";
         }
@@ -323,8 +319,7 @@ export default function (props) {
     });
 
   let emptyWord = "";
-  if (articleList.length == 0) {
-    console.log("articleList", articleList);
+  if (articleList.length === 0) {
     emptyWord = (
       <div className="emptyWord-box">
         <div className="emptyWord">텅</div>

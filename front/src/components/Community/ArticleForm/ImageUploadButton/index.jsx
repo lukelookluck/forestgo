@@ -81,7 +81,7 @@ export default function ImageUploadButton(props) {
   return (
     <Wrapper>
       <InputImage temp={imgBase64} />
-      {imgBase64.length == 0 && (
+      {imgBase64.length === 0 && (
         <div className="input-footer">
           <input
             accept="image/*"

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, Fragment } from "react";
+import React, { useState, useContext } from "react";
 import Wrapper from "./styles";
 import Axios from "axios";
 
@@ -42,7 +42,6 @@ export default function Upload(props) {
   }
 
   function goArticleForm(data) {
-
     Axios.get(`${serverUrl}/api/forestbook/save/`, {
       headers: {
         Authorization: `JWT ${user.token}`,
@@ -91,12 +90,10 @@ export default function Upload(props) {
         </Grid>
         {isImage && (
           <div>
-            {!flowerName
-            ? <Grid className="ann3">
-                사진 인식 중
-              </Grid>
-            : flowerName === "알 수 없음"
-            ? <Grid container justify="center" alignItems="center">
+            {!flowerName ? (
+              <Grid className="ann3">사진 인식 중</Grid>
+            ) : flowerName === "알 수 없음" ? (
+              <Grid container justify="center" alignItems="center">
                 <Grid item xs={12} className="ann">
                   식물을 인식하지 못했어요 ;(
                 </Grid>
@@ -105,27 +102,36 @@ export default function Upload(props) {
                   기대해주세요!
                 </Grid>
               </Grid>
-            : <Grid container justify="center" alignItems="center">
+            ) : (
+              <Grid container justify="center" alignItems="center">
                 <Grid container justify="center" alignItems="center">
                   <Grid item className="data">
                     {flowerName}
                   </Grid>
-                  <Grid item className="add">&nbsp;입니다!</Grid>
+                  <Grid item className="add">
+                    &nbsp;입니다!
+                  </Grid>
                 </Grid>
 
                 <Grid container justify="center" alignItems="center">
-                  <Grid item className="add">꽃말은&nbsp;</Grid>
+                  <Grid item className="add">
+                    꽃말은&nbsp;
+                  </Grid>
                   <Grid item className="data">
                     {flowerSymbol}
                   </Grid>
-                  <Grid item className="add">&nbsp;이며</Grid>
+                  <Grid item className="add">
+                    &nbsp;이며
+                  </Grid>
                 </Grid>
 
                 <Grid container justify="center" alignItems="center">
                   <Grid item className="data">
                     {flowerSeason}
                   </Grid>
-                  <Grid item className="add">&nbsp;에 볼 수 있어요</Grid>
+                  <Grid item className="add">
+                    &nbsp;에 볼 수 있어요
+                  </Grid>
                 </Grid>
 
                 <Grid item xs={6}>
@@ -147,7 +153,8 @@ export default function Upload(props) {
                     저장 후 글쓰기
                   </Button>
                 </Grid>
-              </Grid>}
+              </Grid>
+            )}
           </div>
         )}
       </Grid>

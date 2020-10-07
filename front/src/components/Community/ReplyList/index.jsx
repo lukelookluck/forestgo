@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
 
 import Wrapper from "./style";
 
@@ -13,7 +12,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { CommonContext } from "../../../context/CommonContext";
 
 export default function (props) {
-  const { serverUrl, user } = useContext(CommonContext);
+  const { user } = useContext(CommonContext);
 
   const [myIndex, setMyIndex] = useState(2);
 
