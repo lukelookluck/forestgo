@@ -50,8 +50,10 @@ def flower_check(request):
             userinfo_id__email=request.user.email).order_by('-id')[:1].get()
         recent_flower = Forestbook.objects.filter(
             name=recent_user_flower.forestbook_id.name)
+        print(recent_user_flower.pk)
         json_data = serializers.serialize('json', recent_flower)
-        return HttpResponse(json_data, content_type='application/json')
+        json_data_userbook_pk = (json_data[:-2] + ', "userbook_pk": "' + str(recent_user_flower.pk) + '"}]')
+        return HttpResponse(json_data_userbook_pk, content_type='application/json')
     return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
