@@ -95,7 +95,7 @@ export default function Upload(props) {
           <div>
             {!flowerName
             ? <Grid className="ann3">
-                로딩중입니다~
+                사진 인식 중
               </Grid>
             : flowerName === "알 수 없음"
             ? <Grid container justify="center" alignItems="center">
