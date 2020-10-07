@@ -71,6 +71,13 @@ const Wrapper = styled.div`
     font-family: "Recipekorea";
   }
 
+  & .ann3 {
+    font-size: 30px;
+    font-family: "Recipekorea";
+    margin-bottom: 20px;
+    margin-top: 50px;
+  }
+
   & .data {
     font-size: 25px;
     font-weight: bold;

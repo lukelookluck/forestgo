@@ -93,7 +93,11 @@ export default function Upload(props) {
         </Grid>
         {isImage && (
           <div>
-            {flowerName === "알 수 없음"
+            {!flowerName
+            ? <Grid className="ann3">
+                로딩중입니다~
+              </Grid>
+            : flowerName === "알 수 없음"
             ? <Grid container justify="center" alignItems="center">
                 <Grid item xs={12} className="ann">
                   식물을 인식하지 못했어요 ;(
