@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import axios from "axios";
 import Wrapper from "./style";
@@ -9,9 +9,7 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import ModeCommentOutlinedIcon from "@material-ui/icons/ModeCommentOutlined";
 
-import Alert from "../../components/Community/Alert/";
 import MenuModal from "../../components/Community/Article/MenuModal/";
-import CommentList from "../../components/Community/Comment/CommentList/";
 import { CommonContext } from "../../context/CommonContext";
 
 export default function (props) {
@@ -36,16 +34,12 @@ export default function (props) {
           },
         })
         .then((res) => {
-          // setArticleList([]);
           console.log(res.data);
           setArticleList(res.data);
-          // setTimeout(() => {
-          //   refreshList();
-          // }, 5000);
         })
         .catch((err) => {
           if (err.response.status == 401) {
-            alert("세선이 만료되었습니다. 다시 로그인 해주세요.");
+            alert("세션이 만료되었습니다. 다시 로그인 해주세요.");
             history.push("/");
           }
         });
@@ -55,21 +49,14 @@ export default function (props) {
           headers: {
             Authorization: `JWT ${user.token}`,
           },
-          // params: {
-          //   user: 3,
-          // },
         })
         .then((res) => {
-          // setArticleList([]);
           console.log(res.data);
           setArticleList(res.data);
-          // setTimeout(() => {
-          //   refreshList();
-          // }, 5000);
         })
         .catch((err) => {
           if (err.response.status == 401) {
-            alert("세선이 만료되었습니다. 다시 로그인 해주세요.");
+            alert("세션이 만료되었습니다. 다시 로그인 해주세요.");
             history.push("/");
           }
         });
@@ -89,29 +76,9 @@ export default function (props) {
         }
       )
       .then((res) => {
-        // refreshList();
       })
       .catch((err) => console.log(err));
   }
-
-  // function saveSubmit(article) {
-  //   console.log(article);
-  //   axios
-  //     .post(
-  //       `${serverUrl}/community/article_save/${article.id}/`,
-  //       { user: user.user.id }, // 현재 유저 정보 넣기
-  //       {
-  //         headers: {
-  //           Authorization: `JWT ${user.token}`,
-  //         },
-  //       }
-  //     )
-  //     .then((res) => {
-  //       console.log(res.data.SAVE);
-  //       // refreshList();
-  //     })
-  //     .catch((err) => console.log(err));
-  // }
 
   let history = useHistory();
 
@@ -216,11 +183,6 @@ export default function (props) {
       }
       let cardContent = item.detail.substring(0, 50) + myHideComment;
 
-      // function moreContent(e) {
-      //   setCardContent("누르면 상세글페이지로");
-      //   e.preventDefault();
-      // }
-
       function goArticleDetailPage(item) {
         window.scrollTo(0, 0);
         history.push({
@@ -250,8 +212,6 @@ export default function (props) {
         const day_gap = Math.floor(hour_gap / 24);
         const mon_gap = Math.floor(day_gap / 30);
         const year_gap = Math.floor(mon_gap / 12);
-        // console.log(sec_gap, min_gap, hour_gap, day_gap, mon_gap);
-        // console.log(old, now);
         if (year_gap >= 1) {
           theTime = (
             <span className="comment-createdTime" key={index}>
@@ -334,11 +294,8 @@ export default function (props) {
             <div className="list-item-detail">
               <div className="list-item-title">{cardTitle}</div>
               {cardContent}
-
-              {/* {myHide} */}
             </div>
             <div className="list-item-imageBox">
-              {/* <img className="list-item-image" src="/images/sample.jpg" alt="" /> */}
               <img
                 className="list-item-image"
                 src={item.image}
@@ -361,7 +318,6 @@ export default function (props) {
             {countLikeIt1}
             {countComment}
           </div>
-          {/* <Alert open={open} /> */}
         </div>
       );
     });
