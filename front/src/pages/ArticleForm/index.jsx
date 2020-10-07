@@ -82,6 +82,7 @@ export default function (props) {
           },
         })
         .then((res) => {
+          alert("글 수정이 완료되었습니다!");
           props.history.push("/main");
         })
         .catch((err) => {
@@ -96,6 +97,7 @@ export default function (props) {
         },
       })
       .then((res) => {
+        alert("글 작성이 완료되었습니다!");
         props.history.push("/main");
       })
       .catch((err) => {

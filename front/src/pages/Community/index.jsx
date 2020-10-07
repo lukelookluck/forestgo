@@ -92,17 +92,20 @@ export default function (props) {
   let history = useHistory();
 
   function DeleteArticle(article) {
-    axios
-      .delete(`${serverUrl}/community/${article.id}/`, {
-        headers: {
-          Authorization: `JWT ${user.token}`,
-        },
-      })
-      .then((res) => {
-        refreshList();
-        window.scrollTo(0, 0);
-        history.push("/Main");
-      });
+    if (window.confirm("글이 삭제됩니다. 정말 삭제하실 건가요?")) {
+      axios
+        .delete(`${serverUrl}/community/${article.id}/`, {
+          headers: {
+            Authorization: `JWT ${user.token}`,
+          },
+        })
+        .then((res) => {
+          alert("글이 삭제되었습니다!");
+          refreshList();
+          window.scrollTo(0, 0);
+          history.push("/Main");
+        });
+    }
   }
 
   let article = articleList
