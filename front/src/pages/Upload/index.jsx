@@ -4,10 +4,8 @@ import Axios from "axios";
 
 import { useHistory } from "react-router-dom";
 import { Grid, Button, TextField } from "@material-ui/core";
-import Header from "../../layout/Header/";
 import ImageUploadBtn from "../../components/Community/ArticleForm/ImageUploadButton/";
 
-import Temp1 from "../../components/Community/ArticleForm/Temp1";
 import { CommonContext } from "../../context/CommonContext";
 
 export default function Upload(props) {

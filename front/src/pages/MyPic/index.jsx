@@ -1,9 +1,7 @@
 import React, { useState, useContext, useEffect, Fragment } from "react";
 import { useHistory } from "react-router-dom";
-import Header from "../../layout/Header/";
 import Wrapper from "./styles";
 import { Grid, Button, TextField, Paper } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import "../../index.css";
 import { CommonContext } from "../../context/CommonContext";
 import Axios from "axios";
