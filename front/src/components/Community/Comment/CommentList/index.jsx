@@ -12,7 +12,8 @@ import { CommonContext } from "../../../../context/CommonContext";
 export default function (props) {
   const { user } = useContext(CommonContext);
 
-  let comments = props.comments.map((comment, idx) => {
+  let mycomments = props.comments.sort((a, b) => b.id - a.id);
+  let comments = mycomments.map((comment, idx) => {
     let likeButton = null;
     let countLikeIt1 = null;
     if (comment.LIKE.includes(user.user.id)) {
@@ -111,7 +112,7 @@ export default function (props) {
           <DeleteIcon
             className="comment-list-header-delete-click"
             fontSize="large"
-            onClick={() => props.DeleteComment(comment)}
+            onClick={() => props.DeleteComment(e, comment)}
           />
         );
       } else {
@@ -121,7 +122,6 @@ export default function (props) {
 
     return (
       <div key={idx}>
-        {}
         <div className="comment-single">
           <AccountCircleTwoToneIcon
             className="comment-avata"

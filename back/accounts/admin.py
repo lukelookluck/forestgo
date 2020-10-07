@@ -4,6 +4,7 @@ from django.contrib.auth.admin import UserAdmin
 from accounts.models import Userinfo
 from challenge.models import Challenge, Userchallenge
 from forestbook.models import Forestbook, Userbook
+from community.models import Article, Comment
 
 
 admin.site.register(Userinfo, UserAdmin)
@@ -11,3 +12,4 @@ admin.site.register(Challenge)
 admin.site.register(Userchallenge)
 admin.site.register(Forestbook)
 admin.site.register(Userbook)
+admin.site.register(Article)

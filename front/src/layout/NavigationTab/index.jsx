@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Wrapper from "./styles";
 import { Grid } from "@material-ui/core";
 import PropTypes from "prop-types";
@@ -14,10 +14,10 @@ import MyForest from "../../pages/MyForest/";
 import CameraAltOutlinedIcon from "@material-ui/icons/CameraAltOutlined";
 import Upload from "../../pages/Upload/";
 import Form from "../../pages/ArticleForm/";
+import Community from "../../pages/Community/";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-
   return (
     <div
       role="tabpanel"
@@ -64,6 +64,7 @@ export default function NavigationTab() {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    window.scrollTo(0, 0);
   };
 
   const handleChangeIndex = (index) => {
@@ -100,10 +101,10 @@ export default function NavigationTab() {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          <Discovery></Discovery>
+          <Community></Community>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <Upload></Upload>
+          <Upload setValue={setValue} value={value}></Upload>
         </TabPanel>
         <TabPanel value={value} index={2} dir={theme.direction}>
           <MyForest></MyForest>

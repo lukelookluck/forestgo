@@ -10,7 +10,7 @@ const Wrapper = styled.div`
     & .findpw div {
         margin-top: 60px;
         font-size: 30px;
-        font-family: 'IBMPlexSansKR-Text';
+        font-family: 'NanumSquareRound';
     }
 
     & form div {

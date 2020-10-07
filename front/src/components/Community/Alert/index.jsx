@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Alert from "@material-ui/lab/Alert";
 import IconButton from "@material-ui/core/IconButton";
@@ -17,10 +17,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function TransitionAlerts(props) {
   const classes = useStyles();
+  // const [open, setOpen] = useState(true);
+
+  // console.log("asdnkjasd", open);
 
   return (
     <div className={classes.root}>
-      <Collapse value={props.open}>
+      <Collapse in={props.open}>
         <Alert
           severity="info"
           icon={<LocalBarOutlinedIcon fontSize="small" />}
@@ -30,7 +33,8 @@ export default function TransitionAlerts(props) {
               color="primary"
               size="small"
               onClick={() => {
-                props.setOpen(false);
+                // open = false;
+                // setOpen(false);
               }}
             >
               <CloseIcon fontSize="inherit" />

@@ -14,6 +14,7 @@ import { CommonContext } from "../../../context/CommonContext";
 
 export default function (props) {
   const { serverUrl, user } = useContext(CommonContext);
+
   const [myIndex, setMyIndex] = useState(2);
 
   function moreComment() {

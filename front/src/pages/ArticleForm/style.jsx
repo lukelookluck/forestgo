@@ -3,66 +3,47 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   text-align: center;
 
-  & .form-header-title {
-    margin-top: 35px;
-    font-size: 30px;
-    height: 60px;
-    font-family: 'IBMPlexSansKR-Text';
+  .root {
+    /* position: relative; */
+
+    padding: 16px;
+    /* height: 700px; */
   }
 
-  & #details {
-    // height: 200px;
+  & .uploadForm {
+    /* position: absolute; */
+    /* top: 550px; */
+    /* width: 100%; */
   }
 
-  & form div {
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
-
-  & .form-row .col input::placeholder {
-    color: #a1a1a1;
-    font-weight: 500;
-  }
-
-  & .article-create-button {
-
-    margin-top: 10px;
-    margin-bottom: 10px;
+  & .submitBtn {
+    margin-top: 30px;
     height: 50px;
-    width: 120px;
-    background-color: rgb(76, 127, 188);
+    width: 150px;
+    background-color: #509c82;
     text-decoration: none;
     border: none;
     color: white;
     font-size: 20px;
-    font-family: 'IBMPlexSansKR-Text';
-
-    // border: none;
-    // border-radius: 25px;
-    // padding: 7px 10px;
-    // background-color: rgb(56, 97, 182);
-    // height: 35px;
-    // font-size: 15px;
-    // color: white;
+    font-family: "NanumSquareRound";
   }
 
-  & .article-create-button:hover {
-    background-color: rgb(76, 127, 188);
+  & .submitBtn-box {
+    display: flex;
+    justify-content: space-around;
   }
 
-  & .resetBtn {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    height: 50px;
-    width: 120px;
-    background-color: rgb(242, 242, 242);
-    text-decoration: none;
-    border: none;
-    color: black;
-    font-size: 20px;
-    font-family: 'IBMPlexSansKR-Text';
+  & .input-image-box {
+    margin: 30px 0;
+    width: 100%;
+    height: 100%;
   }
 
+  & .input-image {
+    width: 80vw;
+    height: 40vh;
+    border-radius: 25px;
+  }
 `;
 
 export default Wrapper;
